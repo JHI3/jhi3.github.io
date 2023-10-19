@@ -1,8 +1,8 @@
 # Notes, Slides, and Other Things
 ## Notes
-### Algebra (MATH 204)
+### Algebra (MATH 200)
 [Algebra I](/notes/algebra_i.pdf)
-### Analysis (MATH 200)
+### Analysis (MATH 204)
 [Analysis I](/notes/analysis_i.pdf)
 ## Slides
 ### Calculus with Applications (MATH 11A)
