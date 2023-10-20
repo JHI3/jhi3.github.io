@@ -8,3 +8,4 @@
 ### Calculus with Applications (MATH 11A)
 [Section 1](/slides/11A/section1.pdf)
 [Section 2](/slides/11A/section2.pdf)
+[Section 3](/slides/11A/section3.pdf)
