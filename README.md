@@ -13,3 +13,5 @@
 [Section 5](/slides/11A/section5.pdf)
 [Section 6](/slides/11A/section6.pdf)
 [Section 7](/slides/11A/section7.pdf)
+[Section 8](/slides/11A/section8.pdf)
+
