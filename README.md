@@ -1,11 +1,11 @@
 # Notes, Slides, and Other Things
 ## Notes
 ### Algebra 
-[Algebra I (Math 200)](/notes/algebra_i.pdf) | [Algebra II (Math 201)](/notes/algebra_ii.pdf) |
+[Algebra I (MATH 200)](/notes/algebra_i.pdf) | [Algebra II (MATH 201)](/notes/algebra_ii.pdf)
 ### Analysis 
-[Analysis I (Math 204)](/notes/analysis_i.pdf) | [Analysis II (Math 204)](/notes/analysis_ii.pdf)
+[Analysis I (MATH 204)](/notes/analysis_i.pdf) | [Analysis II (MATH 204)](/notes/analysis_ii.pdf)
 ### Partial Differential Equations
-[Partial Differential Equations I](/notes/partial_differential_equations_i.pdf)
+[Partial Differential Equations I (MATH 213A)](/notes/partial_differential_equations_i.pdf)
 ## Slides
 ### Calculus with Applications (MATH 11A)
 [Section 1](/slides/11A/section1.pdf) |
