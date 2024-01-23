@@ -8,7 +8,8 @@
 [Partial Differential Equations I (MATH 213A)](/notes/partial_differential_equations_i.pdf)
 ## Slides
 ### Precalculus (MATH 3)
-[Section 1](/slides/3/section1.pdf)
+[Section 1](/slides/3/section1.pdf) | 
+[Section 2](/slides/3/section2.pdf)
 ### Calculus with Applications (MATH 11A)
 [Section 1](/slides/11A/section1.pdf) |
 [Section 2](/slides/11A/section2.pdf) |
