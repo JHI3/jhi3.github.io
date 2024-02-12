@@ -11,7 +11,8 @@
 [Section 1](/slides/3/section1.pdf) | 
 [Section 2](/slides/3/section2.pdf) |
 [Section 3](/slides/3/section3.pdf) |
-[Section 4](/slides/3/section4.pdf) 
+[Section 4](/slides/3/section4.pdf) |
+[Section 5](/slides/3/section5.pdf) 
 ### Calculus with Applications (MATH 11A)
 [Section 1](/slides/11A/section1.pdf) |
 [Section 2](/slides/11A/section2.pdf) |
