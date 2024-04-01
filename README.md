@@ -1,7 +1,7 @@
 # Notes, Slides, and Other Things
 ## Notes
 ### Algebra 
-[Algebra I (MATH 200)](/notes/algebra_i.pdf) | [Algebra II (MATH 201)](/notes/algebra_ii.pdf)
+[Algebra I (MATH 200)](/notes/algebra_i.pdf) | [Algebra II (MATH 201)](/notes/algebra_ii.pdf) | [Algebra III (MATH 202)](/notes/algebra_iii.pdf)
 ### Analysis 
 [Analysis I (MATH 204)](/notes/analysis_i.pdf) | [Analysis II (MATH 205)](/notes/analysis_ii.pdf)
 ### Partial Differential Equations
