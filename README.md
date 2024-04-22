@@ -28,4 +28,5 @@
 [Section 8](/slides/11A/section8.pdf)
 ### Linear Algebra (MATH 21)
 [Section 1](/slides/21/section1.pdf) |
-[Section 2](/slides/21/section2.pdf)
+[Section 2](/slides/21/section2.pdf) |
+[Section 3](/slides/21/section3.pdf) 
