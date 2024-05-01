@@ -29,4 +29,5 @@
 ### Linear Algebra (MATH 21)
 [Section 1](/slides/21/section1.pdf) |
 [Section 2](/slides/21/section2.pdf) |
-[Section 3](/slides/21/section3.pdf) 
+[Section 3](/slides/21/section3.pdf) |
+[Midterm Review](/slides/21/midterm.pdf)
