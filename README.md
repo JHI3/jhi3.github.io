@@ -30,4 +30,5 @@
 [Section 1](/slides/21/section1.pdf) |
 [Section 2](/slides/21/section2.pdf) |
 [Section 3](/slides/21/section3.pdf) |
-[Midterm Review](/slides/21/midterm.pdf)
+[Midterm Review](/slides/21/midterm.pdf) |
+[Section 5](/slides/21/section5.pdf)
