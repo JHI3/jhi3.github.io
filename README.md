@@ -6,6 +6,8 @@
 [Analysis I (MATH 204)](/notes/analysis_i.pdf) | [Analysis II (MATH 205)](/notes/analysis_ii.pdf) | [Analysis III (MATH 206)](/notes/analysis_iii.pdf)
 ### Partial Differential Equations
 [Partial Differential Equations I (MATH 213A)](/notes/partial_differential_equations_i.pdf)
+### Topics in Analysis
+[Topics in Analysis (F24) (MATH 280)](/notes/analysis_topics_f24.pdf)
 ## Slides
 ### Precalculus (MATH 3)
 [Section 1](/slides/3/section1.pdf) | 
