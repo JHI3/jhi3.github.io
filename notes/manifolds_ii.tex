@@ -1,0 +1,3477 @@
+% Created 2025-03-31 Mon 11:14
+% Intended LaTeX compiler: lualatex
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\input{../.latex/packages}
+\input{../.latex/set}
+\input{../.latex/commands}
+\date{}
+\title{Manifolds II}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={Manifolds II},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 30.1 (Org mode 9.7.26)}, 
+ pdflang={English}}
+\begin{document}
+
+{\centering
+{\LARGE Manifolds II \par }}
+\section*{January 6, 2025}
+\label{sec:org545e18f}
+\section*{Recall: Tangent Bundle}
+\label{sec:org9356509}
+Given a chart \((U,\phi)\) about a point \(p\), we have coordinates \((x^{1},\ldots,x^{n})\) and a basis for \(T_{q}M\) of \(\left( \frac{\partial}{\partial x^{1}}|_{q},\ldots,\frac{\partial}{\partial x^{n}}|_{q} \right)\) for \(q\in U\).\\
+Then given \(TM\overset{\pi}{\to}M\), we may write \(v_{q}=v^{i}\frac{\partial}{\partial x^{i}}|_{q}\).\\
+\section*{Definition:}
+\label{sec:org8ca3624}
+For \(M\) a topological manifold. A (real) vector bndle of rank \(k\) over \(M\) is a topological space \(E\) with a surjective continuous map \(\pi:E\to M\) such that\\
+\begin{enumerate}
+\item \(\forall p\in M\), the fiber \(\pi^{-1}(p)=:E_{p}\) is endowed with the structure of a (real) vector space of dimension \(k\).\\
+\item \(\forall p\in M\), there exists a neighborhood \(U\) of \(p\) in \(M\) and a homeomorphism \(\Phi:\pi^{-1}(U)\to U\times\R^{k}\) called a local trivialization.\\
+
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    \Phi:\pi^{-1}(U) \ar[rr] \ar[dr,"\pi"] & & U\times\R^{k} \ar[dl,"\pi_{U}"] \\
+    & U
+  \end{tikzcd}};
+\end{tikzpicture}
+
+and \(\Phi|_{E_{q}}:E_{q}\to\{q\}\times\R^{k}\) is a linear isometry.\\
+\end{enumerate}
+\subsection*{Examples}
+\label{sec:org4c480d5}
+\begin{enumerate}
+\item \(TM\overset{\pi}{\to}M\)\\
+\item \(E=M\times\R^{k}\) with a global trivialization.\\
+\item The Mobius bundle over \(S^{1}\). \(\gamma:\R^{2}\to\R^{2}\) by \((x,y)\mapsto(x+1,(-1)\cdot y)\). Then \(\left\langle \gamma \right\rangle\cong\Z\) a subgroup acting freely and isometrically on \(\R^{2}\). Then \(E=\R^{2}/\left\langle \gamma \right\rangle\overset{\pi}{\to}S^{1}=\R/\Z\) by \(\overline{(x,y)}\mapsto\overline{x}\) is a vector bundle.\\
+\begin{center}
+IMAGE 1\\
+\end{center}
+\begin{itemize}
+\item We want to show that \(\pi^{-1}(U)\cong U\times\R\)\\
+
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    \R^2 \ar[r,"q"] \ar[d,"\pi"] & E \ar[d,"\pi"] \\
+    \R \ar[r,"\varepsilon"] & S^{1}
+  \end{tikzcd}};
+\end{tikzpicture}
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    (x,y) \ar[r,mapsto] \ar[d,mapsto] & \overline{(x,y)} \ar[d,mapsto] \\
+    x \ar[r,mapsto] & e^{(2\pi i)x}
+  \end{tikzcd}};
+\end{tikzpicture}
+\end{itemize}
+\end{enumerate}
+
+Then let \(p\in S^{1}\). We choose \(U\) a neighborhood of \(p\) such that \(U\) is evenly covered by \(\varepsilon\). This means \(\varepsilon^{-1}(U)\) is a disjoint union of open sets difeomorphic to \(U\).\\
+\begin{center}
+IMAGE 2\\
+\end{center}
+Let \(\tilde{U}\) be a component in \(\pi^{-1}(U)\). Then \(\pi_{1}^{-1}(\tilde{U})\cong\tilde{U}\times\R\) and \(\pi^{-1}(U)\) is diffeomorphic to \(U\times\R\).\\
+\section*{Definition: Transition Function}
+\label{sec:org6f91b68}
+Take \(E\overset{\pi}{\to}M\) with \(U,V\subseteq M\) admitting trivializations \(\phi:\pi^{-1}(U)\to U\times\R^{k}\) and \(\Psi:\pi^{-1}(V)\to V\times\R^{k}\). Let \(w=U\cap V(\neq\0)\).\\
+
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    \Phi\circ\Psi^{-1}: & W\times\R^k \ar[r] \ar[dr] & \pi^{-1}(W) \ar[d] \ar[r] & W\times\R^k \ar[dl] \\
+    & & W
+  \end{tikzcd}};
+\end{tikzpicture}
+
+Then \(\Phi\circ\Psi^{-1}|_{\{p\}\times\R^{k}}\) by \(\{p\}\times\R^{k}\to\{p\}\times\R^{k}\) is a linear isomorphism.\\
+\(\Phi\circ\Psi^{-1}(p,v)=(p,\tau(p)v)\) by \(\tau:p\mapsto \tau(p)\) and \(\tau(p)\in GL(k,\R)\) gives a smooth map \(W\to GL(k,\R)\).\\
+\section*{Definition:}
+\label{sec:orga0ea2ca}
+Let \(\{E_{1},\ldots, E_{k}\}\) be a basis of \(\R^{k}\). Then\\
+\begin{align*}
+  \tau(p)\cdot E_{i}=\sum_{j}\tau(p)^{j}_{i}E_{j}
+\end{align*}
+with \(\tau(p)=(\tau(p)^{j}_{i})\) and \(\tau(p)^{i}_{j}\in\R\). It suffices to show each \(\tau(*)^{j}_{i}\) mapping \(W\to\R\) and \(p\mapsto(\tau(p)^{j}_{i})\) is smooth. Then if \(\sigma(p,v):=\Phi\circ\Psi^{-1}(p,v)\), \(\tau(p)^{j}_{i}=\pi_{j}(\sigma(p,E_{i}))\) and \(\pi_{j}\) is a projection to the \(j\)-th component in \(\R^{k}\).\\
+\section*{Lemma 10.6 (Vector Bundle Chart Lemma)}
+\label{sec:orgd0e318e}
+Given \(M\) a smooth manifold, suppose that \(\forall p\in M\) we are given a vector space \(E_{p}\) of dimension \(k\). Let \(E=\coprod_{p\in M}E_{p}\) (as a set) and \(\pi:E\to M\) a mapping \(E_{p}\) to \(p\). Suppose also that we have\\
+\begin{enumerate}
+\item \(\left\{ U_{\alpha} \right\}_{\alpha\in A}\) an open cover of \(M\) with a countable subcover.\\
+\item \(\forall\alpha\in A\) we hav ea bijection \(\Phi_{\alpha}:\pi^{-1}(U_{\alpha})\to U_{\alpha}\times\R^{k}\) such that \(\Phi_{\alpha}|_{E_{p}}:E_{p}\to\{p\}\times\R^{k}\) is a linear isomorphism.\\
+\item \(\forall\alpha,\beta\in A\) with \(U_{\alpha\beta}:=U_{\alpha}\cap U_{\beta}\neq\0\) we have a smooth map \(\tau_{\alpha\beta}:U_{\alpha\beta}\to GL(k,\R)\) such that \(\Phi_{\alpha}\circ\phi^{-1}_{\beta}:U_{\alpha\beta}\times\R^{k}\to U_{\alpha\beta}\times\R^{k}\) by \((p,v)\mapsto(p,\tau(p)v)\).\\
+\end{enumerate}
+
+Then \(E\overset{\pi}{\to}M\) is a vector bundle.\\
+\subsection*{Example (Whitney Sum):}
+\label{sec:org10d4a9a}
+Suppose we have \(E'\overset{\pi'}{\to}M\) and \(E''\overset{\pi''}{\to}M\) two vector bundles over \(M\).\\
+Define \(E=E'\oplus E''\) a new vector bundle over \(M\) by \(E_{p}=E_{p}'\oplus E_{p}''\). Let \(\left\{ U_{\alpha} \right\}_{\alpha\in A}\) be a countable open cover of \(M\) such that each \(U_{\alpha}\) admits trivializations for \(E'\) and \(E''\). Then for \(\pi:E\to M\), define \(\Phi_{\alpha}:\pi^{-1}(U_{\alpha})\to U_{\alpha}\times\R^{k'}\times\R^{k''}\) by \((v',v'')_{p}\mapsto(p,\pi_{2}\circ\Phi_{\alpha}^{-1}(v'),\pi_{2}\circ\Phi_{\alpha}''(v''))\) where\\
+\begin{align*}
+  \pi'(U_{\alpha)}\overset{\Phi_{\alpha}'}{\to}U_{\alpha}\times\R^{k'}\overset{\pi_{2}}{\to}\R^{k'}
+\end{align*}
+Note that \(\pi_{2}\) is the projection into the second component. Then \(\tau:U_{\alpha\beta}\to G(k'+k'',\R)\) by\\
+\begin{align*}
+  p\mapsto
+  \begin{pmatrix}
+    \tau'(p) & 0 \\
+    0 & \tau''(p)
+  \end{pmatrix}
+\end{align*}
+\subsection*{Example}
+\label{sec:org4469cc0}
+For \(\tau_{\alpha\beta}:U_{\alpha\beta}\to GL(k,\R)\) by \(p\mapsto \tau_{\alpha\beta}(p)\), we can write \(U_{\alpha\beta\gamma}=U_{\alpha}\cap U_{\beta}\cup U_{\gamma}(\neq\0)\) and get \(\tau_{\alpha\beta}\cdot\tau_{\beta\gamma}=\tau_{\alpha\gamma}\).\\
+Note that this is \(\Phi_{\alpha}\circ(\phi_{\beta}^{-1}\circ\phi_{\beta})\circ\Phi_{\gamma}^{-1}\).\\
+Without loss of generality, we assume each \(U_{\alpha}\) is a chart for \(M\). Then we want to show that we satisfy Lemma 1.35 from Lee\\
+\begin{align*}
+  \pi^{-1}(U_{\alpha})\overset{\Phi_{\alpha}}{\to}U_{\alpha\times\R^{k}}\overset{\phi_{\alpha}\times\operatorname{id}}{\to}\phi_{\alpha}(U_{\alpha})\times\R^{k}\subseteq\R^{n+k}
+\end{align*}
+\((\pi^{-1}(U_{\alpha})\cdot\tilde{\phi}_{\alpha}=(\phi_{\alpha}\times\operatorname{id})\circ\Phi_{\alpha})_{\alpha\in A}\) which satisfies (1).\\
+Since\\
+\begin{align*}
+  \pi^{-1}(U_{\alpha})\cap\pi^{-1}(U_{\beta})=\pi^{-1}(U_{\alpha}\cap U_{\beta})\to\phi_{\alpha}(U_{\alpha\beta})\times\R^{K}
+\end{align*}
+we have that (2) is satisfied.\\
+Finally, for (3),\\
+\begin{align*}
+  \tilde{\phi_{\beta}}\circ\tilde{\phi_{\alpha}}^{-1}
+  =(\Phi_{\beta}\circ(\phi_{\beta}\times\operatorname{id}))\circ((\phi_{\alpha}\times\operatorname{id})^{-1}\circ\Phi_{\alpha}^{-1})
+  =\Phi_{\beta}\circ((\phi_{\beta}\circ\phi_{\alpha})\times\operatorname{id})\circ\Phi^{-1}_{\alpha}
+\end{align*}
+gives \((x,c)\mapsto((\phi_{\beta}\circ\phi_{\alpha}^{-1})x,(\Phi_{\beta}\circ\Phi_{\alpha}^{-1})v)\) a diffeomorphism.\\
+(4) and (5) are trivial, and this is indeed a smooth manifold. Now we wish to show that it is a vector bundle. To show that \(\pi:E\to M\) is smooth,\\
+
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    \pi^{-1}(U_{\alpha}) \ar[r,"\pi"] & U_{\alpha} \ar[d,"\phi_{\alpha}"] \\
+    \phi_{\alpha}(U_{\alpha})\times\R^{k} \ar[u, "\tilde{\phi}_{\alpha}^{-1}"] & \phi_{\alpha}(U_{\alpha})
+  \end{tikzcd}};
+\end{tikzpicture}
+
+We have \(\tilde{\phi}_{\alpha}^{-1}=(\phi_{\alpha}\times\operatorname{id})^{-1}\circ\Phi_{\alpha}^{-1}\).\\
+
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    \pi^{-1}(U_{\alpha}) \ar[r, "\Phi_{\alpha}"] & U_{\alpha}\times\R^{k} \ar[d,"\phi_{\alpha}\times\operatorname{id}"] \\
+    \phi_{\alpha}(U_{\alpha})\times\R^{k} \ar[u, "\tilde{\phi}_{\alpha}^{-1}"] & \phi_{\alpha}(U_{\alpha}\times\R^{k})
+  \end{tikzcd}};
+\end{tikzpicture}
+\section*{Definition: Section of a Bundle}
+\label{sec:org932ec0f}
+A (smooth) section of \(E\overset{\pi}{\to}M\) is a (smooth) map \(\sigma:M\to E\) such that \(\pi\circ\sigma=\operatorname{id}_{M}\).\\
+\(\Gamma(E)=\{\text{smooth sections of }E\overset{\pi}{\to}M\}\) and \(\Gamma(E)\) is a \(C^{\infty}(M)\)-module.\\
+The zero section \(Z:M\to E\) is given by \(p\mapsto 0_{p}\in E_{p}\).\\
+If \(U\) has a local trivialization, \(\Phi:\pi^{-1}(U)\to U\times\R^{k}\).\\
+
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    \Phi: & \pi^{-1}(U) \ar[rr] & & U\times\R^{k} & & (p,e_{i}) \ar[ll, "\Phi^{-1}"] \\
+    & & U \ar[ul, dashed] \ar[ur] & & p \ar[ur,mapsto,"\tilde{e}_{i}"]
+  \end{tikzcd}};
+\end{tikzpicture}
+
+Define \(\sigma_{i}:U\to\pi^{-1}(U)\) by \(\sigma_{i}=\Phi^{-1}\circ\tilde{e}_{i}\) gives a local section that is non-zero on \(U\).\\
+\(\{\sigma_{1},\ldots,\sigma_{n}\}\) form a local frame on \(U\) (i.e. form a basis in \(E_{p}\), \(\forall p\in U\)).\\
+\section*{January 8, 2025}
+\label{sec:org0c30c5e}
+\section*{Recall}
+\label{sec:orgafbd198}
+Last time we had a vector bundle \(E\overset{\pi}{\to}M\) of rank \(k\) satisfying\\
+\begin{enumerate}
+\item \(\pi^{-1}(p)=E_{p}\) has a (real) vector space structure of dimension \(k\).\\
+\item We have a local trivialization, \(\forall p\in M\) there exists a neighborhood \(U\) and a diffeomorphism \(\Phi\)\\
+\end{enumerate}
+
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+     \pi^{-1}(U) \ar[rr,"\Phi"] \ar[dr,"\pi"] & & U\times\R^{k} \ar[dl,"\pi_{U}"] \\
+     & U
+  \end{tikzcd}};
+\end{tikzpicture}
+
+and \(\Phi|_{E_{p}}:E_{p}\to\{p\}\times\R^{k}\) is a linear isomorphism.\\
+A section \(\sigma:M\to E\) is a smooth map such that \(\pi\circ\sigma=\operatorname{id}_{M}\).\\
+We say that a collection of sections \(\{\sigma_{1},\ldots,\sigma_{k}:U\to E\}\) is linearly independent if \(\{\sigma_{1}(x),\ldots,\sigma_{k}(x)\}\) is linearly independent for each \(x\in U\). This is a (local) frame if it is a basis.\\
+If \(U\subseteq M\) admits a trivialization\\
+
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    \Phi: & \pi^{-1}(U) \ar[rr] \ar[dr] & & U\times\R^{k} \ar[dl] \\
+    & & U
+  \end{tikzcd}};
+\end{tikzpicture}
+
+then there is a local frame \(\{\sigma_{1},\ldots,\sigma_{k}\}\) defined on \(U\). Precisely, with \(\tilde{e}_{i}(x)=(x,e_{i})\), \(\sigma_{i}=\Phi^{-1}\circ\tilde{e}_{i}\).\\
+\section*{Proposition 10.19}
+\label{sec:orge2d1aa3}
+If \(U\subseteq M\) admits a local frame, then \(\pi^{-1}(U)\) admits a local trivialization.\\
+\subsection*{Remember}
+\label{sec:org5622056}
+If \(E\overset{\pi}{\to}M\) admits a global frame, then \(E=\pi^{-1}(M)\) has a trivialization. In other words, \(E\) is diffeomorphic to a trivial vector bundle \(M\times\R^{k}\).\\
+\subsection*{Examples}
+\label{sec:org4592930}
+\subsubsection*{Example 1}
+\label{sec:org7f5e004}
+Mobius bundle over \(S^{1}\).\\
+\begin{center}
+IMAGE 1\\
+\end{center}
+To check whether it is a trivial bundle of \(S^{1}\), it suffices to check whether there exists a nowhere zero (global) section. This cannot happen (by itermediate value theorem), hence it is not \(S^{1}\times\R\).\\
+\subsubsection*{Example 2}
+\label{sec:org58bc66c}
+\(TS^{2}\) becasue there is no non-vanishing vector field over \(S^{2}\), hence \(TS^{2}\neq S^{2}\times\R^{2}\).\\
+\subsubsection*{Example 3}
+\label{sec:org071476a}
+Let \(G\) be a Lie group. Every \(X\in T_{e}G(\cong\mathfrak{g})\) uniquely determines a (left-invariant) vector field \(\tilde{X}\in\mathfrak{X}(G)\).\\
+Starting with a basis \(\{E_{i}\}\subseteq T_{e}G\) we get a global frame \(\{\tilde{E}_{i}\}\) for \(TG\). Hence \(TG\) is a trivial vector bundle \(G\times\R^{n}\) (\(n=\dim G\)). In particular, \(TS^{1}=S^{1}\times\R\), \(TS^{3}=S^{3}\times\R^{3}\).\\
+\subsection*{Proof of Proposition}
+\label{sec:orgc23fc8a}
+Define \(\Psi:(x,v^{1},\ldots,v^{k})\in U\times\R^{k}\to \pi^{-1}(U)\ni v_{x}\) where \(v_{x}=v^{i}\sigma_{i}(x)\).\\
+\(\Psi\) is a bijection. Note that \(\Psi|_{E_{x}}:E_{x}\to\{x\}\times\R^{k}\)is a linear isomorphism because \(\{\sigma_{i}(x)\}\) is a basis.\\
+Then to show that \(\Psi\) is a diffeomorphism, it suffices to show then that \(\Psi\) is a local diffeomorphism.\\
+Let \(x\in U\) and let \(V\) be a neighborhood of \(x\) such that \(\pi^{-1}(V)\overset{\Phi}{\to}V\times\R^{k}\).\\
+\begin{align*}
+  V\times\R^{k}\overset{\Psi|_{V\times\R^{k}}}{\to}\pi^{-1}(V)\overset{\Psi}{\to}V\times\R^{k}
+\end{align*}
+We show that this composition is a diffeomorphism. Since \(\Phi(\sigma_{i}(x))=(x,\sigma_{i}^{1}(x),\dots,\sigma_{i}^{k}(x))\)\\
+\begin{align*}
+  \Phi\circ\Psi|_{V\times\R^{k}}(x,v^{1},\ldots,v^{k})
+  &=\Phi(v^{i}\sigma_{i}(x)) \\
+  &=(x,v^{i}\sigma_{i}^{1}(x),\ldots,v^{i}\sigma_{i}^{k}(x))
+\end{align*}
+Each \(\sigma_{i}^{j}(x)\) is smooth. Hence \(\Phi\circ\Psi|_{V\times\R^{k}}\) is smooth.\\
+Let \(\vec{v}=(v^{1},\ldots,v^{k})\) and \(\sum(x)=(\sigma_{i}^{j}(x))\), then \(\Phi\circ\Psi(x,\vec{v})=\left( x,\vec{v}\cdot\sum(x) \right)\). Its inverse\\
+\begin{align*}
+  (\Phi\circ\Psi)^{-1}(x,\vec{w})=\left(x,\vec{w}\cdot\sum(x)\right)
+\end{align*}
+is also smooth. This shows that \(\Phi\circ\Psi|_{V\times\R^{k}}\) is a diffeomorphism. Hence \(\Psi|_{V\times\R^{k}}\) is a diffeomorphism (\(V\subseteq U)\) and \(\Psi:U\times\R^{k}\to\pi^{-1}(U)\) is also a diffeomorphism.\\
+\section*{Definition: Bundle Morphism}
+\label{sec:org960d4ed}
+A bundle morphism between is a pair of smooth maps \((f,F)\) such that this diagram commutes\\
+
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    E \ar[d,"\pi"] \ar[r,"F"] & E' \ar[d,"\pi'"] \\
+    M \ar[r,"f"] & M'
+  \end{tikzcd}};
+\end{tikzpicture}
+
+and \(F|_{E_{p}}:E_{p}\to E_{f(p)}'\) is a linear map \((\forall p\in M)\).\\
+If it admits an inverse which is itself a bundle morphism, it is a unble isomorphism.\\
+Remember that \(f\) is smooth because \(f=\pi'\circ F\circ Z\)\\
+\begin{align*}
+  p\overset{Z}{\mapsto}0_{p}\overset{F}{\mapsto}0_{f(p)}\overset{\pi'}{\mapsto}f(p)
+\end{align*}
+\subsection*{Remark}
+\label{sec:org48958f2}
+
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    E \ar[rr,"F"] \ar[dr,"\pi"] & & E' \ar[dl,"\pi'"] \\
+    & M
+  \end{tikzcd}};
+\end{tikzpicture}
+
+commutes and \(F|_{E_{p}}:E_{p}\to E_{p}'\) is linear \((\forall p)\).\\
+\subsection*{Remark}
+\label{sec:orgf136fc7}
+\(\operatorname{rank}(F|_{E_{p}})\) may depend on \(p\in M\).\\
+
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    TM \ar[r, "Df"] \ar[d,"\pi"] & TR \ar[d,"\pi"] \\
+    M \ar[r,"f"] & \R
+  \end{tikzcd}};
+\end{tikzpicture}
+
+e.g. \(M=\R^{2}\), \(E=E'=TR^{2}(=\R^{4})\), \(F((u,v)_{(x,y)})=(u,xv)\). For \(x\neq0\), \(\operatorname{rank}(F|_{(x,y)})=2\) but for \(x=0\) \(\operatorname{rank}(F|_{(0,y)})=1\).\\
+\section*{Proposition 10.26}
+\label{sec:org7cbcf3c}
+
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    E \ar[rr,"F"] \ar[dr,"\pi"] & & E' \ar[dl,"\pi'"] \\
+    & M
+  \end{tikzcd}};
+\end{tikzpicture}
+
+If \(F\) is a bijective, smooth bundle homomorphism, then it is a bundle isomorphism.\\
+Proof left as an exercise. We need to show that \(F^{-1}\) is smooth.\\
+\section*{Definition: Fiber Bundle}
+\label{sec:org5e638af}
+\(F\to E\overset{\pi}{\to} M\) with fiber \(F\) such that \(E_{x}=\pi^{-1}(x)\) is diffeomorphic to \(F\). This diagram commutes.\\
+
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    \pi^{-1}(U) \ar[rr,"\Phi"] \ar[dr,"\pi"] & & U\times F \ar[dl,"\pi_{U}"] \\
+    & U
+  \end{tikzcd}};
+\end{tikzpicture}
+\subsection*{Fact}
+\label{sec:org5b76d26}
+If \(N\overset{F}{\to}M\) is a submersion from compact manifolds, then \(F\) is a fiber bundle.\\
+\section*{Chapter 11: Cotangent Bundles}
+\label{sec:org2a7c59d}
+\section*{Review: Linear Algebra}
+\label{sec:orgdfcb99c}
+Suppose we have a real vector space \(V\) of dimension \(n\). Then \(V^{*}=\{f:V\to\R\text{ linear}\}\).\\
+If \(V\) has a basis \(\{E_{1},\ldots,E_{n}\}\), then we may define the dual basis for \(V^{*}\) \(\{\epsilon^{1},\ldots,\epsilon^{n}\}\) by \(\epsilon^{j}(E_{i})=\delta_{i}^{j}=\begin{cases}1 & i=j \\ 0 & i\neq j\end{cases}\).\\
+Remember \(V^{**}\cong V\) by \(\xi:V\to V^{**}\) by \(v\mapsto\xi(v):V^{*}\to\R\) and \(\omega\mapsto \omega(v)\).\\
+Remember also that if \(A\) is a linear map \(V\to W\) then we may define \(A^{*}:\omega\in W^{*}\to V^{*}\ni A^{*}\omega\) by \(v\in V\to\R\ni\omega(Av)\) (ie. \((A^{*}\omega)(v)=\omega(Av)\)).\\
+\section*{Definition: Cotangent Bundle}
+\label{sec:org8b99905}
+Let \(M^{n}\) be a smooth manifold, and let \((U,\phi)\) be a chart. Then \(T_{p}M\) has a basis\\
+\begin{align*}
+  \left\{ \frac{\partial}{\partial x^{1}}\Big|_{p},\ldots,\frac{\partial}{\partial x^{n}}\Big|_{p} \right\}
+\end{align*}
+for every \(p\in U\). Take its dual basis\\
+\begin{align*}
+  \left\{ \lambda^{1}|_{p},\ldots,\lambda^{n}|_{p} \right\}
+\end{align*}
+for \(T^{*}_{p}M\). The cotangent bundle \(T^{*}M=\coprod_{p\in M}T_{p}^{*}M\).\\
+Similar to the \(TM\) case, if \(T^{*}M\overset{\pi}{\to}M\), then \(\omega|_{p}\in\pi^{-1}(U)\overset{\Phi}{\to}U\times\R^{n}\ni(p,a_{1},\ldots,a_{n})\) where \(a_{i}\) is given by \(\omega|_{p}=a_{i}\lambda^{i}|_{p}\).\\
+In other words, \(a_{i}=\omega|_{p}\left( \frac{\partial}{\partial x^{i}}\Big|_{p} \right)\).\\
+\section*{Computing Dual Transition}
+\label{sec:org8af90d6}
+Suppose \((U,(x^{1},\ldots,x^{n}))\) and \((V,(y^{1},\ldots,y^{n}))\) are two charts \((W=U\cap V\neq\0)\). Then \(\left\{ \frac{\partial}{\partial x^{i}}\Big|_{p} \right\}\) gives a dual \(\{\lambda^{i}|_{p}\}\) and \(\left\{ \frac{\partial}{\partial y^{i}}\Big|_{p} \right\}\) gives \(\{\mu^{i}|_{p}\}\).\\
+Then, recall, \(\frac{\partial}{\partial y^{i}}\Big|_{p}=\frac{\partial x^{j}}{\partial y^{i}}\frac{\partial}{\partial x^{j}}\Big|_{p}\) and \(x^{j}(y^{1},\ldots,y^{n})\) is a \(j\)-component of \((y^{1},\ldots,y^{n})\to M\to(x^{1},\ldots,x^{n})\).\\
+If \(\omega\in T^{*}_{p}M\), \(\omega=a_{i}\lambda^{i}|_{p}=b_{j}\mu^{j}|_{p}\)\\
+\begin{align*}
+  a_{i}
+  =\omega|_{p}\left( \frac{\partial}{\partial x^{i}}\Big|_{p} \right)
+  =\omega_{p}\left( \frac{\partial y^{j}}{\partial x_{i}}\frac{\partial}{\partial y^{j}} \right)
+  =\frac{\partial y^{j}}{\partial x^{i}}\omega\left( \frac{\partial}{\partial y^{j}} \right)
+  =\frac{\partial y^{j}}{\partial x^{i}}b_{j}
+\end{align*}
+In particular, \(\mu^{j}=\omega\), then \(a_{i}=\frac{\partial y^{k}}{\partial x^{i}}b_{k}=\frac{\partial y^{j}}{\partial x^{i}}\). Hence \(\mu^{j}=\omega=a_{i}\lambda^{i}=\frac{\partial y^{i}}{\partial x^{i}}\lambda^{i}\).\\
+\section*{Definition: Smooth Covector Field}
+\label{sec:org9c484e8}
+A smooth covector field is a smooth section of \(T^{*}M\), cal it \(\Omega^{1}(M)=\Gamma(T^{*}M)\).\\
+Given \(f\in C^{\infty}(M)\), we can define a smooth covector field \(df\in\Omega^{1}(M)\) by \(df(v|_{p})=(v_{p})(f)\).\\
+\(df(X)=Xf\) is smooth if \(X\) and \(f\) are smooth.\\
+\section*{Differential}
+\label{sec:org88c1595}
+Given a local chart \((U,(x^{1},\ldots,x^{n}))\) and a smooth function \(f:U\to\R\), \(df_{p}=a_{i}(p)\lambda^{i}|_{p}\).\\
+\begin{align*}
+  \frac{\partial f}{\partial x^{j}}
+  =df_{p}\left( \frac{\partial}{\partial x^{j}}\Big|_{p} \right)
+  =a_{i}(p)\lambda^{i}|_{p}\left( \frac{\partial}{\partial x^{j}}\Big|_{p} \right)
+  =a_{i}(p)\delta^{i}_{j}
+  =a_{j}(p)
+\end{align*}
+That is, \(df_{p}=\frac{\partial f}{\partial x^{j}}(p)\lambda^{j}|_{p}\). In particular, if we consider the coordinate function \(x^{i}:U\to\R\), then \(dx^{i}|_{p}=\frac{\partial x^{i}}{\partial x^{j}}(p)\lambda^{j}|_{p}=\lambda^{i}|_{p}\) for each \(p\in U\) (i.e. \(dx^{i}=\lambda^{i}\) on \(U\)).\\
+With this, we can write \(df=\frac{\partial f}{\partial x^{i}}dx^{i}\) and \(dy^{j}=\frac{\partial y^{j}}{\partial x^{i}}\partial x^{i}\).\\
+\section*{Proposition 11.22}
+\label{sec:org1105d8d}
+For \(f\in C^{\infty}(M)\), then \(df=0\) if and only if \(f\) is constant on every compnent of \(M\).\\
+\subsection*{Proof}
+\label{sec:org7d1ad99}
+\((\Longleftarrow)\) is trivial.\\
+\((\Longrightarrow)\) We assume \(M\) is connected. Fix \(p\in M\), define \(\mathcal{A}=\{q\in M\st f(p)=f(q)\}\) is closed.\\
+Now let \(q\in A\) and \(U\) a local chart around \(q\). Then \(0=df=\frac{\partial f}{\partial x^{i}}dx^{i}\) (i.e. \(\frac{\partial f}{\partial x^{i}}\equiv 0\), \(\forall i\)).\\
+Hence \(f\) is constant on \(U\) and \(f(q)=f(p)\) for \(U\in\mathcal{A}\).\\
+\section*{Proposition 11.23}
+\label{sec:org4ab60e7}
+Take \(\gamma:J\to M\) a smooth curve \(f\in C^{\infty}(M)\). Then \((df|_{\gamma(t)})(\gamma'(t))=(\gamma'(t))f=(f\circ\gamma)'(t)\).\\
+\begin{center}
+IMAGE 2\\
+\end{center}
+Recall that if \(v\in T_{p}M\) and \(f\in C^{\infty}(M)\) then \(vf=(f\circ\gamma)'(0)\) where \(\gamma:(-\varepsilon,\varepsilon)\to M\), \(\gamma(0)=p\) and \(\gamma'(0)=v\) (\(f\circ\gamma:\R\to\R\)).\\
+\section*{January 13, 2025}
+\label{sec:orgcd07cd0}
+\section*{Recall}
+\label{sec:org9752fa2}
+\(T^{*}M\) and \(\Omega'(M)=\Gamma(T^{*}M)\). Let \((U,(x^{1},\ldots,x^{n}))\) be a chart. Then inside \(U\), we may write \(\omega=\omega_{i}dx^{i}\).\\
+\(\{dx^{i}|_{p}\}\) is a dual basis of \(\left\{ \frac{\partial}{\partial x^{i}}\subseteq T_{p}M \right\}\).\\
+They are also \(x^{i}:U\to\R\) coordinates functions where \(dx^{i}\) is the differential of \(x^{i}\).\\
+Given \(f\in C^{\infty}(M)\) or \(C^{\infty}(U)\), \(df\in\Omega'(M)\) or \(\Omega'(U)\) is defined by \(df(X_{p})=(Xf)(p)\).\\
+Inside a chart, \(df=\frac{\partial f}{\partial x^{i}}dx^{i}\).\\
+We have a change of coordinates where \((U,(x^{1},\dots,x^{n}))\) and \((V,(y^{1},\ldots,y^{n}))\) and \(W=U\cap V\neq\0\) gives \(dy^{j}=\frac{\partial y^{j}}{\partial x^{i}}dx^{i}\).\\
+\section*{Recall (Linear Algebra)}
+\label{sec:org691d1c0}
+If \(A:V\to W\) is a linear map with \(w\in W^{*}\) and \(v\in V\), then \(A^{*}:W^{*}\to V^{*}\) is the dual map defined by \((A^{*}w)(v):=w(Av)\).\\
+\section*{Dual of the Tangent Space}
+\label{sec:org8e92da9}
+Let \(F:M\to N\) be a smooth map between manifolds.\\
+\begin{align*}
+  DF_{p}&:T_{p}M\to T_{F(p)}N \\
+  (DF_{p})^{*}&:T^{*}_{F(p)}M\to T^{*}_{p}N
+\end{align*}
+and \((DF_{p}^{*}\omega)(v)=\omega(DF_{p}(v))\) for \(\omega\in T^{*}_{F(p)}N\) and \(v\in T_{p}M\).\\
+\section*{Definition: Pullback}
+\label{sec:org6d07d88}
+Given \(\omega\in\Omega'(N)\), we can define \(F^{*}\omega\), a section of \(T^{*}M\), by \((F^{*}\omega)_{p}(v)=\omega(DF_{p}(v))\) or \((F^{*}\omega)_{p}=DF^{*}_{p}\omega\).\\
+We call this the pullback of \(\omega\) by \(F\).\\
+Recall that for \(u\in C^{\infty}(N)\), \(M\overset{F}{\to}N\overset{u}{\to}\R\). Then we can define \(F^{*}u\in C^{\infty}(M)\) by \(F^{*}u=u\circ F\).\\
+\section*{Proposition}
+\label{sec:orgdaff8ba}
+If \(F:M\to N\) is smooth, \(u\in C^{\infty}(N)\) and \(\omega\in\Omega'(N)\), then\\
+\begin{enumerate}
+\item \(F^{*}(u\omega)=(F^{*}u)(F^{*}\omega)\).\\
+\item \(F^{*}(du)=d(F^{*}u)\).\\
+\end{enumerate}
+\subsection*{Proof of 1}
+\label{sec:org60b551f}
+\(\forall p\in M\), \(\forall v\in T_{p}M\),\\
+\begin{align*}
+  (F^{*}(u\omega))_{p}(v)
+  =DF_{p}^{*}(u\omega)(v)
+  =u_{F(p)}\omega_{F(p)}(DF_{p}(v))
+  =(u\circ F(p))\omega(DF_{p}(v))
+  =(F^{*}u)(F^{*}\omega)
+\end{align*}
+\subsection*{Proof of 2}
+\label{sec:org8e832b4}
+\begin{align*}
+  (F^{*}(du))(v)
+  =du(DF_{p}(v))
+  =(DF_{p}(v))u
+  =(du)_{F(p)}DF_{p}(v)
+  =d(u\circ F)(v)
+  =d(F^{*}u)(v)
+\end{align*}
+\subsection*{Change of Coordinates}
+\label{sec:org7c546b4}
+Locally, \(F:M\to N\). Let \((U,(x^{1},\ldots,x^{n}))\) be a chart around \(p\) and \((V,(y^{1},\ldots,y^{n}))\) a chart around \(F(p)\). For \(\omega\in\Omega'(N)\), in \(V\) \(\omega=\omega_{i}dy^{i}\) and\\
+\begin{align*}
+  F^{*}\omega
+  =F^{*}(\omega_{i}dy^{i})
+  =(F^{*}\omega_{i})(F^{*}dy^{i})
+  =(F^{*}\omega_{i})d(F^{*}y^{i})
+  =(\omega_{i}\circ F)(dF^{i})
+\end{align*}
+where \(F^{i}=y^{i}\circ F\) is the \(i\)th component of \(F\).\\
+When \(F\) is smooth and \(\omega\in\Omega'(N)\), then \(F^{*}\omega\in\Omega'(M)\). In fact, locally, \(F^{*}\omega=(\omega_{i}\circ F)d(F^{i})\). Hence \(F^{*}\omega\) is smooth.\\
+\subsection*{Example 1}
+\label{sec:org5a8aff8}
+Take \(F:\R^{3}\to\R^{2}\) by \((x,y,z)\mapsto(u(x,y,z),v(x,y,z))=(x^{2}y,y\sin(z))\).\\
+Then \(\omega=u\;dv+v\;du\in\Omega'(\R^{2})\). So\\
+\begin{align*}
+  F^{*}\omega
+  &=F^{*}(u\;dv+v\;du) \\
+  &=(F^{*}u)d(F^{*}v)+(F^{*}v)d(F^{*}u) \\
+  &=x^{2}y\;d(y\sin(z))+(y\sin(z))\;d(x^{2}y) \\
+  &=x^{2}y(\sin(z)\;dy+y\cos(z)\;dz)+y\sin(z)(2xy\;dx+x^{2}\;dy)
+\end{align*}
+\subsection*{Example 2}
+\label{sec:org39ee152}
+\(M=\R^{2}-\{0\}\) and \(\gamma:[0,2\pi]\to M\) by \(t\mapsto(r\cos(t),r\sin(t))\) for \(r>0\). Take \(\omega=\frac{x\;dy-y\;dx}{x^{2}+y^{2}}\in\Omega'(M)\)\\
+\begin{align*}
+  \gamma^{*}\omega
+  &=\frac{1}{r^{2}}(r\cos(t)\;d(r\sin(t))-r\sin(t)\;d(r\cos(t)) \\
+  &=\cos(t)(\cos(t))\;dt-\sin(t)(\sin(t))\;dt \\
+  &=dt
+\end{align*}
+\section*{Definition: Line Integral}
+\label{sec:org032c389}
+If \(\eta\in\Omega'(\R)\) or \(\Omega'(I)\) (where \(I\subseteq\R)\) is an interval), \(\eta\) can be written as \(\eta(t)=f(t)\;dt\) and define\\
+\begin{align*}
+  \int_{I}\eta=\int_{a}^{b}f(t)\;dt
+\end{align*}
+Let \(\gamma:[a,b]\to M\) be a smooth curve on \(M\). Let \(\omega\in\Omega'(t)\). Define\\
+\begin{align*}
+  \int_{\gamma}\omega
+  =\int_{a}^{b}\gamma^{*}\omega
+\end{align*}
+with \(\gamma^{*}(\omega)\in\Omega'([a,b])\).\\
+\section*{Proposition 11.31}
+\label{sec:org07e9fbb}
+Take \(\phi:I\to J\) a diffeomorphism between intervals with \(\phi'>0\). Then\\
+\begin{align*}
+  \int_{J}\phi^{*}\omega=\int_{\phi(J)}\omega
+\end{align*}
+Write \(s\) for coordinates on \(J\) and \(t\) for coordinates on \(I\). Then \(\omega=f(t)\;dt\in\Omega^{1}(I)\) and\\
+\begin{align*}
+  \phi^{*}\omega
+  =(\phi^{*}f)\;d(\phi^{*}t)
+  =(f\circ\phi)\;d(t\circ\phi)
+  =f(\phi(s))\;d(\phi(s))
+  =f(\phi(s))\phi'(s)\;ds
+\end{align*}
+Then\\
+\begin{align*}
+  \int_{J}\phi^{*}\omega
+  =\int_{J}f(\phi(s))\phi'(s)\;ds
+  \overset{t=\phi(s)}{=}\int_{I}f(t)\;dt
+  =\int_{I}\omega
+\end{align*}
+\section*{Proposition 11.37: Independence of Reparameterization}
+\label{sec:org0e075c3}
+Suppose \(\gamma:I\to M\) is a smooth curve and \(\phi:J\to I\) is a diffeomorphism with \(\phi'>0\). Then \(\tilde{\gamma}:=\gamma\circ\phi:J\to M\) is a reparameterization of \(\gamma\) and\\
+\begin{align*}
+  \int_{\gamma}\omega=\int_{\tilde{\gamma}}\omega
+\end{align*}
+If \(\phi'<0\), then \(\int_{\gamma}\omega=-\int_{\tilde{\gamma}}\omega\).\\
+\subsection*{Proof}
+\label{sec:org0ec5433}
+\begin{align*}
+  \int_{\gamma}\omega
+  =\int_{I}\gamma^{*}\omega
+  \int_{J}\phi^{*}\gamma^{*}\omega
+  =\int_{J}(\gamma\circ\phi)^{*}\omega
+  =\int_{\tilde{\gamma}}\omega
+\end{align*}
+\subsection*{Example}
+\label{sec:org5fa9032}
+Take \(\gamma:[0,2\pi]\to M=\R^{2}-\{0\}\) by \(t\mapsto(r\cos(t),r\sin(t))\) with \(r>0\). If \(\omega=\frac{x\;dy-y\;dx}{x^{2}+y^{2}}\), then \(\gamma^{*}\omega=dt\) and\\
+\begin{align*}
+  \int_{\gamma}\omega
+  =\int_{0}^{2\pi}\gamma^{*}\omega
+  =\int_{0}^{2\pi}\;dt
+  =2\pi
+\end{align*}
+\section*{Proposition 11.38}
+\label{sec:org9a74c32}
+For \(\gamma:I\to M\)\\
+\begin{align*}
+  \int_{\gamma}\omega
+  =\int_{I}\omega_{\gamma(t)}(\gamma'(t))\;dt
+\end{align*}
+\subsection*{Proof}
+\label{sec:org4b3d48e}
+In a local chart \((U,(x^{1},\ldots,x^{n}))\), we can write \(\omega=\omega_{i}dx^{i}\). Then \(\gamma(t)=(\gamma^{1}(t),\ldots,\gamma^{n}(t))\) and\\
+\begin{align*}
+  \gamma^{*}\omega
+  &=\gamma^{*}(\omega_{i}dx^{i}) \\
+  &=(\gamma^{*}\omega_{i})d(\gamma^{*}x^{i}) \\
+  &=(\omega_{i}\circ\gamma)d\gamma^{i} \\
+  &=\omega_{i}(\gamma(t))\frac{d\gamma^{i}}{dt}dt \\
+  &=\omega_{i}(\gamma(t))\dot{\gamma}^{i}(t)dt \\
+\end{align*}
+Since \(\omega=\omega_{i}dx^{i}\) and \(\dot{\gamma}(t)=(\dot{\gamma}^{1}(t),\dots,\dot{\gamma}^{n}(t))=\dot{\gamma}^{i}(t)\frac{\partial}{\partial x^{i}}\), \(\omega_{\gamma(t)}(\dot{\gamma}(t))=\omega_{i}(\gamma(t))\dot{\gamma}^{i}(t)\) and\\
+\begin{align*}
+  \omega_{i}(\gamma(t))\dot{\gamma}^{i}(t)dt
+  =\omega_{\gamma(t)}(\dot{\gamma}(t))dt
+\end{align*}
+Hence \(\int_{\gamma}\omega=\int_{I}\gamma^{*}\omega=\int_{I}\omega_{\gamma(t)}(\dot{\gamma}(t))\;dt\).\\
+\subsection*{Corollary}
+\label{sec:org068faf5}
+Then, if \(f:M\to\R\) is a smooth function,\\
+\begin{align*}
+  \int_{\gamma}df
+  =\int_{I}(df)_{\gamma(t)}(\dot{\gamma}(t))\;dt
+  =\int_{I}(f\circ\gamma)'(t)\;dt
+  =f(\gamma(b))-f(\gamma(a))
+\end{align*}
+Therefore \(\int_{\gamma}df\) only depends on the value of \(f\) at the endpoints of \(\gamma\).\\
+\section*{Definition: Exact and Conservative Forms}
+\label{sec:orgd63e882}
+Let \(\omega\in\Omega^{1}(M)\). We say that \(\omega\) is\ldots{}\\
+\begin{enumerate}
+\item exact if there exists \(f\in C^{\infty}(M)\) such that \(\omega=df\).\\
+\item conservative if \(\int_{C}\omega=0\) for any closed, piecewise-smooth curve in \(M\)\\
+\end{enumerate}
+\(f\) is called the potential of \(\omega\).\\
+\subsection*{Remark}
+\label{sec:orgcda0827}
+If \(\int_{C}\omega=0\), we may write \(C\) as the concatenation of curves \(\gamma\) then \(-\sigma\). Then\\
+\begin{align*}
+  0
+  =\int_{C}\omega
+  =\int_{\gamma}\omega+\int_{-\sigma}\omega
+  =\int_{\gamma}\omega-\int_{\sigma}\omega
+\end{align*}
+\subsection*{Remark}
+\label{sec:orgc28dbc2}
+Exact implies conservative.\\
+\section*{Theorem}
+\label{sec:org46cffa6}
+If \(\omega\in\Omega^{1}(M)\) is conservative, then it is exact.\\
+\subsection*{Proof}
+\label{sec:orge58a145}
+Fix a bse point \(p_{0}\in M\).\\
+We have that \(\int_{p}^{q}\omega=\int_{\gamma}\omega\) is well-defined by the conservative assumption, and we define \(f(p)=\int_{p_{0}}^{p}\omega\).\\
+Let \(q_{0}\in M\) and let \((U,(x^{1},\ldots,x^{n}))\) be a chart centered at \(q_{0}\). Inside \(U\), \(\omega=\omega_{i}dx^{i}\) and \(df=\frac{\partial f}{\partial x^{i}}dx^{i}\).\\
+We need to show that \(\frac{\partial f}{\partial x^{i}}=\omega_{i}\) for each \(i\). Fix an index \(i\) and consider a curve \(\sigma:(-\varepsilon,\varepsilon)\to U\) by \(t\mapsto(0,\ldots,t,\ldots,0)\).\\
+\begin{center}
+IMAGE 1\\
+\end{center}
+Let \(q_{-}=\sigma(-\varepsilon)\), then\\
+\begin{align*}
+  f(q_{0})
+  =\int_{p_{0}}^{q}\omega
+  =\int_{p_{0}}^{q_{-}}\omega+\int_{q_{-}}^{q}\omega=:\tilde{f}(q)
+\end{align*}
+so \(f(q_{0})=\text{constant}+\tilde{f}(q)\). Hence \(\frac{\partial f}{\partial x^{j}}=\frac{\partial\tilde{f}}{\partial x^{j}}\) in \(U\). Therefore\\
+\begin{align*}
+  \tilde{f}(\sigma(s))
+  &=\int_{q_{-}}^{\sigma(s)}\omega \\
+  &=\int_{\sigma|_{[-\varepsilon,s]}}\omega \\
+  &=\int_{-\varepsilon}^{s}\omega_{\sigma(t)}(\dot{\sigma}(t))\;dt \\
+  &=\int_{-\varepsilon}^{s}\omega_{\sigma(t)}\left( \frac{\partial}{\partial x^{i}} \right)\;dt \\
+  &=\int_{-\varepsilon}^{s}\omega_{i}(\sigma(t))\;dt
+\end{align*}
+and\\
+\begin{align*}
+  \frac{\partial f}{\partial x^{i}}\Big|_{q_{0}}
+  =\frac{\partial\tilde{f}}{\partial x^{i}}\Big|_{q_{0}}
+  =(\tilde{f}\circ\sigma)'(0)
+  =\frac{d}{ds}\Big|_{s=0}\left( \int_{-\varepsilon}^{s}\omega_{i}(\sigma(t))\;dt \right)
+  =\omega_{i}(\sigma(0))
+  =\omega_{i}(q_{0})
+\end{align*}
+\subsection*{Remark}
+\label{sec:org7ad20a9}
+Take \(\omega=df\in\Omega^{1}(M)\) which is \(\omega_{i}dx^{i}\) locally or \(\omega_{i}=\frac{\partial f}{\partial x^{i}}\) when exact.\\
+\begin{align*}
+  \frac{\partial\omega_{i}}{\partial x^{j}}
+  =\frac{\partial^{2}f}{\partial x^{i}\partial x^{j}}
+  =\frac{\partial\omega_{j}}{\partial x^{i}}
+\end{align*}
+Note: \(\frac{\partial\omega_{i}}{\partial x^{j}}=\frac{\partial\omega_{j}}{\partial x^{i}}\) does not, in general, imply \(\omega=df\).\\
+\section*{January 15, 2025}
+\label{sec:org05e0541}
+\section*{Recall}
+\label{sec:org9ba66e4}
+If \(\omega\in\Omega^{1}(M)\) and \(\gamma:\R\supseteq I\to M\) a (piecewise) smooth curve, then\\
+\begin{align*}
+  \int_{\gamma}\omega
+  =\int_{I}\gamma^{*}\omega
+\end{align*}
+If \(df\) is the differential of a smooth function, then\\
+\begin{align*}
+  \int_{\gamma}df
+  =f(\gamma(b))-f(\gamma(a))
+\end{align*}
+only depends on endpoints. In particular, along a closed (piecewise) smooth curve\\
+\begin{align*}
+  \int_{C}df=0
+\end{align*}
+We have that \(\omega\) is exact if \(\omega=df\) and conservative if \(\int_{C}\omega=0\) for every closed curve.\\
+\(\omega\) is exact if and only if it is also conservative.\\
+\section*{Recall: Checking Exactness}
+\label{sec:org2baf7c2}
+Take \(\omega\in\Omega^{1}(M)\),\\
+\begin{align*}
+  \omega_{i}dx^{i}=\omega=df=\frac{\partial f}{\partial x^{i}}dx^{i}
+\end{align*}
+Then\\
+\begin{align*}
+  \frac{\partial^{2}f}{\partial x^{i}\partial x^{j}}
+  =\frac{\partial^{2}}{\partial x^{j}\partial x^{i}}
+\end{align*}
+That is, \(\frac{\partial\omega_{i}}{\partial x^{j}}=\frac{\partial \omega_{j}}{\partial x^{i}}\).\\
+\section*{Definition: Closed 1-Form}
+\label{sec:orgbab2933}
+We say \(\omega\in\Omega^{1}(M)\) is closed if in every chart \((U,(x^{i}))\), \(\omega=\omega_{i}dx^{i}\) satisfies \(\frac{\partial\omega_{i}}{\partial x^{j}}=\frac{\partial \omega_{j}}{\partial x^{i}}\).\\
+Exact implies closed, however the converse is not true in general.\\
+\subsection*{Example}
+\label{sec:orgca61fcd}
+\(\exists\omega\in\Omega^{1}(\R^{2}-\{0\})\) such that \(\omega\) is closed but \(\int_{C}\omega=2\pi\).\\
+\section*{Corollary 11.50}
+\label{sec:orgd6b4f8b}
+If \(\omega\in\Omega^{1}(M)\) is closed, then \(\forall p\in M\) there exists a chart \(U\) at \(p\) such that \(\omega_{U}=df\) for some \(f\in C^{\infty}(U)\)\\
+\section*{Proposition 11.45}
+\label{sec:org29583c1}
+For \(\omega\in\Omega^{1}(M)\), the following are equivalent\\
+\begin{enumerate}
+\item \(\omega\) is closed.\\
+\item \(\omega\) satisfies \(\frac{\partial\omega_{i}}{\partial x^{j}}=\frac{\partial \omega_{j}}{\partial x^{i}}\) in some chart at every point.\\
+\item For every open \(U\subseteq M\) and \(X,Y\in\mathfrak{X}(U)\), it holds that\\
+
+\begin{align*}
+  X(\omega(Y))-Y(\omega(X))=\omega([X,Y])
+\end{align*}
+\end{enumerate}
+The proof that 1 implies 2 is trivial.\\
+\subsection*{Proof 3 Implies 1}
+\label{sec:org5852808}
+Pick \(U\) as a chart, \(X=\frac{\partial}{\partial x^{i}}\), and \(Y=\frac{\partial}{\partial x^{j}}\). Then, since \(\omega=\omega_{i}dx^{i}\),\\
+\begin{align*}
+  X(\omega(Y))
+  =X(\omega_{j})
+  =\frac{\partial w_{j}}{\partial x^{i}}
+\end{align*}
+Similarly, \(Y(\omega(X))=\frac{\partial\omega_{i}}{\partial x^{j}}\). Then \([X,Y]=\left[ \frac{\partial}{\partial x^{i}},\frac{\partial}{\partial x^{j}} \right]=0\) and\\
+\begin{align*}
+  \frac{\partial \omega_{j}}{\partial x^{i}}-\frac{\partial \omega_{i}}{\partial x^{j}}=0
+\end{align*}
+\subsection*{Proof 2 Implies 3}
+\label{sec:org075edf7}
+Fix any \(p\in U\). We have a chart \((V,(x^{i}))\) at \(p\) such that \(\frac{\partial\omega_{i}}{\partial x^{j}}=\frac{\partial \omega_{j}}{\partial x^{i}}\). Then\\
+\begin{align*}
+  X(\omega(y))
+  =X\left( (\omega_{i}dx^{i})\left( Y^{j}\frac{\partial}{\partial x^{j}} \right) \right)
+  =X(\omega_{i}Y^{i})
+  =(X\omega_{i})Y^{i}+\omega_{i}(XY^{i})
+  =x^{j}\frac{\partial w_{i}}{\partial x^{j}}Y^{i}+\omega_{i}(XY^{i})
+  =X^{j}Y^{i}\frac{\partial\omega_{j}}{\partial x^{i}}
+\end{align*}
+Similarly,\\
+\begin{align*}
+  Y(\omega(X))
+  =Y(\omega_{i}x^{i})
+  =Y^{j}\frac{\partial \omega_{i}}{\partial x^{j}}x^{i}-\omega_{i}(YX^{i})
+  =X^{i}Y^{j}\frac{\partial\omega_{i}}{\partial x^{j}}
+\end{align*}
+which is equivalent under a change of indicies. Hence\\
+\begin{align*}
+  X(\omega(Y))-Y(\omega(X))
+  =\omega_{i}(XY^{i})-\omega_{i}(YX^{i})
+  =\omega_{i}(XY^{i}-YX^{i})
+  =\omega([X,Y])
+\end{align*}
+\section*{Lemma}
+\label{sec:org6ea6438}
+Suppose \(F:M\to N\) is a local diffeomorphism. Then \(F^{*}:\Omega^{1}(N)\to\Omega^{1}(M)\) sends exact (or closed) 1-forms to exact (or closed) ones.\\
+\subsection*{Proof of Exact}
+\label{sec:orgdbaa90a}
+If \(\omega=df\in\Omega^{1}(N)\), then \(F^{*}\omega=F^{*}(df)=d(F^{*}f)\) is exact on \(M\).\\
+\subsection*{Proof of Closed}
+\label{sec:org45988e9}
+If \(\omega\in\Omega^{1}(N)\) is closed, then \(\frac{\partial\omega_{i}}{\partial x^{j}}=\frac{\partial \omega_{j}}{\partial x^{i}}\) in every chart of \(N\).\\
+For any \(p\in M\), we consider a chart at \(p\) by \((V,\phi\circ F)\)\\
+\begin{center}
+IMAGE 1\\
+\end{center}
+Therefore \(\phi\circ F\circ(\phi\circ F)^{-1}=\operatorname{id}\) and \(F^{*}=\operatorname{id}\) so \(F^{*}\omega\) is closed.\\
+\section*{Poincaré Lemma}
+\label{sec:orgb60542d}
+Let \(\omega\in\Omega^{1}(M)\) be closed. Fix \(p\in M\), and let \((U,\phi)\) be a chart at \(p\) such that \(\phi(U)=B_{1}(0)\subseteq\R^{n}\).\\
+\begin{center}
+IMAGE 2\\
+\end{center}
+Assuming the above, every closed 1-form on \(B_{1}(0)\) is exact. \((\phi^{-1})^{*}(\omega|_{U})=df\) for some \(f\in C^{\infty}(B_{1}(0))\) where \(\omega|_{U}=\phi^{*}(df)=d(\phi^{*}f)\in C^{\infty}(U)\)\\
+\section*{Definition: Star-Shaped Domain}
+\label{sec:org95b062f}
+We say that \(U\subseteq\R^{n}\) open is star-shaped with a center \(c\in U\) (wlog \(c=0\)) if for any \(x\in U\), the segment \(\gamma_{x}\) from \(c\) to \(x\) is contained in \(U\).\\
+\begin{center}
+IMAGE 3\\
+\end{center}
+If \(x=(x^{i})\), then \(\gamma_{x}(t)=(tx^{i})\).\\
+\section*{Theorem 11.49 (Poincaré Lemma)}
+\label{sec:orgd2251db}
+If \(U\subseteq\R^{n}\) is star-shaped, then every closed 1-form is exact.\\
+\subsection*{Recall}
+\label{sec:orgd6773e7}
+If \(\omega\) is an exact 1-form, then \(f(q)=\int_{p_{0}}^{p}\omega\) is a potential.\\
+We also have that \(\int_{\gamma}\omega=\int_{I}\omega_{\gamma(t)}(\dot{\gamma}(t))\;dt\).\\
+\subsection*{Proof}
+\label{sec:orgf256ed4}
+Let \(\omega\in\Omega^{1}(U)\) be a closed 1-form.\\
+We need to construct \(f\in C^{\infty}(U)\) such that \(df=\omega\). That is, for all \(i\), \(\frac{\partial f}{\partial x^{i}}=\omega^{i}\). Define\\
+\begin{align*}
+  f(x)
+  =\int_{\gamma_{x}}\omega
+  =\int_{0}^{1}\omega_{\gamma_{x}(t)}(\dot{\gamma}_{x}(t))\;dt
+  =\int_{0}^{1}\omega_{i}|_{\gamma_{x}(t)}dx^{i}(x^{1},\ldots,x^{n})\;dt
+  =\int_{0}^{1}\omega_{i}|_{tx}x^{i}\;dt
+\end{align*}
+Since everything is smooth,\\
+\begin{align*}
+  \frac{\partial f}{\partial x^{j}}(x)
+  &=\int_{0}^{1}\frac{\partial}{\partial x^{j}}(\omega_{i}(tx)\cdot x^{i})\;dt \\
+  &=\int_{0}^{1}\frac{\partial\omega_{i}(tx)}{\partial x^{j}}\cdot x^{i}+\omega_{i}(tx)\frac{\partial x^{i}}{\partial x^{j}}\;dt \\
+  &=\int_{0}^{1}\left( \frac{\partial w_{i}}{\partial x^{j}} \right)\Big|_{(tx)}tx^{i}+\omega_{j}(tx)\;dt \\
+  &=\int_{0}^{1}\frac{\partial\omega_{j}}{\partial x^{i}}\Big|_{tx}tx^{i}+\omega_{j}(tx)\;dt \\
+  &=\int_{0}^{1}\frac{d}{dt}\left( t\omega_{j}(tx) \right)\;dt \\
+  &=t\omega_{j}(tx)|_{0}^{1} \\
+  &=\omega_{j}(x)
+\end{align*}
+\section*{Tensors: Multilinear Maps}
+\label{sec:org48fa8ef}
+All vector spaces will be finite dimensional in our consideration.\\
+\begin{align*}
+  F:V_{1}\times\cdots\times V_{k}\to W
+\end{align*}
+linear in every component. Denote \(L(V_{1},\ldots,V_{k};W)\) to be the set of all such multilinear maps.\\
+Given \(\omega\in L(V_{1};\R)=V_{1}^{*}\) and \(\eta\in V^{*}_{2}\), we can define \(\omega\otimes\eta\in L(V_{1},V_{2};\R)\) by \(\omega\otimes\eta(v_{1},v_{2})=\omega(v_{1})\cdot\eta(v_{2})\).\\
+\begin{itemize}
+\item Remark\\
+
+\((2\omega)\otimes\eta=\omega\otimes(2\eta)\). We assume \(\otimes_{\R}\).\\
+\end{itemize}
+
+Similarly, given \(\omega_{i}\in V_{i}^{*}\), we can define \(\omega_{1}\otimes\cdots\otimes\omega_{k}\in L(V_{1},\ldots, V_{K};\R)\).\\
+\section*{Proposition}
+\label{sec:org696a115}
+Let \(V_{j}\) with dimension \(n_{j}\) \((j=1,\ldots,k)\). Each \(V_{j}\) has a basis \(\{E_{1}^{(j)},\ldots,E_{n_{j}}^{(j)}\}\).\\
+Its dual basis \(\{\varepsilon_{(j)}^{1},\ldots,\varepsilon_{(j)}^{n_{j}}\}\subseteq V^{*}_{j}\). Then \(L(V_{1},\dots,V_{k};\R)\) has a basis\\
+\begin{align*}
+  \mathcal{B}
+  =\left\{ \varepsilon_{(1)}^{i_{1}}\otimes\cdots\otimes\varepsilon_{(k)}^{i_{k}}\st 1\leq i_{j}\leq n_{j} \right\}
+\end{align*}
+\subsection*{Proof}
+\label{sec:org6e33d43}
+For a multi-index \(I=(i_{1},\ldots,i_{k})\) with \(i\leq i_{j}\leq n_{j}\), we write \(\varepsilon^{I}=\varepsilon_{(1)}^{i_{1}}\otimes\cdots\otimes\varepsilon_{(k)}^{i_{k}}\).\\
+For any \(F\in L(V_{1},\ldots,V_{k};\R)\), define \(F_{I}=F(E_{i_{1}}^{(1)},\ldots,E_{i_{k}}^{(k)})\). We claim that \(F=F_{I}\varepsilon^{I}\).\\
+In fact, for \((v_{1},\ldots,v_{k})\in V_{1}\times\cdots\times V_{k}\), \(v_{j}=v_{j}^{i}E_{i}^{(j)}\). We may check that \(F(v_{1},\ldots,v_{k})=F_{I}\varepsilon^{I}(v_{1},\ldots,v_{k})\).\\
+Therefore \(\mathcal{B}\) spans \(L(V_{1},\ldots,V_{k};\R)\).\\
+Then, if \(F_{I}\varepsilon^{I}=0\), then applying it to \((E_{i_{1}}^{(1)},\ldots E_{i_{k}}^{(k)})\) gives \(F_{I}=0\). Therefore \(\mathcal{B}\) is linearly independent.\\
+In particular, \(\dim\;L(V_{1},\ldots,V_{k};\R)=\prod_{j=1}^{k}n_{j}=\prod_{j=1}^{k}\dim\;V_{j}\).\\
+\section*{Definition: Formal Linear Combination}
+\label{sec:org68967ed}
+Let \(S\) be a set. Define\\
+\begin{align*}
+  \mathcal{F}(S)
+  =\left\{ \sum_{i=1}^{m}a_{i}s_{i}\st a_{i}\in\R,\;s_{i}\in S \right\}
+\end{align*}
+This is the free (real) vector space on \(S\) containing formal linear combinations of elements of \(S\).\\
+Define \(V_{1}\otimes\cdots\otimes V_{k}=\mathcal{F}(V_{1}\times\cdots\times V_{k})/R\) where \(R\) is generated by\\
+\begin{align*}
+  (v_{1},\ldots,v_{j}+v_{j}',\ldots,v_{k})
+  &\sim(v_{1},\ldots,v_{j},\ldots,v_{k})+(v_{1},\ldots,v_{j}',\ldots,v_{k}) \\
+  (v_{1},\ldots,cv_{j},\ldots,v_{k})
+  &\sim c(v_{1},\ldots,v_{k})
+\end{align*}
+In other words, in the quotient \(v_{1}\otimes\cdots\otimes v_{k}=\prod(V_{1},\ldots,v_{k})\).\\
+\section*{Proposition}
+\label{sec:org559daa7}
+\(V_{1}\otimes\cdots\otimes V_{k}\) has a basis \(\left\{ E_{i_{1}}^{(1)}\otimes\cdots\otimes E_{i_{k}}^{(k)}\st 1\leq i_{j}\leq n_{j} \right\}\).\\
+\section*{Proposition}
+\label{sec:org3b979ac}
+There exists a canonical isomorphism \((V_{1}\otimes V_{2})\otimes V_{3}\cong V_{1}\otimes(V_{2}\otimes V_{3})\) by sending \((v_{1}\otimes v_{2})\otimes v_{3}\mapsto v_{1}\otimes(v_{2}\otimes v_{3})\).\\
+\section*{Proposition}
+\label{sec:orga086051}
+\(L(V_{1},\ldots,V_{k};\R)\cong V_{1}^{*}\otimes\cdots\otimes V_{k}^{*}\).\\
+\subsection*{Proof Sketch}
+\label{sec:org1ea8dab}
+Define \(\Phi:V_{1}^{*}\times\cdots\times V_{k}^{*}\to L(V_{1},\ldots, V_{k};\R)\) by \((\omega^{1},\ldots,\omega^{k})\mapsto\omega^{1}\otimes\cdots\otimes\omega^{k}\). By multilinear, this induces an isomorphism\\
+\begin{align*}
+  \Phi:V_{1}^{*}\otimes\cdots\otimes V_{k}^{*}\cong L(V_{1},\ldots,V_{k};\R)
+\end{align*}
+\section*{Recall}
+\label{sec:org1461e54}
+\(V^{**}\cong V\) for finite dimensional vector spaces, so \(V_{1}\otimes\cdots\otimes V_{k}=L(V_{1}^{*},\ldots V_{k}^{*};\R)\).\\
+\section*{Definition: Tensor}
+\label{sec:org93cd845}
+A tensor of \((k,l)\)-type is an element in \(\underbrace{V\otimes\cdots\otimes V}_{k}\otimes\underbrace{V^{*}\otimes\cdots\otimes V^{*}}_{l}\).\\
+The collection of such elements in \(T^{(k,l)}V\). Most of the time we consider \(T^{(0,l)}V\).\\
+\subsection*{Examples}
+\label{sec:org6a303f3}
+A vector in \(V\) is a \((1,0)\)-tensor.\\
+A covector in \(V^{*}\) is a \((0,1)\)-tensor.\\
+A linear map \(A\in L(V)\) is a \((1,1)\)-tensor.\\
+An inner product is a \((0,2)\)-tensor.\\
+\subsection*{Symmetric Tensor}
+\label{sec:orgaa60b01}
+We say that \(\alpha\in T^{(0,l)}V\) is symmetric if \(\alpha(\ldots,v_{i},\ldots,v_{j}\ldots)=\alpha(\ldots,v_{j},\ldots,v_{i},\ldots)\).\\
+\subsection*{Alternating Tensor}
+\label{sec:org33d1d19}
+We say that \(\alpha\in T^{(0,l)}V\) is alternating if \(\alpha(\ldots,v_{i},\ldots,v_{j}\ldots)=-\alpha(\ldots,v_{j},\ldots,v_{i},\ldots)\).\\
+\section*{January 22, 2024}
+\label{sec:orgc5c51bc}
+\section*{Alternating/Symmetric Tensors}
+\label{sec:orgf4aaf90}
+Let \(\sigma\in S_{l}\) and \(\alpha\in T^{(0,l)}V\).\\
+Define \(\sigma_{\alpha}\) or \((\sigma\cdot\alpha)\) as a new \((0,l)\)-tensor by \((\sigma\cdot\alpha)(v_{1},\ldots,v_{l}):=\alpha(v_{\sigma(1)},\ldots,v_{\sigma(l)})\).\\
+Then \(\alpha\) is symmetric if and only if \(\sigma\cdot\alpha=\alpha\).\\
+\(\alpha\) is alternating if and only if \(\sigma\cdot\alpha=(\operatorname{sign}\sigma)\cdot\alpha\).\\
+Define \(\operatorname{Sym}:T^{(0,l)}V\to S^{l}V\) by\\
+\begin{align*}
+  \operatorname{Sym}(\alpha)=\frac{1}{l!}\sum_{\sigma\in S^{l}}(\sigma\cdot\alpha)
+\end{align*}
+Then \(\operatorname{Sym}(\alpha)\) is symmetric for all \(\tau\in S^{l}\).\\
+Define \(\operatorname{Alt}:T^{(0,l)}V\to\Lambda^{l}V\), the set of alternating (anti)-tensors by\\
+\begin{align*}
+  \operatorname{Alt}(\alpha)=\frac{1}{l!}\sum_{\sigma\in S^{l}}(\operatorname{sign}\sigma)(\sigma\cdot\alpha)
+\end{align*}
+\section*{Definition: Tensor Bundles}
+\label{sec:org7a5370a}
+Recall that \(T_{p}M\leadsto TM=\coprod_{p\in M}T_{p}M\) and \(T^{*}_{p}M\leadsto T^{*}M\).\\
+Then \(T^{(k,l)}T_{p}M\leadsto T^{(k,l)}TM=\coprod_{p\in M}T^{(k,l)}T_{p}M\) a tensor bundle.\\
+Mostly, we will consider \(T^{(0,l)}TM\).\\
+Inside a chart \((U,(x^{1},\ldots,x^{n}))\), \(T^{(k,l)}TM\) has a local frame\\
+\begin{align*}
+  \left\{ \frac{\partial}{\partial x^{i1}}\otimes\cdots\otimes\frac{\partial}{\partial x^{ik}}\otimes dx^{j1}\otimes\cdots\otimes dx^{jl} \right\}
+\end{align*}
+\section*{Definition: Smooth Tensor Field}
+\label{sec:orgc14ca68}
+A smooth tensor field of type \((k,l)\) is a smooth section of \(T^{(k,l)}TM\).\\
+To check that a \((o,l)\)-tensor field \(A\) is smooth, we can do either of the following\\
+\begin{enumerate}
+\item Write \(A\) in a local chart, then \(A=A_{I}dx^{I}\) where \(A_{I}\) are functions in \(U\) and \(dx^{I}=dx^{i1}\otimes dx^{il}\) with \(I=(i1,\ldots,il)\). Then \(A\) is smooth if and only if \(A_{I}\) is smooth for all \(I\).\\
+\item Check \(A\) testing on any \(l\) many smooth vector fields results in a smooth function.\\
+\end{enumerate}
+\subsection*{Remark}
+\label{sec:org5fead25}
+Every \((0,l)\)-tensor field \(A\) defines a map\\
+\begin{align*}
+  \mathcal{A}=\underbrace{\mathfrak{X}(M)\times\cdots\times\mathfrak{X}(M)}_{l}\to C^{\infty}(M)
+\end{align*}
+by \(A(x_{1},\ldots,X_{l})(p)=A_{p}(X_{1}(p),\ldots,X_{l}(p))\). This map \(\mathcal{A}\) is \(C^{\infty}(M)\)-multilinear.\\
+\section*{Lemma 12.24}
+\label{sec:orgf81ad18}
+Every \(C^{\infty}(M)\)-multilinear map \(\mathcal{A}:\mathfrak{X}(M)\times\cdots\times\mathfrak{X}(M)\to\C^{\infty}(M)\) defines a smooth \((0,l)\)-tensor field\\
+\begin{align*}
+  A_{p}(v_{1},\ldots,v_{l})=(\mathcal{A}(X_{1},\ldots,X_{l}))(p)
+\end{align*}
+\subsection*{Example}
+\label{sec:org5659047}
+Given \(\omega\in\Omega^{1}(M)\), define \(\mathcal{A}:\mathfrak{X}(M)\times\cdots\times\mathfrak{X}(M)\to\C^{\infty}(M)\) by \((X,Y)\mapsto\omega(L_{X}Y)\).\\
+If \(X,Y\) and \(X',Y'\) only agree at a point \(p\), then in general \((L_{X}Y)(p)\neq(L_{X'}Y')(p)\).\\
+\subsubsection*{Proof}
+\label{sec:org28c94a6}
+\(\mathcal{A}\) acts locally only depending on the value of \(X_{1},\ldots,X_{l}\) in a neighborhood of \(p\), call it \(U\).\\
+It suffices to show that if \(X_{i}=0\) for some \(i\) on \(U\), then \(\mathcal{A}(X_{1},\ldots,X_{l})(p)=0\).\\
+Let \(\psi\) be a bump function with \(\operatorname{supp}\psi\subseteq U\) and \(\psi(p)=1\). Let also \(V\subseteq U\) such that \(\overline{V}\subseteq U\).\\
+Then \(\psi X_{i}\equiv 0\) on \(M\). Then\\
+\begin{align*}
+  0
+  =\mathcal{A}(X_{1},\ldots,\psi X_{i},\ldots,X_{l})(p)
+  =\psi(p)A(X_{1},\ldots,X_{l})(p)
+  =\mathcal{A}(X_{1},\ldots,X_{l})(p)
+\end{align*}
+Now \(\mathcal{A}\) acts pointwisely. Write \(X_{i}=a_{i}^{j}\frac{\partial}{\partial x^{j}}\) in \(U\).\\
+Extend each \(\frac{\partial}{\partial x^{j}}\Big|_{V}\) to \(E_{j}\in\mathfrak{X}(M)\) and each \(a_{i}^{j}|_{V}\) to \(f_{i}^{j}\in C^{\infty}(M)\).\\
+Then inside \(V\),\\
+\begin{align*}
+  \mathcal{A}(X_{1},\ldots,X_{l})(p)
+  =\mathcal{A}(X_{1},\ldots,f_{i}^{j}E_{j},\ldots,X_{l})(p)
+  =f_{i}^{j}(p)\mathcal{A}(X_{1},\ldots,X_{l})(p)
+\end{align*}
+Now let \(v_{1},\dots,v_{l}\in T_{p}M\). Define \(A\) a \((0,l)\)-tensor field by \(A_{p}(v_{1},\ldots,v_{l})=\mathcal{A}(X_{1},\ldots,X_{l})\) where \(X_{i}\in\mathfrak{X}(M)\) extends \(v_{i}\).\\
+By assumption, \(A(X_{1},\ldots,X_{l})\) is a smooth function if \(X_{1},\ldots,X_{l}\in\mathfrak{X}(M)\) hence \(A\) is a smooth \((0,l)\)-tensor field.\\
+\section*{Definition:}
+\label{sec:org861ac3b}
+Write \(\mathcal{T}^{(0,l)}M=\Gamma(T^{(0,l)}TM)\) where \(\Gamma\) is the section.\\
+Then for \(F:M\to N\) a smooth map and \(A\in \mathcal{T}^{(0,l)}N\), for \(v_{i}\in T_{p}M\) define \(F^{*}A\in\mathcal{T}^{(0,l)}M\) by\\
+\begin{align*}
+  (F^{*}A)_{p}(v_{1},\ldots,v_{l})
+  :=A_{F(p)}(DF_{p}(v_{1}),\ldots,DF_{p}(v_{l}))
+\end{align*}
+\section*{Lie Derivatives}
+\label{sec:org0e8e506}
+Recall that if \(X,Y\in\mathfrak{X}(M)\), we define \((L_{X}Y)_{p}\) where \(X\) generates a flow \(\phi_{t}:M\to N\)\\
+\begin{center}
+IMAGE 1\\
+\end{center}
+\((\phi_{-t})_{*}Y_{\phi_{t}(p)}=((\phi_{-t})_{*}Y)_{p}\in T_{p}M\) for \(Y_{p}\in T_{p}M\). Then \(L_{X}Y=\frac{d}{dt}\Big|_{t=0}((\phi_{-t})_{*}Y)_{p}\).\\
+If \(A\in\mathcal{T}^{(0,l)}M\),\\
+\begin{center}
+IMAGE 2\\
+\end{center}
+\begin{align*}
+  (\phi^{*}_{t}A)_{p}=(\phi_{t})^{*}(A_{\phi_{t}(p)}\in T^{(0,l)}T_{p}M
+\end{align*}
+So \(L_{V}A=\frac{d}{dt}\Big|_{t=0}(\phi_{t}^{*}A)_{p}\).\\
+\subsection*{Properties}
+\label{sec:orga983ec5}
+\begin{enumerate}
+\item \(L_{V}f=Vf\) (where \(f\in C^{\infty}(M)\) can be thought of as a smooth \((0,0)\)-tensor field). Then\\
+\end{enumerate}
+\begin{align*}
+  (L_{v}f)(p)
+  =\frac{d}{dt}\Big|_{t=0}(\phi^{*}_{t}f)_{p}
+  =\frac{d}{dt}\Big|_{t=0}(f\circ\phi_{t}(p))
+  =(Vf)_{p}
+\end{align*}
+\begin{enumerate}
+\item \(L_{V}(fA)=(Vf)A+fL_{V}A\).\\
+\item \(L_{V}(A\otimes B)=(L_{V}A)\otimes B+A\otimes(L_{V}B)\).\\
+\item \(L_{V}(A(X_{1},\ldots,X_{l}))=(L_{V}A)(X_{1},\ldots,X_{l})+A(L_{V}X_{1},\ldots,X_{l})+\ldots+A(X_{1},\ldots,L_{V}X_{l})\) for \(A\in\mathcal{T}^{(o,l)}M\) and \(X_{i}\in\mathfrak{X}(M)\).\\
+\end{enumerate}
+\subsubsection*{Proof of 2}
+\label{sec:orga22c7d9}
+We have \(O:=\{p\in M\st V_{p}\neq0\}\) open in \(M\) and \(\operatorname{supp}V=\overline{\{p\in M\st V_{p}\neq0\}}\).\\
+\begin{enumerate}
+\item (2) holds on \(O\).\\
+
+Recall that if \(V_{p}\neq0\), then there exists a local chart \((U,(x^{i}))\) centered at \(p\) such that on \(U\), \(V=\frac{\partial}{\partial x^{1}}\). In particular, its flow \(\phi_{t}\) is \((x^{1},\ldots,x^{n})\mapsto(x^{1}+t,x^{2},\ldots,x^{n})\).\\
+Then take some chart \(U\subseteq O\) centered at \(p\) such that \(V=\frac{\partial}{\partial x^{1}}\) in \(U\). Inside \(U\), write \(A=A_{I}dx^{I}\), and\\
+\begin{align*}
+  \phi^{*}_{t}(fA)
+  &=(\phi_{t}^{*}f)(\phi_{t}^{*}f)(\phi_{t}^{*}A) \\
+  &=(f\circ\phi_{t})\phi_{t}^{*}(A_{I}dx^{I}) \\
+  &=f(x^{1}+t,x^{2},\ldots,x^{n})A_{I}(x^{1}+t,\ldots,x^{n})\phi_{t}^{*}dx^{I} \\
+  &=f(x^{1}+t,x^{2},\ldots,x^{n})A_{I}(x^{1}+t,\ldots,x^{n})dx^{I}
+\end{align*}
+\item (2) holds on \(\operatorname{supp}V\) by taking limits.\\
+\item (2) holds outside \(\operatorname{supp}V\), since \(V\equiv0\) on open \(M\setminus\operatorname{supp}V\) and hence \(\phi_{t}\equiv \operatorname{id}\). So both sides are identically zero.\\
+\end{enumerate}
+\section*{January 27, 2025}
+\label{sec:org69c3a7f}
+\section*{Recall: Prop 12.32(2)}
+\label{sec:org8d4e588}
+\begin{align*}
+  L_{V}(fA)
+  =(Vf)A+fL_{V}A
+\end{align*}
+\subsection*{Proof Step 1:}
+\label{sec:orgd1eb71a}
+Show that hte equality holds on \(\{p\in M\st V(p)\neq0\}\).\\
+
+Let \(p\in M\) with \(V(p)\neq 0\).\\
+Take any chart \((U,x^{i})\) centered at \(p\) such that \(V=\frac{\partial}{\partial x^{i}}\) on \(U\). Then its flow is\\
+\begin{align*}
+  \theta_{t}:(x^{1},\ldots,x^{n})\mapsto (x^{1}+t,x^{2},\ldots, x^{n})
+\end{align*}
+in \(U\). In \(U\), we write \(A=A_{I}dx^{I}\) (where \(dx^{I}=dx^{i1}\otimes\cdots\otimes dx^{il}\)). Recall that\\
+\begin{align*}
+  \theta_{t}^{*}(dx^{i})
+  =d(\theta_{t}^{*}x^{i})
+  =d(x^{i}\theta_{t})=
+  \begin{cases}
+    d(x^{1}+t)=dx^{1} & i=1 \\
+    d(x^{i}) & i\neq 1
+  \end{cases}
+\end{align*}
+Write the pullback of \(\theta_{t}\)\\
+\begin{align*}
+  \theta_{t}^{*}(fA)
+  &=(\theta_{t}^{*}f)(\theta_{t}^{*}A_{I}dx^{I}) \\
+  &=(f\circ\theta_{t})(A_{I}\circ\theta_{t})(dx^{I}) \\
+  &=f(x^{1}+t,x^{2},\ldots,x^{n})A_{I}(x^{1}+t,\ldots,x^{n})dx^{I}
+\end{align*}
+So for \(p=(x^{i})\),\\
+\begin{align*}
+  (L_{V}(fA))_{p}
+  &=\frac{d}{dt}\Big|_{t=0}f(x^{1}+t,x^{2},\ldots,x^{n})A_{I}(x^{1}+t,\ldots,x^{n})dx^{I} \\
+  &=\underbrace{\frac{\partial f}{\partial x^{1}}(x^{1},\ldots,x^{n}}_{Vf}\underbrace{A_{I}(x^{1},\ldots,x^{n})dX^{I}}_{\theta^{*}_{t}A}+f(x^{1},\ldots,x^{n})\frac{\partial A_{I}}{\partial x^{1}        (x^{1},\ldots,x^{n})dx^{I}}
+\end{align*}
+inside U. Hence \(Vf=\frac{\partial f}{\partial x^{1}}\).\\
+\subsubsection*{Corollary}
+\label{sec:orgbe63dff}
+\(L_{V}(df)=d(L_{v}f)\) for \(f\in C^{\infty}(M)\).\\
+\begin{itemize}
+\item Proof\\
+\end{itemize}
+
+For all \(X\in\mathfrak{X}(M)\),\\
+\begin{align*}
+  (L_{V}(df))(X)
+  =V(df(X))-df(L_{V}X)
+  =VXf-[V,X]f
+  =VXf-(VXf-XVf)=XVf
+\end{align*}
+and\\
+\begin{align*}
+  (d(L_{V}f))(X)=X(L_{V}f)=XVf.
+\end{align*}
+\subsection*{Proof Step 2:}
+\label{sec:org2a973d3}
+Show that the equality holds on \(\overline{\{p\in M\st V(p)\neq0\}}\).\\
+\subsection*{Proof Step 3:}
+\label{sec:org83a0e9f}
+Show that the equality holds elsewhere.\\
+\section*{Recall: Invariance}
+\label{sec:org58721af}
+For two vector fields, \(X\) and \(Y\), \(Y\) is invariant under the flow of \(X\) if \(L_{X}Y\equiv 0\).\\
+We say a \((0,l)\)-tensor field \(A\) is invariant under a map \(F:M\to M\) if \(F^{*}A=A\). Equivalently, if under a flow \(\theta_{t}:M\to M\) if \(\theta_{t}^{*}A=A\) for all \(t\).\\
+\section*{Theorem 12.37}
+\label{sec:orgc8fb23e}
+\(A\) is invariant under \(\theta_{t}\), \(\forall t\), if and only if \(L_{V}A=0\).\\
+\subsection*{Note}
+\label{sec:orgc9ed344}
+\begin{align*}
+  \frac{d}{dt}\Big|_{t=t_{0}}(\theta_{t}^{*}A)_{p}
+  =(\theta_{t_{0}}^{*}(L_{v}A))_{p}
+  =\theta_{t_{0}})^{*}(L_{V}A)_{\theta_{t_{0}}^{*}(p)}
+\end{align*}
+So\\
+\begin{align*}
+  \frac{d}{dt}\Big|_{t=t_{0}}(\theta_{t}^{*}A)_{p}
+  &=\frac{d}{dt}\Big|_{t=t_{0}}(\theta_{t}^{*})A_{\theta_{t}(p)} \\
+  &\overset{t=s+t_{0}}{=}\frac{d}{ds}\Big|_{s=0}\theta_{s+t}^{*}A_{\theta_{s+t_{0}}(p)} \\
+  &=\frac{d}{ds}\Big|_{s=0}\theta_{t_{0}}^{*}\circ\theta_{s}^{*}A_{\theta_{t_{0}}(\theta_{s}(p))} \\
+  &=\theta_{t_{0}}^{*}(L_{V}A)_{\theta_{t_{0}}^{*}(p)}
+\end{align*}
+Therefore, if \(A\) is invariant under \(\theta_{t}\), then \(\theta_{t}^{*}=A\) and\\
+\begin{align*}
+  L_{V}A
+  =\frac{d}{dt}\Big|_{t=0}(\theta_{t}^{*}A)_{p}
+  =\frac{d}{dt}\Big|_{t=0}A_{p}
+  =0.
+\end{align*}
+In the other direction, if \(L_{V}A\equiv 0\), we show that \((\theta_{t}^{*}A)_{p}=A_{p}\) for every \(p\) and each \(t\). From above,\\
+\begin{align*}
+  \frac{d}{dt}\Big|_{t=t_{0}}(\theta_{t}^{*}A)_{p}
+  =\theta_{t_{0}}^{*}\underbrace{(L_{V}A)_{\theta_{t_{0}}(p)}}_{=0}
+  =0
+\end{align*}
+Hence \((\theta_{t}^{*}A)_{p}\) is a constant \(A_{p}\).\\
+\section*{Special Tensors (for this course)}
+\label{sec:orged9da33}
+\subsection*{Riemannian Metric}
+\label{sec:orga3496ba}
+\(g\) a \((0,2)\)-tensor, symmetric and positive definite. That is, at each point \(p\)\\
+\begin{align*}
+  g_{p}:T_{p}M\times T_{p}M\to\R
+\end{align*}
+which is bilinear, symmetric and positive definite. This is an inner product.\\
+\subsection*{K (Differential) Form}
+\label{sec:orge5e2e12}
+\(\omega\) a \((0,k)\)-tensor, alternating.\\
+\section*{Riemannian Metric}
+\label{sec:org64241ba}
+In a chart \((U,(x^{i}))\), \(g=g_{ij}dx^{i}\otimes dx^{j}\).\\
+Since it is symmetric, \(g(\partial_{i},\partial_{j})=g(\partial_{j},\partial_{i})\) (i.e. \(g_{ij}=g_{ji}\)). We write \(dx^{i}dx^{j}=\operatorname{Sym}(dx^{i}\otimes dx^{j})\). In this case\\
+\begin{align*}
+  \operatorname{Sym}(dx^{i}\otimes dx^{j})
+  =\frac{1}{2}\left( dx^{i}\otimes dx^{j}+dx^{j}\otimes dx^{i} \right)
+\end{align*}
+So we may write \(g=g_{ij}dx^{i}dx^{j}\) and, sometimes, \((dx^{1})^{2}=dx^{1}dx^{1}\).\\
+We have also that \(g_{ij}\) correspinds to a positive definite, symmetric \(n\times n\) matrix.\\
+\subsection*{Example}
+\label{sec:org0454b47}
+In \(\R^{n}\), \(g_{E}=\delta_{ij}dx^{i}dx^{j}\). For \(v=v^{k}\partial_{k}\) and \(w=w^{l}\partial_{l}\),\\
+\begin{align*}
+  g_{E}(v,w)
+  =\delta_{ij}dx^{i}dx^{j}(v^{k}\partial_{k}w^{l}\partial_{l})
+  =v^{k}w^{l}\delta_{ij}\underbrace{dx^{i}(\partial_{k})}_{\delta_{k}^{i}}\underbrace{dx^{j}(\partial_{l})}_{\delta_{l}^{i}}
+  =v^{1}w^{1}+\cdots+v^{n}w^{n}
+\end{align*}
+\subsection*{Example}
+\label{sec:org5154a0e}
+Consider \(S^{2}\subseteq\R^{3}\) embedded such that \(T_{p}S^{2}\injectsto T_{p}\R^{3}\cong\R^{3}\).\\
+Then \(g_{p}(v,w)=v\cdot w\) defines a Riemannian metric on \(S^{2}\).\\
+\section*{Proposition}
+\label{sec:orge357c40}
+Any smooth manifold admits a Riemannian metric.\\
+\subsection*{Proof 1}
+\label{sec:org6bea0f6}
+Embed \(M\) into \(\R^{N}\) with \(N\) sufficiently large. Then \(M\) is an embedded submanifold in \(\R^{N}\) which induces a Riemannian metric on \(M\).\\
+\subsection*{Proof 2}
+\label{sec:org86c0909}
+Let \(\{U_{i}\}\) be a countable cover of \(M\) (with each \(U_{i}\) a chart) and \(\{\psi_{i}\}\) be a partition of unity with respect to this cover.\\
+\begin{center}
+IMAGE 1\\
+\end{center}
+So \(\phi_{i}^{*}g_{E}\) defines a Riemannian metric on \(U_{i}\) and we construct \(\sum_{i}\psi_{i}(\phi_{i}^{*}g_{E})\).\\
+\subsection*{Example: Metric Product}
+\label{sec:org84d72d1}
+Take \((M_{1},g_{1})\) and \((M_{2},g_{2})\) and construct \(g_{1}\oplus g_{2}\) on \(M_{1}\times M_{2}\) by either\\
+\begin{align*}
+  g_{1}\oplus g_{2}=
+  \begin{pmatrix}
+    g_{1} & 0 \\
+    0 & g_{2}
+  \end{pmatrix}
+\end{align*}
+or\\
+\begin{align*}
+  (g_{1}+g_{2})((v_{1},v_{1}),(w_{1},w_{2}))
+  =g_{1}(v_{1},w_{1})+g_{2}(v_{2},w_{2})
+\end{align*}
+e.g. \(S^{1}\subseteq\R^{2}\) gives \((S^{1},g_{1})\), then on the \(n\)-torus we construct \((\T^{n},g_{1}\oplus\cdots\oplus g_{1})\).\\
+\subsection*{Example: Warped Product}
+\label{sec:org0d2f2b5}
+\begin{center}
+IMAGE 2\\
+\end{center}
+Take \(f:M\to\R^{+}\) smooth, \((M,g)\) and \((N,h)\).\\
+Define a new metric \(\tilde{g}\) on \(M\times N\) by\\
+\begin{align*}
+  \tilde{g}_{(x,y)}
+  =g_{x}+f(x)h_{y}
+\end{align*}
+An example in polar coordinates is\\
+\begin{align*}
+  (dx)^{2}+(dy)^{2}
+  =(d(r\cos\theta))^{2}+(d(r\sin\theta))^{2}
+  =(\cos\theta\;dr-r\sin\theta\;d\theta)^{2}+(\sin\theta\;dr+r\cos\theta\;d\theta)^{2}
+  =dr^{2}+r^{2}\;d\theta^{2}
+\end{align*}
+Imagine fixing a direction \(r\) and at each point attaching a circle of radius \(r\).\\
+\begin{center}
+IMAGE 3\\
+\end{center}
+\section*{Recall: Gradient}
+\label{sec:orgcd8d893}
+If \(f\in C^{\infty}(\R^{n})\), then\\
+\begin{align*}
+  \nabla f
+  =\frac{\partial f}{\partial x^{i}}\frac{\partial}{\partial x^{i}}
+\end{align*}
+Note that this violates our Einstein summation.\\
+If \(f\in C^{\infty}(M)\), its differential \(df\) is a \(1\)-form and not a vector field. Why? Because in \(\R^{n}\) we are implicitly using the Euclidean metric.\\
+If we have an inner product on a TVS, say \((V,(\cdot,\cdot))\), then we can construct an isomorphism \(V\cong V^{*}\) by \(v\mapsto(v,\cdot)\).\\
+On \((M,g)\) we use \(g\) to construct a bundle isomorphism between \(TM\) and \(T^{*}M\) by \((p,v)\mapsto g_{p}(v,\cdot)\).\\
+With this, given \(df\in\Omega^{1}(M)\), we can define a vector field \(\nabla f\in\mathfrak{X}(M)\) by\\
+\begin{align*}
+  g(\nabla f,X)=(df)(X)=Xf
+\end{align*}
+In a chart \((U,(x^{i}))\), set \(\nabla f=b^{i}\frac{\partial}{\partial x^{i}}\). Then\\
+\begin{align*}
+  g\left( \nabla f,\frac{\partial}{\partial x^{j}} \right)
+  =g\left( b^{i}\frac{\partial}{\partial x^{i}},\frac{\partial}{\partial x^{j}} \right)
+  =b^{i}g_{ij}
+  =(df)\left( \frac{\partial}{\partial x^{j}} \right)
+  =\frac{\partial f}{\partial x^{j}}
+\end{align*}
+Let \(g^{ij}\) be the inverse of \(g_{ij}\), then\\
+\begin{align*}
+  b^{k}
+  =b^{i}\delta_{i}^{k}
+  =b^{i}g_{ij}g^{jk}
+  =\frac{\partial f}{\partial x^{j}}g^{}
+\end{align*}
+so\\
+\begin{align*}
+  \nabla f
+  =b^{k}\frac{\partial}{\partial x^{k}}
+  =\frac{\partial f}{\partial x^{j}}g^{jk}\frac{\partial}{\partial^{k}}
+\end{align*}
+Then from above, we actually have\\
+\begin{align*}
+  \nabla f
+  =\frac{\partial f}{\partial x^{i}}\delta_{ij}\frac{\partial}{\partial x^{j}}
+\end{align*}
+which satisfies our summation convention.\\
+\subsection*{Example}
+\label{sec:org2a4bae6}
+If \(g_{E}=dr^{2}+r^{2}\;d\theta^{2}\) in polar coordinates,\\
+\begin{align*}
+  (g_{ij})=
+  \begin{pmatrix}
+    1 & 0 \\
+    0 & r^{2}
+  \end{pmatrix}\quad\text{and}{\quad}
+  (g^{ij})=
+  \begin{pmatrix}
+    1 & 0 \\
+    0 & 1/r^{2}
+  \end{pmatrix}
+\end{align*}
+So\\
+\begin{align*}
+  \nabla f
+  =\frac{\partial f}{\partial x^{j}}g^{jk}\frac{\partial}{\partial x^{k}}
+  =\frac{\partial f}{\partial r}\frac{\partial}{\partial r}+\frac{\partial f}{\partial \theta}\frac{1}{r^{2}}\frac{\partial}{\partial\theta}
+\end{align*}
+\section*{Isometric Metrics}
+\label{sec:org15a1891}
+We say that \((M,g)\) and \((N,h)\) are isometric if there is a diffeomorphism \(F:M\to N\) such that \(F^{*}h=g\).\\
+With \(g\), we can define (for \(v\in T_{p}M\)), \(||v||_{g}=(g_{p}(v,v))^{1/2}\) and (for \(v,w\in T_{p}M\))\\
+\begin{align*}
+  \cos(v,w)=
+  \frac{g_{p}(v,w)}{||w||_{g}||w||_{g}}
+\end{align*}
+\section*{Definition: Length}
+\label{sec:org57e9cd3}
+Let \(\gamma:I\to M\) be a (piecewise) smooth curve.\\
+Define \(\operatorname{length}_{g}(\gamma)=\int_{I}||\gamma'(t)||_{g}\;dt\).\\
+Remember that \(\operatorname{length}_{g}(\gamma)\) is independent of reparameterization. That is\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    J \ar[r,"\phi"] & I \ar[r,"\gamma"] & M
+  \end{tikzcd}};
+\end{tikzpicture}
+with \(\tilde{\gamma}=\gamma\circ\phi\) we have\\
+\begin{align*}
+  \int_{J}||\tilde{\gamma}'(t)||\;dt
+  &=\int_{J}||(\gamma\circ\phi)'(t)||\;dt \\
+  &=\int_{J}||\gamma'(\phi(t))\cdot\phi'(t)||\;dt \\
+  &\overset{\phi'>0}{=}\int_{J}||\gamma'(\phi(t))||\phi'(t)\;dt \\
+  &\overset{s=\phi(t)}{=}\int_{I}||\gamma'(S)||\;ds
+\end{align*}
+\section*{Definition: Distance}
+\label{sec:org377f39c}
+Given \((M,g)\), define\\
+\begin{align*}
+  d_{g}(p,q)
+  =\inf\left\{ \operatorname{length}_{g}(\gamma)\st\gamma\text{ is piecewise smooth from }p\text{ to }q \right\}
+\end{align*}
+\section*{Theorem}
+\label{sec:org5208c7e}
+\((M,d_{g})\) is a metric space.\\
+Moreover, it induces a metric topology that coincides with the manifold topology.\\
+\section*{Theorem: Hopf-Rinow}
+\label{sec:orgb675d6d}
+The following are equivalent.\\
+\begin{enumerate}
+\item \((M,d_{g})\) is a complete metric space.\\
+\item \(\forall p,q\in M\), there exists a length-minimizing curve (a geodesic) from \(p\) to \(q\).\\
+\end{enumerate}
+\section*{Definition: Geodesic}
+\label{sec:orgb9956d3}
+A curve such that the second derivative along \(\gamma\equiv 0\).\\
+\section*{February 3, 2025}
+\label{sec:orgeb212f0}
+\section*{Recall: Wedge Product}
+\label{sec:org3d44519}
+\begin{align*}
+  \bigwedge^{k}V^{*}\times\bigwedge^{l}V^{*}
+  &\to\bigwedge^{k+l}V^{*} \\
+  (\omega,\eta)
+  &\mapsto \omega\wedge\eta
+\end{align*}
+By \(\frac{(k+l)!}{k!l!}\operatorname{Alt}(\omega\otimes\eta)=\frac{1}{k!l!}\sum_{\sigma\in S_{k+l}}(\sigma\cdot(\omega\otimes\eta))\).\\
+\(\epsilon^{I}\in\bigwedge^{k}V^{*}\), so\\
+\begin{align*}
+  \epsilon^{I}(v_{1},\ldots,v_{k})=\det
+  \begin{pmatrix}
+    \epsilon^{i_{1}}(v_{1}) & \cdots & \epsilon^{i_{1}}(v_{k}) \\
+    \vdots & & \vdots \\
+    \epsilon^{i_{k}}(v_{1}) & \cdots & \epsilon^{i_{k}}(v_{k})
+  \end{pmatrix}
+\end{align*}
+We have a \(V\) basis \(\{E_{I}\}\) and a \(V^{*}\) dual basis \(\{\epsilon^{I}\}\) with \(I=(i_{1},\ldots,i_{k})\). We also have that \(\epsilon^{I}(E_{j_{1}},\ldots,E_{j_{k}})=\delta^{I}_{J}\).\\
+Then \(\mathcal{B}=\{E^{I}\st I\text{ is strictly increasing}\}\) is a basis for \(\bigwedge^{k}V^{*}\).\\
+\section*{Lemma 14.10}
+\label{sec:orgdb9ab97}
+\(\epsilon^{I}\wedge\epsilon^{J}=\epsilon^{IJ}\).\\
+\subsection*{Proof}
+\label{sec:org239bce0}
+We show that \(\epsilon^{I}\wedge\epsilon^{J}(E_{p_{k}},\ldots,E_{p_{k+l}})=\epsilon^{IJ}(E_{p_{1}},\ldots,E_{p_{k+l}})\), \(P=(p_{1},\ldots,p_{k+l})\).\\
+If \(I\cup J\neq P\), then both sides are zero.\\
+If \(IJ\) or \(P\) has repeated index, then both sides are zero.\\
+Then the only nontrivial case is when \(P=IJ\) without repeated indecies. Write \(IJ=\{i_{1},\ldots,i_{k},j_{1},\ldots,j_{l}\}\) such that we can apply a permutation \(\gamma\in S_{k+l}\) to generate a strictly increasing \(P=\{p_{1},\ldots,p_{k+l}\}\). Then write \(P_{1}=\{p_{1},\ldots,p_{k}\}\) and \(P_{2}=\{p_{k+1},\ldots,p_{k+l}\}\), and compute\\
+\begin{align*}
+  \epsilon^{P}
+  &=\epsilon^{P_{1}}\wedge\epsilon^{P_{2}} \\
+  &=\frac{1}{k!l!}\sum_{\sigma\in S_{k+l}}\left( \operatorname{sign}\sigma \right)\cdot(\sigma(\epsilon^{P_{1}}\otimes\epsilon^{P_{2}})) \\
+  &=\frac{1}{k!l!}\sum_{\sigma'\in S_{k+l}}(\operatorname{sign}\sigma')(\operatorname{sign}\gamma)((\gamma\cdot\sigma')(\epsilon^{P_{1}}\otimes\epsilon^{P_{2}})) \\
+  &=\operatorname{sign}\gamma(\epsilon^{I}\wedge\epsilon^{J})
+\end{align*}
+\section*{Proposition 14.11}
+\label{sec:org541e187}
+\begin{enumerate}
+\item If \(\omega^{i}\in V^{*}\) and \(v_{j}\in V\), then \(\omega^{1}\wedge\cdots\wedge\omega^{k}(v_{1},\ldots,v_{k})=\det(w^{i}(v_{j}))\).\\
+\end{enumerate}
+\subsection*{Proof}
+\label{sec:org4c2a111}
+It suffices to check (assuming \(I,J\) strictly increasing)\\
+\begin{align*}
+  (\epsilon^{i_{1}}\wedge\cdots\wedge\epsilon^{i_{k}})(E_{j_{1}},\ldots,E_{j_{k}})
+  =\epsilon^{I}(E_{j_{1}},\ldots,E_{j_{k}})
+  =\delta^{I}_{J}
+  =\det(\epsilon^{i_{p}}(E_{j_{q}})).
+\end{align*}
+\section*{Definition: Graded Algebra}
+\label{sec:org58d896e}
+Write \(\bigwedge V^{*}=\bigoplus_{k=0}^{n}\bigwedge^{k}V^{*}\) with \(\operatorname{dim}\bigwedge V^{*}=2^{n}\).\\
+Remember that \(\operatorname{dim}\bigwedge^{k}V^{*}=\binom{n}{k}\).\\
+It is graded if \((\bigwedge^{k})\wedge(\bigwedge^{l})\subseteq\bigwedge^{k+l}\).\\
+\section*{Differential Forms on Manifolds}
+\label{sec:org57fdcf2}
+Given a manifold \(M\), a \(k\)-form on \(M\) \(\bigwedge^{k}(T^{*}M)=\coprod_{p\in M}\left( \bigwedge^{k}T_{p}^{*}M \right)\) is a section of the bundle \(\bigwedge^{k}(T^{*}M)\to M\).\\
+\(\Omega^{k}(M)\) is the collection of \(k\)-forms on \(M\).\\
+Locally, \(\omega\in\Omega^{k}(M)\) may be written \(\omega=\sum\omega_{I}dx^{I}\) for a chart \((U,(x^{i}))\).\\
+Summing over strictly increasing \(I\), \(dx^{I}=dx^{i_{1}}\wedge\cdots\wedge dx^{i_{k}}\) and \(\omega_{I}=\omega\left( \frac{\partial}{\partial x^{i_{1}}},\ldots,\frac{\partial}{\partial x^{i_{k}}} \right)\).\\
+\subsection*{Pullback}
+\label{sec:orgaffff83}
+For \(F:M\to N\) and \(\omega\in\Omega^{k}(N)\), we define \((F^{*}\omega)\in\Omega^{K}(M)\) by\\
+\begin{align*}
+  (F^{*}\omega)(v_{1},\ldots,v_{k})=\omega(DF(v_{1}),\ldots,DF(v_{k})).
+\end{align*}
+It follows that\\
+\begin{align*}
+  F^{*}(\omega\wedge\eta)
+  =(F^{*}\omega)\wedge(F^{*}\eta)
+\end{align*}
+and\\
+\begin{align*}
+  F^{*}\left( \sum_{I}'\omega_{I}dx^{I} \right)
+  &=\sum_{I}'(F^{*}\omega_{I})F^{*}(dx^{i_{1}}\wedge\cdots\wedge dx^{ik}) \\
+  &=\sum_{I}'(\omega_{I}\circ F)(d(x^{i_{1}}\circ F)\wedge\cdots\wedge d(x^{i_{k}}\circ F)) \\
+  &=\sum_{I}'(\omega_{I}\circ F)dF^{i_{1}}\wedge\cdots\wedge dF^{i_{k}}
+\end{align*}
+\subsubsection*{Example}
+\label{sec:org4d43285}
+For \(F:\R^{2}\to\R^{3}\) by \(F(u,v)=(u,v,u^{2}-v^{2})\) and \(\omega=y\;dx\wedge dz\in\Omega^{2}(\R^{3})\).\\
+\begin{align*}
+  F^{*}\omega
+  =F^{*}(y\;dx\wedge dz)
+  =v\;du\wedge d(u^{2}-v^{2})
+  =v\;du\wedge(2u\;du-2v\;dv
+  =-2v^{2}\;du\wedge dv
+\end{align*}
+\section*{Proposition 14.20}
+\label{sec:orgcc47b44}
+For \(F:M^{n}\to N^{n}\) with local coordinates \((x^{i})\) and \((y^{i})\) respectively, if \(u\in C^{\infty}(N)\) then\\
+\begin{align*}
+  F^{*}(u\;dy^{1}\wedge\cdots\wedge dy^{n})
+  =(u\circ F)\det DF
+\end{align*}
+\subsection*{Proof}
+\label{sec:org1f011a4}
+Write \(F\) in components \((F^{1},\ldots, F^{n})\) where \(F^{i}=y^{i}\circ F\)\\
+\begin{align*}
+  F^{*}(u\;dy^{1}\wedge\cdots\wedge dy^{n})
+  &=(u\circ F)dF^{1}\wedge\cdots\wedge dF^{n}\left( \frac{\partial}{\partial x^{1}},\ldots,\frac{\partial}{\partial x^{n}} \right) \\
+  &=(u\circ F)\det\left( dF^{i}\left( \frac{\partial}{\partial x^{j}} \right) \right) \\
+  &=(u\circ F)\det(DF)
+\end{align*}
+If \((U,(x^{i}))\) and \((\tilde{U},(\tilde{x}^{i}))\) are local charts with \(U\cap\tilde{U}\neq\0\), then using \(F=\operatorname{id}_{U\cap\tilde{U}}\) we have that \(F^{*}=\operatorname{id}\)\\
+\begin{align*}
+  d\tilde{x}^{i}\wedge\cdots\wedge d\tilde{x}^{n}
+  =\det\left( \frac{\partial \tilde{x}^{j}}{\partial x^{i}} \right)dx^{1}\wedge\cdots\wedge dx^{n}
+\end{align*}
+\section*{Definition: Exterior Derivative}
+\label{sec:org6674c4e}
+For \(\omega\in\Omega^{k}(U)\), \(U\subseteq\R^{n}\) open, \(\omega=\sum_{I}'\omega_{I}dx^{I}\) define \(d:\omega^{k}(U)\to\omega^{k+1}(U)\) by \(\omega\mapsto d\omega\). Then\\
+\begin{align*}
+  d\omega
+  =\sum_{I}'\underbrace{d\omega_{I}}_{\in\Omega^{1}(U)}\wedge\underbrace{dx^{I}}_{\in\Omega^{k}(U)}
+\end{align*}
+\subsection*{Example}
+\label{sec:orgf47466e}
+\(\omega\in\Omega^{1}(U)\), \(\omega=\sum_{i=1}^{n}\omega_{i}dx^{i}\).\\
+\begin{align*}
+  d\omega
+  =\sum_{i=1}^{n}d\omega_{i}\wedge dx^{i}
+  =\sum_{i,j=1}^{n}\frac{\partial\omega_{i}}{\partial x^{j}}dx^{j}\wedge dx^{i}
+  =\sum_{i< j}\left( \frac{\partial\omega_{j}}{\partial x^{i}}-\frac{\partial\omega_{i}}{\partial x^{j}} \right) dx^{i}\wedge dx^{j}
+\end{align*}
+For \(\omega=df\in\Omega^{1}(M)\), \(d(df)=\sum_{i<j}\left( \frac{\partial^{2}f}{\partial x^{j}\partial x^{i}}-\frac{\partial^{2}f}{\partial x^{i}\partial x^{j}} \right)dx^{i}\wedge dx^{j}=0\). That is, \((d\circ d)(f)=0\) for any smooth function \(f\in C^{\infty}(M)\).\\
+\section*{Proposition}
+\label{sec:org43f1ecc}
+\begin{enumerate}
+\item \(d\) is \(\R\)-linear.\\
+\item \(d(\omega\wedge\eta)=(d\omega)\wedge\eta+(-1)^{k}\omega\wedge(d\eta)\) with \(k=\operatorname{deg}\omega\).\\
+\item \(d\circ d=0\).\\
+\item \(F^{*}(d\omega)=d(F^{*}\omega)\).\\
+\end{enumerate}
+\subsection*{Proof of b}
+\label{sec:org7d5bb09}
+Write \(\omega=u\;dx^{I}\) and\(\eta=v\;dx^{J}\).\\
+Claim: \(d(u\;dx^{I})=du\wedge dx^{I}\) for any index (perhaps not strictly increasing) I.\\
+If \(I\) has a repeated index, both sides are zero.\\
+If not, let \(\sigma\in S_{k}\) such that \(I_{\sigma}=J\) strictly increasing.\\
+\begin{align*}
+  d(u\;dx^{I})
+  =d((\operatorname{sign}\sigma)u\;dx^{J})
+  =\operatorname{sign}\sigma\cdot du\wedge dx^{J}
+  =du\wedge(\operatorname{sign}\sigma\cdot dx^{J})
+  =du\wedge dx^{I}
+\end{align*}
+Then\\
+\begin{align*}
+  d(\omega\wedge\eta)
+  =d(u\;dx^{I}\wedge v\;dx^{J})
+  =d(uv\;dx^{I}\wedge dx^{J})
+  =d(uv\;dx^{IJ})
+  =d(uv)\wedge dx^{IJ}
+  =(u\;dv+v\;du)\wedge(dx^{I}\wedge dx^{J})
+\end{align*}
+So\\
+\begin{align*}
+  d\omega\wedge\eta+(-1)^{k}\omega\wedge d\eta
+  =du\wedge dx^{I}\wedge(v\;dx^{J})
+  +(-1)^{k}u\;dx^{I}\wedge(dv\wedge dx^{J})
+\end{align*}
+and it suffices to show that \(dv\wedge dx^{I}\wedge dx^{J}=(-1)^{k}dx^{I}\wedge dv\wedge dx^{J}\).\\
+\subsection*{Proof b Implies c}
+\label{sec:org3c9e7f5}
+Write\\
+\begin{align*}
+  d\circ d(\omega_{I}dx^{I})
+  =d(d\omega_{I}\wedge dx^{I})
+  =d(d\omega_{I})\wedge dx^{I}+(-1)^{1}d\omega_{I}\wedge d(dx^{I})
+  =0
+\end{align*}
+\subsection*{Proof of d}
+\label{sec:orga20a728}
+Write \(\omega=u\;dx^{I}\) such that \(d\omega=du\wedge dx^{I}\).\\
+\begin{align*}
+  F^{*}(d\omega)
+  =F^{*}(du\wedge dx^{I})
+  =d(u\circ F)\wedge dF^{i_{1}}\wedge\cdots\wedge dF^{i_{k}}
+\end{align*}
+and\\
+\begin{align*}
+  d(F^{*}\omega)
+  =d((u\circ F)dF^{i_{1}}\wedge\cdots\wedge dF^{i_{k}}
+  =d(u\circ F)\wedge dF^{i_{1}}\wedge\cdots\wedge dF^{i_{k}}
+\end{align*}
+\section*{February 5, 2025}
+\label{sec:org226d8ba}
+\section*{Theorem 14.24}
+\label{sec:org3f8298b}
+There is a unique map \(d:\Omega^{*}(M)\to\Omega^{*}(M)\) with \(d(\Omega^{k}(M))\subseteq\Omega^{k+1}(M)\) such that\\
+\begin{enumerate}
+\item \(d\) is \(\R\)-linear\\
+\item \(d(\omega\wedge\eta)=d\omega\wedge\eta+(-1)^{k}\omega\wedge d\eta\)\\
+\item \(d\circ d=0\)\\
+\item \(df(X)=Xf\) for all \(f\in\Omega^{0}(M)=C^{\infty}(M)\) and \(X\in\mathfrak{X}(M)\).\\
+\end{enumerate}
+\subsection*{Proof: Existence}
+\label{sec:org2291771}
+Let \(\omega\in\Omega^{k}(M)\). Then \(\omega|_{U}\in\Omega^{k}(U)\). We have that \(\varphi^{-1*}\omega\in\Omega^{k}(\varphi(U))\), \(d(\varphi^{-1*}\omega)\in\Omega^{k+1}(\varphi(U))\), and \(d\omega:=\varphi^{*}d(\varphi^{-1*}\omega)\in\Omega^{k+1}(U)\) on \(U\).\\
+\begin{center}
+IMAGE 1\\
+\end{center}
+\subsection*{Proof: Well-defined}
+\label{sec:org751b326}
+If \((V,\psi)\) is another chart with \(U\cap V\neq\0\), we need to show that \(\psi^{*}(d(\psi^{-1*}\omega))=\varphi^{*}(d\varphi^{-1*}\omega))\). This is equivalent to\\
+\begin{align*}
+  &\iff\quad d(\psi^{-1*}\omega)=\psi^{-1*}\varphi^{*}(d(\varphi^{-1*}\omega)) \\
+  &\iff\quad d(\psi^{-1*}\omega=(\varphi\circ\psi^{-1})^{*}d(\varphi^{-1*}\omega)
+\end{align*}
+where\\
+\begin{align*}
+  (\varphi\circ\psi^{-1})^{*}d(\varphi^{-1*}\omega)
+  =d((\varphi\circ\psi^{-1})^{*}\varphi^{-1*}\omega)
+  =d(\psi^{-1*}\circ\varphi^{*}\circ\varphi^{-1*}\omega)
+  =d(\psi^{-1*}\omega)
+\end{align*}
+\subsection*{Proof: Uni!}
+\label{sec:org9713723}
+For any \(d:\Omega^{*}(M)\to\Omega^{*}(M)\) with the property \((d\omega)_{p}\) only depends on \(\omega|_{U}\) where \(p\in U\).\\
+Suppose \(\omega_{1}=\omega_{2}\) on \(U\). We need to show that \((d\omega_{1})_{p}=(d\omega_{2})_{p}\).\\
+So set \(\eta=\omega_{1}-\omega_{2}\). Then \(\omega\equiv 0\) on \(U\), and we need to show that \((d\eta)_{p}=0\).\\
+Let \(\psi\) be a bump function such that \(\supp\psi\subseteq U\) and \(\psi(p)=1\).\\
+\begin{center}
+IMAGE 2\\
+\end{center}
+Then \(\psi\eta=0\in\Omega^{k}(M)\).\\
+\begin{align*}
+  0=d(\psi\eta)=d\psi\wedge\eta+(-1)^{0}\psi\wedge d\eta
+\end{align*}
+At point \(p\), it reads\\
+\begin{align*}
+  0=0\wedge\eta_{p}+\overbrace{\psi(p)}^{=1}\wedge d\eta_{p}
+\end{align*}
+That is, \(0=d\eta_{p}\). Let \(p\in M\), \(U\) a chart around \(p\), say \((U,(x^{i}))\), and \(\omega\in\Omega^{k}(U)\). We know that \((d\omega)_{p}\) only depends on \(\omega|_{U}=\sum_{I}'\omega_{I}dx^{I}\). Then for \(p\in V\subseteq\overline{V}\subseteq U\) , \(\omega|_{U}\) extends functtions \(\omega_{I},x^{I}\in C^{\infty}(V)\) to globally defined functions \(\tilde{\omega}_{I},\tilde{x}^{I}\in C^{\infty}(M)\). Therefore\\
+\begin{align*}
+  d(\omega|_{U})
+  &=\sum_{I}'d(\omega_{I}dx^{I}) \\
+  &=\sum_{I}'d(\tilde{\omega}_{I}\tilde{x}^{I}) \\
+  &=\sum_{I}'(d\tilde{\omega}_{I}\wedge d\tilde{x}^{I}+\omega_{I}\wedge \overbrace{d(d\tilde{x}^{i_{1}}\wedge\cdots\wedge d\tilde{x}^{i_{k}})}^{=0} \\
+  &=\sum_{I}'d\omega_{I}\wedge dx^{I}
+\end{align*}
+which is the same formula for \(\R^{n}\).\\
+\section*{Proposition: 14.26}
+\label{sec:orgd841b1d}
+\(F^{*}(d\omega)=d(F^{*}\omega)\).\\
+\section*{Proposition: 14.32}
+\label{sec:org0974e0f}
+\(\mathcal{L}_{V}(\omega\wedge\eta)=(\mathcal{L}_{V}\omega)\wedge\eta+\omega\wedge(\mathcal{L}_{V}\eta)\).\\
+\subsection*{Corollary}
+\label{sec:orgcf1a09b}
+\(\mathcal{L}_{V}(d\omega)=d(\mathcal{L}_{V}\omega)\).\\
+\section*{Definition: Interior Multiplication}
+\label{sec:orgc4f5be1}
+Given \(\omega\in\bigwedge^{k}V^{*}\) and \(v\in V\), define \(\iota_{V}\omega\in\bigwedge^{k-1}V^{*}\) (sometimes written \(V\inprod\omega\)).\\
+\begin{align*}
+  (\iota_{v}\omega)(u_{1},\ldots,u_{k-1})
+  =\omega(v,u_{1},\ldots,u_{k-1})
+\end{align*}
+This defines \(\iota_{V}:\bigwedge^{k}V^{*}\to\bigwedge^{k-1}V^{*}\), and we have \(\iota_{V}\circ\iota_{V}=0\).\\
+\begin{align*}
+  \iota_{v}(\omega\wedge\eta)
+  =(\iota_{V}\omega)\wedge\eta+(-1)^{k}\omega\wedge(\iota_{V}\eta)
+\end{align*}
+\subsection*{Proof}
+\label{sec:orgbf80791}
+It suffices to show that for \(\omega^{1},\ldots,\omega^{k}\in V^{*}\)\\
+\begin{align*}
+  \iota_{V}(\omega^{1}\wedge\cdots\wedge\omega^{k})
+  =\sum_{i=1}^{k}(-1)^{i-1}\omega^{i}(v)\omega^{1}\wedge\cdots\wedge\hat{\omega}^{i}\wedge\cdots\wedge\omega^{k}
+\end{align*}
+Where \(\hat{\omega}^{i}\) is meant to denots ``forgetting'' a term in the wedge product. That is, the first term has no \(\omega^{1}\), the second no \(\omega^{2}\), etc.\\
+Assuming this, it suffices to consider \(\omega=\omega^{1}\wedge\cdots\wedge\omega^{k}\) and \(\eta=\eta^{1}\wedge\cdots\wedge\eta^{l}\). Then\\
+\begin{align*}
+  \iota_{V}(\omega\wedge\eta)
+  &=\iota_{V}(\omega^{1}\wedge\cdots\omega^{k}\wedge\eta^{1}\wedge\cdots\wedge\eta^{l}) \\
+  &=\sum_{i=1}^{k}(-1)^{i-1}\omega^{i}(v)\omega^{1}\wedge\cdots\wedge\hat{\omega}^{i}\wedge\cdots\wedge\omega^{k}\wedge\eta^{1}\wedge\cdots\wedge\eta^{l} +\sum_{i=1}^{l}(-1)^{k+i-1}\eta^{i}(v)\omega^{1}\wedge\cdots\wedge\omega^{k}\wedge\eta^{1}\wedge\cdots\wedge\hat{\eta}^{i}\wedge\cdots\wedge\eta^{l} \\
+  &=(\iota_{V}\omega)\wedge\eta+(-1)^{k}\omega\wedge(\iota_{V}\eta)
+\end{align*}
+Write \(v_{1}=v\), and apply both sides to \((v_{2},\ldots,v_{k})\). The left hand side is\\
+\begin{align*}
+  \omega^{1}\wedge\cdots\omega^{k}(v_{1},\ldots,v_{k})
+  =\det(\omega^{i}(v_{j}))=\det
+  \begin{pmatrix}
+    \omega^{1}(v_{1}) & \cdots & \omega^{i}(v_{1}) & \cdots & \omega^{k}(v_{1}) \\
+    \vdots & & & & \vdots \\
+    \omega^{1}(v_{k}) & \cdots & \omega^{i}(v_{1}) & \cdots & \omega^{k}(v_{k})
+  \end{pmatrix}
+\end{align*}
+The right hand side is given by\\
+\begin{align*}
+  \sum_{i=1}^{k}(-1)^{i-1}\omega^{i}(v_{1})(\omega^{1}\wedge\cdots\wedge\hat{\omega}^{i}\wedge\cdots\wedge\omega^{k})(v_{1},\ldots,v_{k})
+\end{align*}
+which, when expanded, gives \(\det(\omega^{i}(v_{j}))\) along the first row.\\
+\section*{Proposition 14.35 (Cartan)}
+\label{sec:org522fcd0}
+If \(V\in\mathfrak{X}(M)\) and \(\omega\in\Omega^{k}(M)\), then\\
+\begin{align*}
+  \mathcal{L}_{V}\omega
+  =V\inprod(d\omega)+d(V\inprod\omega)
+\end{align*}
+\subsection*{Corollary}
+\label{sec:org5ded62a}
+\begin{align*}
+  \mathcal{L}_{V}(d\omega)=d(\mathcal{L}_{V}\omega)
+\end{align*}
+\subsubsection*{Proof}
+\label{sec:orgb3915df}
+By assuming Cartan's formula, the left hand side is\\
+\begin{align*}
+  V\inprod\overbrace{(d\circ d\omega)}^{=0}+d(V\inprod d\omega)
+\end{align*}
+and the right hand side is\\
+\begin{align*}
+  d(V\inprod d\omega+d(V\inprod\omega))
+  =d(V\inprod d\omega)+\overbrace{d\circ d(v\inprod\omega)}^{=0}
+\end{align*}
+\subsection*{Proof (of Cartan's Formula)}
+\label{sec:org8e49192}
+We prove by induction on \(\operatorname{deg}(\omega)\). When \(\omega\) is a function \(f\in C^{\infty}(M)=\Omega^{0}(M)\), the left hand side is\\
+\begin{align*}
+  \mathcal{L}_{V}f=Vf
+\end{align*}
+and the right hand side is\\
+\begin{align*}
+  V\inprod(df)+d\overbrace{(V\inprod f)}^{=0}
+  =df(V)=Vf
+\end{align*}
+since \(\iota_{V}\) maps \(\Omega^{k}\) to \(\Omega^{k-1}\).\\
+Assuming it holds for \(k-1\) forms, we consider \(\omega\in\Omega^{k}(M)\) and locally write \(\omega=\sum'\omega_{I}dx^{I}\).\\
+It suffices to show that the formula holds for \(\omega=du\wedge\beta\), \(u\in C^{\infty}(M)\), \(\beta\in\Omega^{k-1}(M)\).\\
+\begin{align*}
+  (\omega_{I}dx^{i_{1}}\wedge\cdots\wedge dx^{i_{k}}
+  =\underbrace{dx^{i_{1}}}_{du}\wedge\underbrace{(\omega_{I}dx^{i_{1}}\wedge\cdots\wedge dx^{i_{k}})}_{\beta}
+\end{align*}
+The left hand side is\\
+\begin{align*}
+  \mathcal{L}_{V}(du\wedge\beta)
+  &=\mathcal{L}_{V}du)\wedge\beta+du\wedge\mathcal{L}_{V}\beta \\
+  &=d(\mathcal{L}_{V}u)\wedge\beta+du\wedge(V\inprod d\beta+d(V\inprod\beta)) \\
+  &=d(Vu)\wedge\beta+du\wedge(V\inprod d\beta)+du\wedge d(V\inprod\beta)
+\end{align*}
+and the right hand side is\\
+\begin{align*}
+  V\inprod(d(du\wedge\beta))+d(V\inprod(du\wedge\beta))
+  &=V\inprod(\overbrace{(d\circ du)}^{=0}\wedge\beta+(-1)du\wedge d\beta+d(\overbrace{(V\inprod du)}^{=Vu}\wedge\beta+du\wedge(V\inprod\beta)) \\
+  &=(-1)(Vu)d\beta+d(Vu)\wedge\beta+(Vu)d\beta
+\end{align*}
+\section*{Proposition 14.32}
+\label{sec:org323694f}
+\begin{align*}
+  d\omega(X_{1},\ldots,X_{k+1})
+  &=\sum_{1\leq i\leq k+1}(-1)^{i-1}X_{i}(\omega(X_{1},\ldots,\hat{x}_{i},\ldots,X_{k+1}))
+  +\sum_{1\leq i\leq j\leq k+1}(-1)^{i+j}\omega([X_{i},X_{j}],X_{1},\ldots,\hat{X}_{i},\ldots,\hat{X}_{j},\ldots,X_{k+1})
+\end{align*}
+When \(\omega\in\Omega^{1}\), it reads\\
+\begin{align*}
+  d\omega(X,Y)
+  =X(\omega(Y))-Y(\omega(X))-\omega([X,Y])
+\end{align*}
+In particular, for \(\omega\) closed,\\
+\begin{align*}
+  X(\omega(Y))-Y(\omega(X))=\omega([X,Y])
+\end{align*}
+\subsection*{Proof}
+\label{sec:org2a959d8}
+It suffices to prove that for \(\omega=udv\), \(u,v\in C^{\infty}(M)\) that\\
+\begin{align*}
+  d(\omega)=d(udv)=du\wedge dv
+\end{align*}
+The left hand side\\
+\begin{align*}
+  (du\wedge dv)(X,Y)=\det
+  \begin{pmatrix}
+    du(X) & du(Y) \\
+    dv(X) & dv(Y)
+  \end{pmatrix}=\det
+  \begin{pmatrix}
+    X_{u} & Y_{u} \\
+    X_{v} & Y_{v}
+  \end{pmatrix}
+\end{align*}
+and the right hand side\\
+\begin{align*}
+  X(udv(Y))-Y(udv(X))-u(dv([X,Y])
+  &=X(u(Yv))-Y(u(Xv))-u([X,Y]v) \\
+  &=(Xu)(Yv)+u(XYv)-(Yu)(Xv)-u(YXv)-u([X,Y]v) \\
+  &=\det
+  \begin{pmatrix}
+    X_{u} & Y_{u} \\
+    X_{v} & Y_{v}
+  \end{pmatrix}
+\end{align*}
+\subsection*{Example}
+\label{sec:orga37baa6}
+For \(f\in\Omega^{*}(\R^{3})\) and \(df=\frac{\partial f}{\partial x}dx+\frac{\partial f}{\partial y}dy+\frac{\partial f}{\partial z}dz\in\Omega^{*+1}(\R^{3})\), write \(Pdx+Qdy+Rdz\) and\\
+\begin{align*}
+  d(Pdx+Qdy+Rdz)
+  &=\left( \frac{\partial P}{\partial y}dy+\frac{\partial P}{\partial z}dz \right)\wedge dx
+  +\left( \frac{\partial Q}{\partial x}dx+\frac{\partial Q}{\partial z}dz \right)\wedge dy
+  +\left( \frac{\partial R}{\partial x}dx+\frac{\partial R}{\partial y}dy \right)\wedge dz \\
+  &=\left( \frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}dx\wedge dy \right)
+  +\left( \frac{\partial R}{\partial y}-\frac{\partial Q}{\partial z}dy\wedge dz \right)
+  +\left( \frac{\partial P}{\partial z}-\frac{\partial R}{\partial x}dz\wedge dx \right)
+\end{align*}
+Recall that for \(X=(P,Q,R)\in\mathfrak{X}(\R^{3})\), this is the curl of \(X\).\\
+Let \(\omega=udx\wedge dy+vdy\wedge dz+wdz\wedge dx\), then\\
+\begin{align*}
+  d\omega
+  &=\frac{\partial u}{\partial z}dz\wedge dx\wedge dy
+  +\frac{\partial v}{\partial z}dx\wedge dy\wedge dz
+  +\frac{\partial w}{\partial z}dy\wedge dz\wedge dx \\
+  &=\left( \frac{\partial V}{\partial x}+\frac{\partial W}{\partial y}+\frac{\partial U}{\partial z} \right)dx\wedge dy\wedge dz
+\end{align*}
+Recall that this is divergence. We can also look at the gradient\\
+\begin{align*}
+  \operatorname{grad}f=\left( \frac{\partial f}{\partial x},\frac{\partial f}{\partial y},\frac{\partial f}{\partial z} \right)
+\end{align*}
+we have\\
+\begin{align*}
+  \operatorname{grad}f\cdot X
+  =Xf
+  =df(X)
+  =\sum\frac{\partial f}{\partial x^{i}}\cdot x^{i}
+\end{align*}
+Putting this together,\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    C^{\infty}(\R^{3}) \ar[r, "\operatorname{grad}"] \ar[d] & \mathfrak{X}(M) \ar[r,"\operatorname{curl}"] \ar[d] & \mathfrak{X}(M) \ar[r,"\operatorname{div}"] \ar[d] & C^{\infty}(\R^{3}) \ar[d] \\
+    \Omega^{0}(\R^{3}) \ar[r,"d"] & \Omega^{1}(\R^{3}) \ar[r,"d"] & \Omega^{2}(\R^{3}) \ar[r,"d"] & \Omega^{3}(\R^{3})
+  \end{tikzcd}};
+\end{tikzpicture}
+\section*{February 10, 2025}
+\label{sec:org6fee874}
+Orientation. Lee pages 378 to 390.\\
+\section*{February 12, 2025}
+\label{sec:orgf648689}
+\section*{Recall}
+\label{sec:orgd5dd204}
+\begin{align*}
+  [E_{1},E_{2},\ldots,E_{n}]
+\end{align*}
+and \(\omega\in\Lambda^{n}V^{*}-\{0\}\)\\
+On a manifold, we say that \(\omega\in\Omega^{n}(M)\) is nonvanishing if and only if\\
+\begin{itemize}
+\item the manifold has an orientation if and only if\\
+\item the manfiold admits an ordered atlas\\
+\end{itemize}
+
+For \(S^{n-1}\injectsto M^{n}\), if \(N\) is a vector field along \(S\) and nowhere tangent to \(S\) and \(M\) has an orientation given by \(\omega\in\Omega^{n}(M)\), then \(S\) has an induced orientation \((N\inprod\omega)\in\Omega^{n-1}(S)\).\\
+In particular, \(\partial M\to M\) is oriented for \(N\) outwarding vector field aong \(\partial M\), we have induced orientation given by \(N\inprod\omega)\in\Omega^{n-1}(\partial M)\).\\
+\begin{align*}
+  F:(M^{n},O_{m})\to(N^{n},O_{N})
+\end{align*}
+is a local diffeormorphism and orientation preserving if \(F^{*}O_{N}=O_{M}\). It is orientation reserving if \(F^{*}O_{N}=-O_{M}\).\\
+\(F^{*}O_{N}\) is gvien the pullback \(F^{*}\omega\), where \(\omega\in\Omega^{n}(N)\) is non-vanishing and matching with \(O_{N}\).\\
+\subsection*{Example 1}
+\label{sec:org50a126e}
+For example, \(A:\R^{n+1}\to\R^{n+1}\) by \((x^{i})\mapsto(-x^{i})\) has orientation \([E_{1},\ldots,E_{n+1}]\). Then\\
+\begin{align*}
+  [AE_{1},\ldots, AE_{n+1}]
+  =[E_{1},\ldots,E_{n+1}]
+  =(-1)^{n+1}[E_{1},\ldots,E_{n}]
+\end{align*}
+and \(A\) is orientation preserving if and only if \(n\) is odd. Instead, if we consider forms \(\omega=\varepsilon^{1}\wedge\cdots\wedge\varepsilon^{n+1}\) then we have\\
+\begin{align*}
+  A^{*}\omega(X_{1},\ldots,X_{n+1})
+  =\omega(AX_{1},\ldots,AX_{n+1})
+  =(\det A)(\omega(X_{1},\ldots,X_{n+1}))
+\end{align*}
+so \(A^{*}\omega=(\det A)\omega=(-1)^{n+1}\omega\).\\
+\subsection*{Example 2}
+\label{sec:orge8844d9}
+Consider \(S^{N}\injectsto\R^{n+1}\) and \(A:S^{n}\to S^{n}\) by \(x\mapsto -x\).\\
+\begin{center}
+IMAGE 1\\
+\end{center}
+\(A_{*}N=N\).\\
+Then \(S^{n}\) has an induced orientation \((N\inprod\omega)\in\Omega^{n-1}(S)\) where \(\omega=\varepsilon^{1}\wedge\cdots\wedge\varepsilon^{n+1}\in\Omega^{n+1}\R^{n+1}\). Compute\\
+\begin{align*}
+  A^{*}(N\inprod\omega)(X_{1},\ldots,X_{n})
+  &=(N\inprod\omega)(A_{*}X_{1},\ldots,A_{*}X_{n}) \\
+  &=\omega(N,A_{*}X_{1},\ldots,A_{*}X_{n}) \\
+  &=\omega(A_{*}N,A_{*}X_{1},\ldots,A_{*}X_{n}) \\
+  &=\det(DA)\omega(N,X_{1},\ldots,X_{n}) \\
+  &=(-1)^{n+1}(N\inprod\omega)(X_{1},\ldots, X_{n})
+\end{align*}
+Therefore \(A^{*}(N\inprod\omega)=(-1)^{n+1}(N\inprod\omega)\) and \(A:S^{n}\to S^{n}\) is orientation preserving when \(n\) is odd.\\
+\section*{An aside about covering maps}
+\label{sec:org77b2127}
+Consider all \(\varphi\) such that this diagram\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    \hat{M} \ar[rr, "\varphi"] \ar[dr, "\pi"] & & \hat{M} \ar[dl, "\pi"] \\
+    & M
+  \end{tikzcd}};
+\end{tikzpicture}
+commutes. Then take \(\operatorname{Aut}(\pi)=\{\varphi:\hat{M}\to\hat{M}\text{ diffeomorphic}\st \pi=\pi\circ\varphi\}\). Then \(\varphi\in\operatorname{Aut}(\pi)\) preserves the preimage \(\pi^{-1}(x)\).\\
+\begin{center}
+IMAGE 2\\
+\end{center}
+\begin{center}
+IMAGE 3\\
+\end{center}
+So \(\operatorname{Aut}(\pi)=\Z_{2}\). For example, \(S^{n}\overset{\pi}{\to}\R P^{n}\), \(\operatorname{Aut}(\pi)=\Z_{2}=\{\operatorname{id},A\}\). By theorem, \(\R P^{n}\) is orientable if and only if\\
+\begin{itemize}
+\item \(A:S^{n}\to S^{n}\) is orientation perserving if and only if\\
+\item \(n\) is odd.\\
+\end{itemize}
+
+In the case of the Mobius band,\\
+\begin{center}
+IMAGE 4\\
+\end{center}
+\(\operatorname{Aut}(\pi)=\left\langle \gamma \right\rangle\) where \(\gamma:(x,y)\mapsto(x+1,-y)\) is orientation reversing. This implies that \(M\) is not orientable.\\
+\section*{Theorem 15.36}
+\label{sec:org6a47bf4}
+Let \(\pi:\hat{M}\to M\) be a covering map.\\
+\begin{enumerate}
+\item If \(M\) is orientable, then \(\hat{M}\) is orientable.\\
+\item If \(\hat{M}\) is orientable, what about \(M\)?\\
+\end{enumerate}
+
+\(M\) is orientable if and only \(\operatorname{Aut}(\pi)\) acts as an orientation preserving idffeomorphism on \(\hat{M}\).\\
+\subsection*{Proof}
+\label{sec:org8e6bb9b}
+\((\Longleftarrow)\) On \(M\), we start with an atlas \(\{V_{\beta}\}\) such that each \(V_{\beta}\) is evenly covered by \(\pi\) with \(\pi^{-1}(V)=\bigcup_{i}U_{i}\)\\
+\begin{center}
+IMAGE 5\\
+\end{center}
+Each \(U_{i}\) carries an orientation (coming from \(O_{\hat{M}}\)).\\
+Define an orientation by \(V\) such that \(\pi|_{U_{i}}:U_{i}\to V\) is orientation preserving (i.e. \(\pi^{*}O_{V}=O_{U_{i}}\)). For a different \(U_{j}\),\\
+\begin{align*}
+  \pi^{*}O_{v}
+  =(\pi\circ\varphi)^{*}O_{V}
+  =\varphi^{*}\pi^{*}O_{V}
+  =\varphi^{*}O_{U_{i}}=O_{U_{j}}
+\end{align*}
+\((\Longrightarrow)\) As \(M\) is orientable, it has two orientations. Fix \(\hat{p}\in\hat{M}\), \(p=\pi(\hat{p})\in M\). Choose the orientation on \(M\) such that \(d\pi_{\hat{p}}:T_{\hat{p}}\hat{M}\to T_{p}M\) is orientation perserving. With this orientation \(O_{M}\), we have\\
+\begin{align*}
+  O_{\hat{M}}
+  =\pi^{*}O_{M}
+  =(\pi\circ\varphi)^{*}O_{M}
+  =\varphi^{*}\pi^{*}O_{M}
+  \varphi^{*}O_{\hat{M}}
+\end{align*}
+so any \(\varphi\in\operatorname{Aut}(\pi)\) is orientation preserving.\\
+\section*{Orientation Covering Space}
+\label{sec:org9ca1096}
+If \(M\) is a connected un-orientable manifold, then there exists \(\pi:\hat{M}\to M\) a 2-folded (2-sheet) covering map -- in the sense that \(\#\pi^{-1}(x)=2\) (e.g. \(S^{2}\to\R P^{2}\)) -- such that \(\hat{M}\) is orientable.\\
+\subsection*{Example: Mobius Band}
+\label{sec:orgea06efa}
+We have \(\pi/\left\langle \gamma \right\rangle\to M\)\\
+\begin{center}
+IMAGE 6\\
+\end{center}
+and \(\gamma^{2}:(x,y)\mapsto(x+2,y)\) which gives a cylinder with \(\overline{\gamma}:(\theta,y)\mapsto(-\theta,-y)\).\\
+\subsection*{Construction}
+\label{sec:orge1db716}
+Let \(M\) be connected. We construct\\
+\begin{align*}
+  \hat{M}
+  =\{(p,O_{p})\st p\in M,\;O_{p}\text{ is an orientation on }T_{p}M\}
+\end{align*}
+where \(\pi:\hat{M}\to M\) is given by \((p,O_{p})\mapsto p\) which is 2-folded.\\
+\begin{enumerate}
+\item \(\hat{M}\) has a smooth structure.\\
+\item with this smooth structure, \(\pi\) is a smooth covering map.\\
+\item \(U\subseteq M\) (not necessariy a chart) is evenly covered by \(\pi\) if and only if \(U\) is orientable.\\
+\end{enumerate}
+
+Given \((U,O)\) where \(U\) is a chart in \(M\) and \(O\) is an orientation on \(U\), we define \(\hat{U}_{O}\subseteq\hat{M}\) by\\
+\begin{align*}
+  \hat{U}_{O}
+  =\{(p,O_{p})\in\hat{M}\st p\in U\text{ and }O_{p}\text{ matches with }O\}
+\end{align*}
+Consider a basis\\
+\begin{align*}
+  \mathcal{B}=\{\hat{U}_{O}\st U\subseteq M\text{ a chart, and }O\text{ an orienation on }U\}
+\end{align*}
+\begin{enumerate}
+\item \(\mathcal{B}\) covers \(\hat{M}\)\\
+\item For \(\hat{U}_{O}\cap \hat{U}_{O}'\neq\0\), we have \((p,O_{p})\) such that \(p\in U\cap U'\) and \(O_{p}\) matches with both \(O_{U'}\) and \(O_{U}\). Choose \(V\subseteq U\cap U'\) and an orienation \(O_{V}\) such that \(O_{V}\) matches with \(O_{p}\). Then \(O_{V}\) matches with oth \(O_{U}\) and \(O_{U'}\), \(\hat{V}_{0}\subseteq \hat{U}_{O}\cap\hat{U}'_{O'}\).\\
+\end{enumerate}
+
+So \(\pi:\hat{U}_{O}\to U\) by \((p,O_{p})\mapsto p\) is a bijective homeomorphism, and it defines a smooth structure on \(\hat{M}\) such that \(\{\hat{U}_{O}\}\) is an atlas. Then \(\pi\) is a smooth covering map. In fact, every chart \(U\subseteq M\) is evenly covered by \(\hat{U}_{O}\) and \(\hat{U}_{-O}\).\\
+To show that \(\hat{M}\) is orientable, at each point \(\hat{p}=(p,O_{p})\in\hat{M}\) we give an orientation at \(T_{\hat{p}}\hat{M}\) such that \(d\pi_{\hat{p}}:T_{\hat{p}}\hat{M}\to(T_{p}M,O_{p})\) is orientation preserving. We need to show that this pointwise orientation is continuous.\\
+We have that \(\hat{p}=(p,O_{p})\in\hat{U}_{O}\) for the orientation of \(O\) on \(U\) matching with \(O_{p}\). Then \(\pi:\hat{U}_{O}\to(U,O)\) is orientation perserving (i.e. the orientation on \(\hat{U}_{O}\) is \(\pi^{*}O\)).\\
+Finally, we need to show that if \(U\subseteq M\) is open and evenly covered, then \(U\) is orientable. In fact, \(\pi^{-1}(U)=V_{1}\cup V_{2}\subseteq\hat{M}\) where \(\pi:V_{i}\to U\) is a diffeomorphism. Since \(\hat{M}\) is orientable, it induces an orientation on \(V_{1}\). Then we get an orientation on \(U\) through the diffeomorphism \(\pi\).\\
+Conversely, if \(U\) is orientable then it has two orientations -- call them \(O\) and \(-O\). So we can construct \(\hat{U}_{O}\) and \(\hat{U}_{-O}\) not necesasrily charts where \(\pi^{-1}(U)=\hat{U}_{O}\cup\hat{U}_{-O}\).\\
+\subsection*{Connectedness}
+\label{sec:org5ef4b5a}
+So far, we have \(\pi:\hat{M}\to M\) a 2-folded covering with \(M\) connected.\\
+\begin{enumerate}
+\item if \(M\) is orientable, then \(\hat{M}\) is two copies of \(M\) (i.e. \(\hat{M}\) is not connected).\\
+
+From above, we have that \(\pi^{-1}(M)\) is the disjoint union of two copies of \(M\).\\
+
+\item if instead \(M\) is un-orientable, then \(\hat{M}\) is connected.\\
+
+Fact: \(\pi:\hat{M}\to M\) a covering map with \(M\) connected, then \(\#\pi^{-1}(x)\) is constant on \(M\).\\
+Suppose \(\hat{M}\) is not connected, then let \(W\) be components with \(\pi|_{W}:W\to M\) covering maps. \(\#(\pi|_{W})^{-1}(x)\) is either one or two. If it is one, then \(\pi|_{W}:W\to M\) is a diffeomorphism. However \(W\) is orientable while \(M\) is not, a contradiction. If instead the cardinality is two, then \(W=\hat{M}\) and hence \(\hat{M}\) is connected.\\
+\end{enumerate}
+\subsection*{Corollary}
+\label{sec:org0f7ad59}
+If \(M\) is simply connected (i.e. \(\pi_{1}=\{e\}\)), then \(M\) is orientable. In fact, if \(M\) is orientable then \(\pi:\hat{M}\to M\) is a 2-folded covering with \(\hat{M}\) connected. If \(M\) is simply connected, then \(\hat{M}=M\) a contradiction.\\
+\subsubsection*{Remark}
+\label{sec:org6d6a557}
+If \(\pi_{1}(M)\) does not have a subgroup of index 2, then \(M\) is orientable.\\
+For example, \(\pi_{1}(\R P^{2})=\operatorname{Aut}(\pi)=\Z^{2}\) with \(\pi:S^{2}\to\R P^{2}\) and, for the Mobius band \(M\), \(\pi_{1}(M)=\operatorname{Aut}(\pi)=\Z=\left\langle \gamma \right\rangle\) has a subgroup \(\left\langle \gamma^{2} \right\rangle\) and \(2\Z\leq \Z\) is a subgroup with index 2.\\
+\section*{February 19, 2025}
+\label{sec:org9a26449}
+\section*{Integration in Rn}
+\label{sec:orge25db4c}
+In \(\R^{n}\), let \(\omega\in\Omega^{n}(\R^{n})\) and suppose that a domain \(D\) is ``good'' and compact. Then \(\omega=f\;dx^{1}\wedge\cdots\wedge dx^{n}\) and\\
+\begin{align*}
+  \int_{D}\omega
+  :=\int_{D}f\;dx^{1}\wedge\cdots\wedge dx^{n}.
+\end{align*}
+\section*{Proposition 16.1}
+\label{sec:org9423f6d}
+Suppose we have domains \(D,E\in\R^{n}\) and a diffeomorphism \(G:\overline{D}\to\overline{E}\). If \(\omega\in\Omega^{n}(\overline{E})\), then \(G^{*}\omega\in\Omega^{n}(\overline{D})\) and\\
+\begin{align*}
+  \int_{D}G^{*}\omega=\pm\int_{E}\omega
+\end{align*}
+where \(\pm\) depends on whether \(G\) preserves orientations (i.e. \(\det(DG)>0\) or \(\det(DG)<0\)).\\
+\subsection*{Proof}
+\label{sec:org651f65d}
+Write \(G:\overline{D}\to\overline{E}\) as \((x^{1},\ldots,x^{n})\mapsto(y^{1},\ldots,y^{n})\) and \(\omega=f(y^{1},\ldots,y^{n})\;dy^{1}\wedge\cdots\wedge dy^{n}\). Then since\\
+\begin{align*}
+  y^{i}=G^{i}(x^{i},\ldots,x^{n}
+  \quad\text{and}\quad
+  dy^{1}\wedge\cdots\wedge dy^{n}
+  =dG^{1}\wedge\cdots\wedge dG^{n},
+\end{align*}
+we have\\
+\begin{align*}
+  \int_{E}\omega
+  &=\int_{E}f(y^{1},\ldots,y^{n})\;dy^{1}\wedge\cdots\wedge dy^{n} \\
+  &\overset{y^{i}=y^{i}(x^{1},\ldots,x^{n})}{=}\int_{D}f\circ G(x^{1},\ldots,x^{n})|\det(DG)|\;dx^{1}\wedge\cdots\wedge dx^{n} \\
+  &=\pm\int_{D}(f\circ G)\cdot\det(DG)\;dx^{1}\wedge\cdots\wedge dx^{n} \\
+  &=\pm\int_{D}G^{*}\omega \\
+  &=G^{*}(f\;dy^{1}\wedge\cdots\wedge dy^{n}) \\
+  &=(f\circ G)G^{*}(dy^{1}\wedge\cdots\wedge dy^{n})
+\end{align*}
+\subsection*{More Generally}
+\label{sec:org52482c3}
+If \(\omega\in\Omega^{n}(\R^{n})\) with compact suppoert, then we can pick a ``good'' domain \(D\) such that \(\supp\omega\subseteq D\) and \(\overline{D}\) is compact. Define\\
+\begin{align*}
+  \int_{\R^{n}}\omega:=\int_{D}\omega
+\end{align*}
+This works similarly on any open set \(U\supseteq\supp\omega\). Pick a good domain \(D\) such that \(\supp\omega\subseteq D\subseteq U\) with \(\overline{D}\) compact. Then\\
+\begin{align*}
+  \int_{U}\omega:=\int_{D}\omega
+\end{align*}
+where \(U\) may be chosen to be an open ball \(B_{r}^{n}(0)\).\\
+\section*{Integration on Manifolds}
+\label{sec:org4cd4101}
+On a manifold \(M^{n}\) with \(\omega\in\Omega^{n}(M)\), we first consider the case where \(\supp\omega\subseteq U\) for \(U\) a chart.\\
+\begin{center}
+IMAGE 1\\
+\end{center}
+\begin{align*}
+  \int_{M}\omega:=
+  \pm_{\phi(U)}(\phi^{-1})^{*}\omega
+\end{align*}
+where \(\pm\) depends on whether \(\phi:(U,O|_{U})\to(\phi(U),O_{E})\) is orientation preserving. This is well defined\\
+\begin{center}
+IMAGE 2\\
+\end{center}
+Since \(\psi(W)=\psi\circ\phi^{-1}(\phi(W))\),\\
+\begin{align*}
+  \int_{\psi(W)}(\psi^{-1})^{*}\omega
+  =\int_{\psi\circ\phi^{-1}(\phi(W))}(\psi^{-1})^{*}\omega
+  =\int_{\phi(W)}(\psi\circ\phi^{-1})^{*}(\psi^{-1})^{*}\omega
+  =\int_{\phi(W)}(\phi^{-1})^{*}\omega
+\end{align*}
+\subsection*{General Case}
+\label{sec:org1bb065e}
+Suppose \(M^{n}\) is oriented with \(\omega\in\Omega^{n}(M)\) having comapct support.\\
+Let \(\{U_{i}\}\) be a finite open cover of \(\supp\omega\) such that each \(U_{i}\) is a chart, and \(\psi_{i}\) a partition of unity subordinated to \(U_{i}\) (i.e. \(\supp\psi_{i}\subseteq U_{i}\)). Assume further that \(\phi_{i}:(U_{i},O|_{U_{i}})\to(\phi_{i}(U_{i}),O_{E})\) is orientation preserving (reversing introduces a sign). Define\\
+\begin{align*}
+  \int_{M}\omega
+  :=\sum_{i=1}^{n}\int_{M}\psi_{i}\omega
+\end{align*}
+This is well defined. Suppose \(\{\tilde{U}_{j}\}\) is another open cover and \(\tilde{\psi}_{j}\) another partition of unity with respect to \(\{\tilde{U}_{j}\}\). Then\\
+\begin{align*}
+  \int_{M}\psi_{i}\omega
+  =\int_{M}\left( \sum_{j}\tilde{\psi}_{j} \right)\psi_{i}\omega
+  =\sum_{j}\int_{M}\tilde{\psi}_{j}\psi_{i}\omega.
+\end{align*}
+Summing over \(i\),\\
+\begin{align*}
+  \sum_{i}\int_{M}\psi_{i}\omega
+  =\sum_{i,j}\int_{M}\tilde{\psi}_{j}\psi_{i}\omega
+  =\sim_{j}\int_{M}\tilde{\psi}_{j}\left( \sum_{i}\psi_{i} \right)\omega
+  =\sum_{j}\int_{M}\tilde{\psi}_{j}\omega.
+\end{align*}
+\subsection*{Integration over Parameterizations}
+\label{sec:org1ce78e8}
+Take \(M^{n}\) oriented and \(\omega\in\Omega^{n}(M^{n})\) with comapct support. Suppose \(D_{1},\ldots,D_{k}\) are open domains in \(\R^{n}\)and \(F_{i}:\overline{D}_{i}\to M\) such that\\
+\begin{enumerate}
+\item \(F_{i}|_{D_{i}}\) is a diffeomorphism onto its image \(W_{i}:=F_{i}(D_{i})\).\\
+\item \(W_{i}\cap W_{j}=\0\), \(\forall i,j\), and\\
+\item \(\bigcup_{i}\overline{W}_{i}=M\).\\
+\end{enumerate}
+
+Then\\
+\begin{align*}
+  \int_{M}\omega
+  =\sum_{i=1}^{n}\int_{W_{i}}\omega
+  =\sum_{i=1}^{n}\int_{D_{i}}F_{i}^{*}\omega.
+\end{align*}
+\subsubsection*{Example}
+\label{sec:org35ca9ed}
+\begin{align*}
+  \omega=x\;dy\wedge dz+y\;dz\wedge dx+z\;dx\wedge dy
+\end{align*}
+on \(S^{2}\subseteq\R^{3}\). Parameterize \(S^{2}\) by \(F:[0,\pi]\times[0,2\pi]\to S^{2}\) by \((\varphi,\theta)\mapsto(\sin\varphi\cos\theta,\sin\varphi\sin\theta,\cos\varphi)\).\\
+\begin{center}
+IMAGE 3\\
+\end{center}
+Orient \(S^{2}\) by an outward normal vector field \(N\) (i.e. the induced orientation on \(S^{2}\) is \(N\inprod(e^{1}\wedge e^{2}\wedge e^{3}\)).\\
+Then we need to show that \((N\inprod(e^{1}\wedge e^{2}\wedge e^{3})\left( DF\left( \frac{\partial}{\partial \varphi} \right),DF\left( \frac{\partial}{\partial\theta} \right) \right)>0\).\\
+\begin{align*}
+  DF\left( \frac{\partial}{\partial\varphi} \right)
+  &=\frac{\partial F}{\partial\phi}
+  =(\cos\phi\cos\theta,\cos\phi\sin\phi,-\sin\phi) \\
+  DF\left( \frac{\partial}{\partial\theta} \right)
+  &=\frac{\partial F}{\partial\theta}
+  =(-\sin\phi\sin\theta,\sin\phi\cos\phi,0)
+\end{align*}
+At \(q=(0,1,0)\in S^{2}\), \(q=F\left( \frac{\pi}{2},\frac{\pi}{2} \right)\) so\\
+\begin{align*}
+  DF\left( \frac{\partial}{\partial\varphi} \right)
+  &=(0,0,-1) \\
+  DF\left( \frac{\partial}{\partial\theta} \right)
+  &=(-1,0,0)
+\end{align*}
+while \(N=(0,1,0)\). So we compute \((e^{1}\wedge e^{2}\wedge e^{3})\left( N,DF\left( \frac{\partial}{\partial \varphi} \right),DF\left( \frac{\partial}{\partial\theta} \right) \right)\) is\\
+\begin{align*}
+  \det
+  \begin{pmatrix}
+    0 & 1 & 0 \\
+    0 & 0 & -1 \\
+    -1 & 0 & 0
+  \end{pmatrix}
+  =1
+\end{align*}
+and preserves orientation. So \(\int_{S^{2}}\omega=\int_{D}F^{*}\omega\) and\\
+\begin{align*}
+  F^{*}dx
+  =d(F^{*}x)
+  =d(x\circ F)
+  =d(\sin\varphi\cos\theta)
+  =\sin\varphi\;d\cos\theta+\cos\theta\;d\sin\varphi
+  =-\sin\varphi\sin\theta\;d\theta+\cos\varphi\cos\theta\;d\varphi
+\end{align*}
+Similarly,\\
+\begin{align*}
+  F^{*}(dy)
+  =d(\sin\varphi\sin\theta)
+  =\sin\varphi\;d\sin\theta+\sin\theta\;d\sin\varphi
+  =\sin\varphi\cos\theta\;d\theta+\cos\varphi\sin\theta\;d\varphi
+\end{align*}
+Finally, \(F^{*}dz=d\cos\varphi=-\sin\varphi\;d\phi\), so\\
+\begin{align*}
+  F^{*}\omega
+  &=(\sin\varphi\cos\theta)\cdot(\sin^{2}\varphi\cos\theta\;d\varphi\wedge d\theta)
+  +(\sin\varphi\sin\theta)\cdot(\sin^{2}\varphi\sin\theta\;d\varphi\wedge d\theta) \\
+  &\hspace{3em}+\cos\varphi(\sin^{2}\theta\sin\varphi\cos\varphi\;d\varphi\wedge d\theta)
+  +\cos^{2}\theta\sin\varphi\cos\varphi\;d\varphi\wedge d\theta \\
+  &=(\sin^{3}\varphi\cos^{2}\theta+\sin^{3}\varphi\sin^{2}\theta)\;d\varphi\wedge d\theta
+  +(\cos^{2}\varphi\sin\phi)\;d\phi\wedge d\theta \\
+  &=\sin\varphi\;d\varphi\wedge d\theta
+\end{align*}
+We conclude\\
+\begin{align*}
+  \int_{S^{2}}\omega
+  =\int_{D}F^{*}\omega
+  =\int_{D}\sin\varphi\;d\phi d\theta
+  =\int_{0}^{\pi}\sin\phi\;d\phi\int_{0}^{2\pi}\;d\theta
+  =2\cdot2\pi
+  =4\pi.
+\end{align*}
+\section*{Stokes' Theorem}
+\label{sec:orgdf93926}
+For \(M^{n}\) with boundary \(\partial M\) (\(\dim\partial M=n-1\)),\\
+\begin{align*}
+  \int_{M}d\omega
+  =\int_{\partial M}\omega
+\end{align*}
+for all \(\omega\in\Omega^{n-1}(M)\) where \(\partial M\) has outward orientation.\\
+\subsection*{Example}
+\label{sec:orgac4593f}
+Take \(\omega\in\Omega^{2}(B^{3}_{1})\), then\\
+\begin{align*}
+  d\omega
+  =dx\wedge dy\wedge dz+dy\wedge dz\wedge dx+dx\wedge dx\wedge dy
+  =3dx\wedge dy\wedge dz.
+\end{align*}
+Since \(S^{2}=\partial B_{1}^{3}\),\\
+\begin{align*}
+  \int_{S^{2}}\omega
+  =\int_{\partial B_{1}^{3}}\omega
+  =\int_{B_{1}^{3}}d\omega
+  =\int_{B_{1}^{3}}3dx\wedge dy\wedge dz
+  =3\cdot\operatorname{vol}(B_{1}^{3})
+  =3\cdot\frac{4}{3}\pi
+  =4\pi.
+\end{align*}
+\subsection*{Example}
+\label{sec:org31784df}
+Take \(M=[a,b]\subseteq\R^{1}\) with orientation \(dt\)\\
+\begin{center}
+IMAGE 4\\
+\end{center}
+We have that \(\partial M=\{a\}\cup\{b\}\). So, at \(a\) \(\left( -\frac{\partial}{\partial t} \right)\inprod(dt)=-1\) and at \(b\) \(\left( \frac{\partial}{\partial t} \right)\inprod(dt)=1\). So\\
+\begin{align*}
+  \int_{a}^{b}f'(t)\;dt
+  =\int_{M}d\omega
+  =\int_{\partial M}\omega
+  =-f(a)+f(b).
+\end{align*}
+\subsection*{Example}
+\label{sec:org4a6b437}
+Take a line integral along \(\gamma:[0,1]\to M\) with \(\omega\in\Omega^{1}(M)\).\\
+Suppose \(\omega=df\). Then\\
+\begin{align*}
+  \int_{\gamma}\omega
+  =\int_{\gamma}df
+  =\int_{\partial\gamma}f
+  =f(\gamma(b))-f(\gamma(a)).
+\end{align*}
+\subsection*{Consequences}
+\label{sec:orgb1d4c9d}
+If \(M^{n}\) is compact, oriented and without boundary, then\\
+\begin{align*}
+  \int_{m}d\omega
+  =\int_{\partial M}\omega
+  =0
+\end{align*}
+for \(\omega\in\Omega^{n-1}(M)\). That is to say integrating an exact form over a closed manifold returns zero.\\
+If \(M^{n}\) is compact and oriented with \(\omega\in\Omega^{n-1}(M)\) satisfying \(d\omega=0\) (i.e. closed), then\\
+\begin{align*}
+  \int_{\partial M}\omega
+  =\int_{M}d\omega
+  =0.
+\end{align*}
+\subsection*{Remark}
+\label{sec:orgec5f4f6}
+If we write \((M,\omega):=\int_{M}\omega\), then Stokes' theorem says \((\partial M,\omega)=(M,d\omega)\).\\
+\subsection*{Proof}
+\label{sec:org1b05b69}
+In the special case that \(M=\R^{n}\) with \(\omega\in\Omega^{n-1}(\R^{n})\) having compact support.\\
+Cover the support of \(\omega\) by a large cube \([-R,R]^{n}\). Then\\
+\begin{align*}
+  \omega
+  &=\omega_{i}dx^{1}\wedge\cdots\wedge\widehat{dx^{i}}\wedge\cdots\wedge dx^{n} \\
+  d\omega
+  &=\sum_{i}\frac{\partial\omega_{i}}{\partial x^{i}}dx^{i}\wedge dx^{1}\wedge\cdots\wedge\widehat{dx^{i}}\wedge\cdots\wedge dx^{n} \\
+  &=\sum_{i=1}^{n}(-1)^{i-1}\frac{\partial\omega_{i}}{dx^{i}}dx^{1}\wedge\cdots\wedge dx^{n}.
+\end{align*}
+It follows that from Frobenius and the Fundamental Theorem of Calculus that\\
+\begin{align*}
+  \int_{\R^{n}}d\omega
+  &=\sum_{i=1}^{n}(-1)^{i-1}\int_{[-R,R]^{n}}\frac{\partial\omega_{i}}{\partial x^{i}}dx^{1}\wedge\cdots\wedge dx^{n} \\
+  &=\sum_{i=1}^{n}(-1)^{i-1}\int_{-R}^{R}\cdots \left( \int_{-R}^{R}\frac{\partial\omega_{i}}{\partial x^{i}}\;dx^{i} \right)\cdots \\
+  &=\cdots\left( \omega_{i}(\cdots,R,\cdots)-\omega_{i}(\cdots,-R,\cdots) \right) \cdots \\
+  &=0
+\end{align*}
+In the special case that \(M=\mathbb{H}^{n}\) with \(\omega\in\Omega^{n-1}(\mathbb{H}^{n})\) having compact support.\\
+Covering the support of \(\omega\) by \([-R,R]^{n-1}\times[0,R]\),\\
+\begin{align*}
+  \int_{\mathbb{H}^{n}}d\omega
+  &=\sum_{i=1}^{n}(-1)^{i-1}\int_{[-R,R]^{n-1}\times[0,R]}\frac{\partial\omega_{i}}{\partial x^{i}}dx^{1}\cdots dx^{n} \\
+  &=(-1)^{n-1}\int_{[-R,R]^{n-1}\times[0,R]}\frac{\partial\omega_{n}}{\partial x^{n}}dx^{1}\cdots dx^{n} \\
+  &=(-1)^{n-1}\int_{-R}^{R}\cdots\int_{-R}^{R}\left( \int_{0}^{R}\frac{\partial\omega_{n}}{\partial x^{n}}dx^{n})dx^{1}\cdots dx^{n} \right) \\
+  &=(-1)^{n}\int_{-R}^{R}\cdots\int_{-R}^{R}\omega_{n}(x^{1},\ldots,x^{n-1},0)dx^{1}\cdots dx^{n-1} \\
+  &=(-1)^{n}\int_{\partial\mathbb{H}^{n}\cap\supp\omega}\omega_{n}dx^{1}\wedge\cdots\wedge dx^{n-1}
+\end{align*}
+Recall that the induced orientation on the boundary \(\partial\mathbb{H}^{n}\) matches with the standard orientation on \(\R^{n-1}\) if and only if \(n\) is even. So\\
+\begin{align*}
+  \int_{\partial\mathbb{H}^{n}}\omega
+  &=\sum_{i}\int_{\partial\mathbb{H}^{n}}\omega_{i}dx^{1}\wedge\cdots\wedge\widehat{dx^{i}}\wedge\cdots\wedge dx^{n} \\
+  &=\int_{\partial\mathbb{H}^{n}}\omega_{n}dx^{1}\wedge\cdots\wedge dx^{n-1}
+\end{align*}
+which matches our previous calculation since \((-1)^{n}=1\) for \(n\) even.\\
+\section*{Green's Theorem}
+\label{sec:orgf1c3c43}
+If \(D\subseteq\R^{2}\) is a domain with \(\overline{D}\) compact, then\\
+\begin{align*}
+  \int_{\partial D}P\;dx+q\;dy
+  =\int_{D}\left( \frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y} \right)\;dxdy
+\end{align*}
+and \(\omega=P\;dx+Q\;dy\in\Omega^{1}(\R^{2})\) so\\
+\begin{align*}
+  d\omega
+  =\frac{\partial P}{\partial y}\;dy\wedge dx+\frac{\partial Q}{\partial x}\;dx\wedge dy
+  =\left( \frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y} \right)\;dx\wedge dy
+\end{align*}
+Therefore\\
+\begin{align*}
+  \int_{\partial D}\omega
+  \int_{D}d\omega
+  =\int\int_{D}\left( \frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y} \right);dxdy
+\end{align*}
+with \(\partial D\) outward oriented.\\
+\section*{February 24, 2025}
+\label{sec:org8ab3d34}
+\section*{Recall: Stoke's Theorem}
+\label{sec:org8786ff0}
+For \(M^{n}\) a smooth manifold and \(\omega\in\Omega^{n-1}_{C}(M)\) with compact support,\\
+\begin{align*}
+  \int_{M}d\omega
+  =\int_{\partial M}\omega.
+\end{align*}
+\begin{enumerate}
+\item \(\omega\in\omega^{n-1}_{C}(\R^{n})\), \(\int_{\R^{n}}d\omega=0\).\\
+\item \(\omega\in\omega^{n-1}_{C}(\mathbb{H}^{n})\), \(\int_{\mathbb{H}^{n}}d\omega=\int_{\partial\mathbb{H}^{n}}\omega\).\\
+\end{enumerate}
+\subsection*{Special Case}
+\label{sec:org5e87607}
+If \(\supp\omega\subseteq(U,\phi)\) a chart, then \(\supp(d\omega)\subseteq U\).\\
+\begin{center}
+IMAGE 1\\
+\end{center}
+\begin{align*}
+  \int_{M}d\omega
+  =\int_{U}\varphi\omega
+  =\int_{\varphi(U)}(\varphi^{-1})^{*}d\omega
+  =\int_{\varphi(U)}d(\varphi^{-1*}\omega).
+\end{align*}
+So\\
+\begin{align*}
+  \int_{\R^{n}}d(\varphi^{-*}\omega)=0
+\end{align*}
+and\\
+\begin{align*}
+  \int_{\mathbb{H}^{n}}d(\varphi^{-1*}\omega
+  \int_{\partial\mathbb{H}^{n}}\varphi^{-1*}\omega
+  =\int_{\partial\mathbb{H}^{n}\cap\varphi(U)}\varphi^{-1*}\omega
+  =\int_{\partial M\cap U}\omega
+  =\int_{\partial M}\omega
+\end{align*}
+\section*{Stoke's Theorem: General CAse}
+\label{sec:org4563139}
+In general, \(\omega\in\Omega_{C}^{n-1}(M)\).\\
+Let \(\{\psi_{i}\}_{i}\) be a partition of unity with respect to a countable cover of \(M\) by charts. Then, recalling that \(d(\omega\wedge\eta)=(d\omega)\wedge\eta+(-1)^{k}\omega\wedge d\eta\) with \(k=\deg\omega\),\\
+\begin{align*}
+  \int_{\partial M}\omega
+  =\sum_{i}\int_{\partial M}\psi_{i}\omega
+  =\sum_{i}\int_{M}d(\psi_{i}\omega)
+  =\sum_{i}\int_{M}d\psi_{i}\wedge\omega+\psi_{i}d\omega
+  =\int_{M}d\left( \overbrace{\sum_{i}\psi_{i}}^{=1} \right)\wedge\omega+\int_{M}\left( \overbrace{\sum_{i}\psi_{i}}^{=1}\right)\;d\omega
+  =\int_{M}d\omega
+\end{align*}
+\section*{Integration on Riemannian Manifolds}
+\label{sec:org501c257}
+\subsection*{Recall}
+\label{sec:orge632db5}
+For \((M^{n},g)\) oriented, the volume form \(\omega_{g}\) is an \(n\)-form such that \(\omega_{g}(E_{1},\ldots,E_{n})=1\) for all positively oriented orthonormal frame \(\{E_{1},\ldots,E_{n}\}\).\\
+Inside a chart \((U_{i},(x^{1},\ldots,x^{n}))\) it has the formula\\
+\begin{align*}
+  \omega_{g}=\sqrt{\det g}\cdot dx^{1}\wedge\cdots\wedge dx^{n}
+\end{align*}
+where \(\det g=\det(g_{ij})\).\\
+\subsection*{Definition:}
+\label{sec:orgc738714}
+Let \(f\in C_{C}^{\infty}(M)\). Define\\
+\begin{align*}
+  \int_{M}f=\int_{m}f\omega_{g}
+\end{align*}
+\subsection*{Remarks}
+\label{sec:orgaa92978}
+\begin{enumerate}
+\item \(\operatorname{vol}(M)=\int_{M}1\)\\
+\item \(\omega_{g}\in\Omega^{n}(M)\) is usually written as \(dV_{g}\) or \(d \operatorname{vol}_{g}\).\\
+\end{enumerate}
+\section*{Proposition}
+\label{sec:orgf7ac29f}
+For \((M,g)\) oriented and \(f\in C_{C}^{\infty}(M)\), if \(f\geq 0\) then \(\int_{M}f\geq 0\). Equality holds if and only if \(f\equiv 0\) on \(M\).\\
+\subsection*{Proof}
+\label{sec:orgb4a5aa1}
+\begin{align*}
+  \int_{M}f
+  =\int_{m}f\;\omega_{g}
+  =\sum_{i}\int_{U_{i}}\psi_{i}f\omega_{g}
+  =\sum_{i}\int_{U_{i}}\psi_{i}f\sqrt{\det g_{ij}}dx^{1}\wedge\cdots\wedge dx^{n}
+\end{align*}
+where each term is greater than or equal to zero (assuming positive orientation on each \(U_{i}\)).\\
+\section*{On Manifolds with Boundary}
+\label{sec:org6498143}
+Take \(\partial M\subseteq M^{n}\) with outward orientation.\\
+Recall that for \(N\) an outward pointing vector field along \(\partial M\), if \(M\) has an orientation \(n\)-form \(\omega\), then \(\partial M\) has an induced orientation given by\\
+\begin{align*}
+  (N\inprod\omega)\in\omega^{n-1}(\partial M).
+\end{align*}
+If \((M,g)\) is an oriented Riemannian manifold with boundary \(\partial M\), \(\omega_{g}\) a volume form and \(N\) a unit outward pointing vector field orthogonal to \(\partial M\).\\
+Let \(\tilde{g}\) be the induced Riemannian metric on \(\partial M\), we observe that\\
+\begin{align*}
+  \omega_{\tilde{g}}
+  =N\inprod \omega_{g}
+\end{align*}
+Let \(\{E_{1},\ldots,E_{n-1}\}\) be a (locally defined) orthonormal frame on \(\partial M\). \(\{E_{1},\ldots,E_{n}\}\) being positively oriented on \(\partial M\) means that\\
+\begin{align*}
+  (N\inprod\omega_{g})(E_{1},\ldots,E_{n})=1
+\end{align*}
+\section*{Lemma 16.30}
+\label{sec:org52c6bf3}
+For \((M,g)\) oriented and \((\partial M,\tilde{g})\), if \(X\in\mathfrak{X}(\partial M)\), then \((X\inprod\omega_{g})|_{\partial M}=g(X,N)\omega_{\tilde{g}}\).\\
+\subsection*{Proof}
+\label{sec:org4d7319e}
+Decompose \(X=X^{T}+X^{\perp}\) where \(X^{\perp}=g(X,N)N\) and \(X^{T}=X-X^{\perp}\). Write\\
+\begin{align*}
+  (X^{\perp}\inprod\omega_{g})|_{\partial M}
+  =g(X,N)(N\inprod\omega_{g})|_{\partial M}
+  =g(X,N)\omega_{\tilde{g}}
+\end{align*}
+and\\
+\begin{align*}
+  (X^{T}\inprod\omega_{g})|_{\partial M}(E_{1},\ldots,E_{n-1})
+  =\omega_{g}(X^{T},E_{1},\ldots,E_{n-1})
+  =0
+\end{align*}
+\section*{Generalized Stokes on Manifold with Boundary}
+\label{sec:orge9e2827}
+Take \(X\in\mathfrak{X}(M)\), \((X\inprod\omega_{g})\in\Omega^{n-1}(M)\) and \(d(X\inprod\omega_{g})\in\Omega^{n}(M)\). Write\\
+\begin{align*}
+  \int_{M}d(X\inprod\omega_{g})
+  =\int_{\partial M}X\inprod\omega_{g}
+  =\int_{\partial M}g(X,N)\omega_{\tilde{g}}
+  =\int_{\partial M}g(X,N).
+\end{align*}
+\section*{Definition: Divergence}
+\label{sec:orgd168309}
+Let \(\operatorname{div}X\in C^{\infty}(M)\) defined by \(d(X\inprod\omega_{g})=\operatorname{div}X\cdot\omega_{g}\). Then\\
+\begin{align*}
+  \int_{M}d(X\inprod \omega_{g})
+  =\int_{M}\operatorname{div}X\cdot\omega_{g}
+  =\int_{M}\operatorname{div}X
+\end{align*}
+\section*{Theorem: Divergence Theorem}
+\label{sec:org6ad625e}
+\begin{align*}
+  \int_{X}\operatorname{div}X
+  =\int_{\partial M}g(X,N)
+\end{align*}
+\subsection*{Remark}
+\label{sec:org074830d}
+Inside \(\R^{n}\), \(X=X^{i}\frac{\partial}{\partial X^{i}}\in\mathfrak{X}(\R^{n})\), then \(\operatorname{div}X=\frac{\partial}{\partial X^{i}}(X^{i})\).\\
+\section*{Problem 16-11}
+\label{sec:org3012bb5}
+\begin{align*}
+  \operatorname{div}\left( X^{i}\frac{\partial}{\partial X^{i}} \right)
+  =\frac{1}{\sqrt{\det g}}\frac{\partial}{\partial X^{i}}\left( X^{i}\sqrt{\det g} \right)
+\end{align*}
+For \((\R^{n},g_{E})\), \(g_{ij}=\delta_{ij}\) and \(\sqrt{\det g}=1\). Then \(\operatorname{div}\left( X^{i}\frac{\partial}{\partial X^{i}} \right)=\frac{\partial}{\partial X^{i}}(X^{i})\).\\
+\section*{Problem 16-9}
+\label{sec:org55b149d}
+\begin{align*}
+  \omega
+  =|x|^{-n}\sum_{i=1}^{n}(-1)^{i-1}x^{i}dx^{1}\wedge\cdots\hat{dx^{i}}\wedge\cdots\wedge dx^{n}
+  \in\Omega^{n-1}(\R^{n}-\{0\})
+\end{align*}
+and\\
+\begin{align*}
+  \omega|_{S^{n-1}}
+  =\sum_{i=1}^{n}(-1)^{i-1}x^{i}dx^{1}\wedge\cdots\wedge\hat{dx^{i}}\wedge\cdots\wedge dx^{n}
+\end{align*}
+For example\\
+\begin{align*}
+  n=2\quad \omega|_{S^{1}}&=x\;dy-y\;dx \\
+  n=3\quad \omega|_{S^{2}}&=x\;dy\wedge dz\underbrace{-y\;dx\wedge dz}_{+y\;dz\wedge dx}+z\;dx\wedge dy
+\end{align*}
+Claim: \(\omega|_{S^{n-1}}\) is the standard volume form on \(S^{n-1}\) (\(S^{n-1}\injectsto\R^{n}\) or \(S^{n-1}=\partial B_{1}^{n}\)). We need to check that \(\omega_{S^{n-1}}=(N\inprod\omega_{E})\)\\
+We have that \(N\) is \((x^{1},\ldots,x^{n})\) at the point \((x^{1},\ldots,x^{n})\) (i.e. \(N=x^{i}\frac{\partial}{\partial x^{i}}\) on \(S^{n-1}\)). Write\\
+\begin{align*}
+  (N\inprod\omega_{E})
+  =\left( x^{i}\frac{\partial}{\partial x^{i}} \right)\inprod(dx^{1}\wedge\cdots\wedge dx^{n})
+  =x^{i}\left( \frac{\partial}{\partial x^{i}}\inprod(dx^{1}\wedge\cdots\wedge dx^{n} \right)
+\end{align*}
+Compute\\
+\begin{align*}
+  \left( \frac{\partial}{\partial x^{1}}\inprod(dx^{1}\wedge\cdots\wedge dx^{n} \right)(E_{1},\ldots,E_{n-1})
+  &=dx^{1}\wedge\cdots\wedge dx^{n}\left( \frac{\partial}{\partial x^{1}},E_{1},\ldots,E_{n-1} \right) \\
+  &=\operatorname{det}
+  \begin{pmatrix}
+    dx^{1}\left( \frac{\partial}{\partial x^{1}} \right) & \overbrace{dx^{2}\left( \frac{\partial}{\partial x^{1}} \right)}^{=0} & \cdots & \overbrace{dx^{n}\left( \frac{\partial}{\partial x^{1}} \right)}^{=0} \\
+    dx^{1}(E_{1}) & \cdots dx^{2}(E_{1}) & \cdots & dx^{n}(E_{1}) \\
+    \vdots & & & \vdots \\
+    dx^{1}(E_{n-1}) & \cdots dx^{2}(E_{n-1}) & \cdots & dx^{n}(E_{n-1}) \\
+  \end{pmatrix} \\
+  &=dx^{2}\wedge\cdots\wedge dx^{n}(E_{1},\ldots,E_{n-1})(-1)^{i-1}
+\end{align*}
+In general,\\
+\begin{align*}
+  \frac{\partial}{\partial x^{i}}\inprod\left( dx^{1}\wedge\cdots\wedge dx^{n} \right)
+  =\frac{\partial}{\partial x^{i}}\inprod(dx^{i}\wedge dx^{1}\wedge \cdots\wedge\hat{dx^{i}}\wedge\cdots\wedge dx^{n})
+  =(-1)^{i-1}dx^{1}\wedge\cdots\wedge\hat{dx^{i}}\wedge\cdots\wedge dx^{n}
+\end{align*}
+\subsection*{Conclusion}
+\label{sec:org4e65cac}
+\(\omega|_{S^{n-1}}\) is the volume form on \(S^{n-1}\), \(0<\int_{S^{n-1}}\omega|_{S^{n-1}}\).\\
+\begin{enumerate}
+\item \(\omega|_{S^{n-1}}\in\Omega^{n-1}(S^{n-1})\) is not exact (if it is, \(\omega= d\eta\) and \(\int_{S^{n-1}}\omega=\int_{S^{n-1}}d\eta=0\))\\
+\item \(\omega|_{S^{n-1}}\) is closed (By direct calculation on \(d\omega\) on \(\R^{n}-\{0\}\)).\\
+\end{enumerate}
+\section*{Proposition 16.33}
+\label{sec:org62e492e}
+Let \((M,g)\) be an oriented Riemannian manifold and \(X\in\mathfrak{X}(M)\) a complete vector field.\\
+Let \(\theta\) be the flow of \(X\). Then \(\operatorname{div} X\equiv 0\) if and only if \(\theta_{t}\) is volume preserving for all time.\\
+\subsection*{Proof}
+\label{sec:orgef13d00}
+Let \(D\subseteq M\) be any compact domain.\\
+\begin{align*}
+  \operatorname{vol}(\theta_{t}(D))
+  =\int_{\theta_{t}(D)}\omega_{g}
+  =\int_{D}\theta^{*}_{t}\omega_{g}
+\end{align*}
+Recall Cartan's Formula: \(\mathcal{L}_{X}=i_{X}\circ d+ d\circ i_{X}\). So\\
+\begin{align*}
+  \mathcal{L}_{X}(\omega_{g})
+  =X\inprod(\overbrace{d\omega_{g}}^{=0})+d(X\inprod\omega_{g})
+  =\operatorname{div}X\cdot\omega g
+\end{align*}
+Therefore\\
+\begin{align*}
+  \frac{d}{dt}\Big|_{t=t_{0}}\operatorname{vol}(\theta_{t}(D))
+  &=\int_{D}\frac{d}{dt}\Big|_{t=t_{0}}\theta_{t}^{*}\omega_{g} \\
+  &=\int_{D}\theta_{t}^{*}(\mathcal{L}_{X}\omega_{g}) \\
+  &=\int_{D}\theta_{t_{0}}^{*}(\operatorname{div}X\cdot\omega_{g}) \\
+  &=\int_{\theta_{t_{0}}(D)}\operatorname{div}X\cdot\omega_{g}
+\end{align*}
+If \(\operatorname{div}X\equiv 0\) on \(M\), then the right hand side is zero. Hence \(\operatorname{vol}(\theta_{t}(D))\) is a constant function (i.e. \(\theta_{t}\) is volume preserving everywhere).\\
+If instead \(\theta_{t}\) is assumed to be volume preserving, then the left hand side is zero for all times \(t_{0}\) and any domain \(D\). Then, without loss of generality for \(t_{0}=0\), \(\int_{D}\operatorname{div}X= 0\) (i.e. \(\operatorname{div X}\equiv 0\)).\\
+\section*{Remark}
+\label{sec:org8c0c192}
+For \(f\in C^{\infty}(M)\), \(\operatorname{grad}f\in\mathfrak{X}(M)\), \(\Delta f:=\operatorname{div}(\operatorname{grad}f)\in C^{\infty}(M)\).\\
+In \((\R^{n},g_{E})\), \(\operatorname{grad}f=\frac{\partial f}{\partial x^{i}}\cdot\frac{\partial}{\partial x^{i}}\) and \(\Delta f:=\operatorname{div}(\operatorname{grad}f)=\sum_{i=1}^{n}\frac{\partial^{2}f}{\partial(x^{i})^{2}}\).\\
+\section*{Recall: Poincaré Lemma}
+\label{sec:orgc6585a1}
+Recall that if \(U\subseteq\R^{n}\) is star-shaped, then \(\omega\in\Omega^{1}(U)\) is closed if and only if \(\omega\) is exact.\\
+For \((\Longleftarrow)\), this is always true; for \((\Longrightarrow)\) we need star-shaped.\\
+\section*{Definition: Path-homotopic}
+\label{sec:org5f4c63e}
+\(\gamma_{0},\gamma_{1}:I\to M\) continuous such that \(\gamma_{0}(a)=\gamma_{1}(a)=p\) and \(\gamma_{0}(b)=\gamma_{1}(b)=q\).\\
+\begin{center}
+IMAGE 2\\
+\end{center}
+A path-homotopy between \(\gamma_{0}\) and \(\gamma_{1}\) is a continuous map \(H:I\times[0,1]\to M\) such that\\
+\begin{align*}
+  H(\cdot,0)=\gamma_{0} \quad H(a,\cdot)=p \\
+  H(\cdot,1)=\gamma_{1} \quad H(b,\cdot)=q
+\end{align*}
+\section*{Proposition}
+\label{sec:orgc05b32d}
+Let \(\gamma_{0},\gamma_{1}:[a,b]\to M\) be smooth path-homotopic, and let \(\omega\in\Omega^{1}(M)\) be closed. Then \(\int_{\gamma_{0}}\omega=\int_{\gamma_{1}}\omega\).\\
+\subsection*{Proof}
+\label{sec:org869a62d}
+Assume \(a=0\) and \(b=1\), then noting that faces 2 and 4 (see above) collapse to points with integral zero,\\
+\begin{align*}
+  0
+  =\int_{H(I)}\overbrace{d\omega}^{=0}
+  &=\int_{I^{2}}H^{*}(d\omega) \\
+  &=\int_{I^{2}}d(H^{*}\omega) \\
+  &=\int_{\partial I^{2}}H^{*}\omega \\
+  &=\int_{i=1}^{4}\int_{F^{i}}H^{*}\omega \\
+  &=\sum_{i=1}^{4}\int_{H(F_{i})}\omega \\
+  &=\int_{H(F_{1})}\omega+\int_{H(F_{3})}\omega \\
+  &=\int_{\gamma_{0}}\omega-\int_{\gamma_{1}}\omega
+\end{align*}
+\subsection*{Corollary}
+\label{sec:orgf5a453e}
+For \(M\) with \(\pi_{1}(M)=e\) (i.e. every closed curve is path-homotopic to a point), then every closed \(1\)-form is exact.\\
+\section*{February 26, 2025}
+\label{sec:org35aa860}
+\section*{Corollary}
+\label{sec:org7bd7bf3}
+If \(\omega\in\Omega^{1}(M)\) is closed with \(\gamma_{0}\) and \(\gamma_{1}\) path-homotopic to each other, then \(\int_{\gamma_{0}}\omega=\int_{\gamma_{1}}\omega\).$\backslash$\\
+\section*{Corollary}
+\label{sec:org2154d7c}
+If \(\pi_{1}(M)=e\) (i.e. every closed curve in \(M\) is path-homotopic to a point), then every closed \(1\)-form on \(M\) is exact.\\
+\section*{Definition: Manifold with Corners}
+\label{sec:org5b9994d}
+Let \(\R_{+}=(0,+\infty)\), \(\overline{\R}^{n}_{+}=([0,+\infty))^{n}=\{(x^{1},\ldots,x^{n})\st x^{1}\geq 0,\ldots,x^{n}\geq0\}\), and \(\partial\overline{\R}^{n}_{+}=\bigcup_{i=1}^{n}H_{i}\) where \(H_{i}=\{(x^{1},\ldots,x^{n})\in\overline{\R}^{n}_{+}\st x^{i}=0\}\).\\
+In \(\overline{\R}^{n}_{+}\), a corner point is \((x^{1},\ldots,x^{n})\in\R^{+}_{n}\) such that at least two components are zero.\\
+\begin{center}
+IMAGE 1\\
+\end{center}
+\section*{Definition: Corner Chart}
+\label{sec:orgf36316e}
+Let \(M\) be a Hausdorff, second countable topological space. A corner chart \((U,\varphi)\) where \(U\subseteq M\) open and \(\varphi:U\to\R^{n}_{+}\) homeomorphic to \(\varphi(U)\).\\
+A point \(p\) on \(M\) is called a corner point if it has a chart \((U,\varphi)\) centered at \(p\) such that \(\varphi(p)\) is a corner point in \(\overline{\R}^{n}_{+}\).\\
+\section*{Proposition: Invariance of Corner Points}
+\label{sec:org794e351}
+\begin{center}
+IMAGE 2\\
+\end{center}
+If the above happens, \(\psi(p)\in\mathbb{H}^{n}\) with \(\psi(W)\) an open set in \(\mathbb{H}^{n}\), and \(\varphi(p)\in\overline{\R}^{n}_{+}\) as a corner point.\\
+Let \(S\) be an open subset of a \((n-1)\)-dimensional plane through \(\psi(p)\) such that \(\psi(W)\supseteq S\). Then \(F=\varphi\circ\psi^{-1}\) is a diffeomorphism and, at \(\psi(p)\), \(d(F|_{S}):T_{\psi(p)}S\to T_{\phi(p)}(F(S))\subseteq\R^{n}\) is injective. We have also that \(\dim(\operatorname{im}dF|_{S})=\dim T_{\psi(p)}S=n-1\). Therefore we may pick a vector \(v\in\R^{n}\) such that \(v=(v^{1},\ldots,v^{n})\) with \(v^{n-1}\cdot v^{n}\neq0\) and \(v\in\operatorname{im}dF|_{S}\).\\
+Without loss of genreality, we may assume \(v^{n}<0\). There is \(w\in T_{\psi(p)}S\) such that \(dF(w)=v\). Let \(\gamma:(-\epsilon,\epsilon)\to S\) be a curve with \(\gamma(0)=\psi(p)\) and \(\gamma'(0)=w\). Then \(\beta=F\circ\gamma\) is a smooth curve with \(\beta(0)=\phi(p)\) (\(\phi(p)=(x^{1},\ldots,x^{n-1},0,0)\)) and \(\beta'(0)=v=(v^{1},\ldots,v^{n})\) with \(v^{n}<0\). Then by calculus there exists \(\delta\in(0,\epsilon)\) such that \(\beta(\delta)\notin\overline{\R}^{n}_{+}\). This is a contradiction.\\
+\section*{Integration on Manifolds with Corners}
+\label{sec:orga551ddf}
+Observe that \(\partial\overline{\R}^{n}_{+}=\bigcup_{i=1}^{n}H_{i}\) where \(H_{i}=\{(x^{1},\ldots,x^{n})\in\overline{\R}^{n}_{+}\st x^{i}=0\}\cong\overline{\R}^{n-1}_{+}\).\\
+Suppose \(\omega\in\Omega^{n-1}_{C}(M)\) for \(M\) a manifold with corners, and consider the special case where \(\operatorname{supp}\omega\subseteq(U,\varphi)\) is a corner chart.\\
+\begin{align*}
+  \int_{\partial M}\omega
+  :=\sum_{i=1}^{n}(\phi^{-1})^{*}\omega
+\end{align*}
+The general case may be done by partitions of unity.\\
+In the orientation case, \(H_{i}\) has induced outward orientation (i.e. \(-\frac{\partial}{\partial x^{i}}=N\)).\\
+\begin{align*}
+  \left( -\frac{\partial}{\partial x^{i}} \right)\inprod(dx^{1}\wedge\cdots\wedge dx^{n})
+\end{align*}
+Where \(H_{i}=\{(x^{1},\ldots,x^{n}\in\overline{\R}^{n}_{+}\st x^{i}=0\}\cong\overline{\R}^{n-1}_{+}\subseteq\R^{n-1}\) carries the normal orientation by \(dx^{1}\wedge\cdots\widehat{dx^{i}}\wedge\cdots\wedge dx^{n}\).\\
+\begin{align*}
+  (dx^{1}\wedge\cdots\wedge\widehat{dx^{i}}\wedge\cdots\wedge dx^{n})\left( \frac{\partial}{\partial x^{1}},\cdots,\widehat{\frac{\partial}{\partial x^{i}}},\cdots,\frac{\partial}{\partial x^{n}} \right)
+  =1
+\end{align*}
+and\\
+\begin{align*}
+  \left( \left( -\frac{\partial}{\partial x^{i}} \right)\inprod(dx^{1}\wedge\cdots\wedge dx^{n}) \right)\left( \frac{\partial}{\partial x^{1}},\cdots,\widehat{\frac{\partial}{\partial x^{i}}},\cdots,\frac{\partial}{\partial x^{n}} \right)
+  &=(-1)dx^{1}\wedge\cdots\wedge dx^{n}\left( \frac{\partial}{\partial x^{i}},\frac{\partial}{\partial x^{1}},\cdots,\widehat{\frac{\partial}{\partial x^{i}}},\cdots,\frac{\partial}{\partial x^{n}} \right) \\
+  &=(-1)\cdot(-1)^{i-1}
+  =(-1)^{i}
+\end{align*}
+Standard orientation on \(H_{i}\) and induced boundary orientation on \(H_{i}\) agree if and only if \(i\) is even. Then for\\
+\begin{align*}
+  \int_{M}d\omega
+  =\int_{\partial M}\omega
+\end{align*}
+with induced boundary orienation, it suffices to consider a corner chart. \(\omega\in\Omega^{n-1}_{C}(M)\) with \(\supp\omega\subseteq(U,\varphi)\) and \(\varphi:U\to\overline{\R}^{n}_{+}\).\\
+It suffices to consider \(M=\overline{\R}^{n}_{+}\) and \(\omega\in\Omega_{C}^{n-1}(\overline{\R}^{n}_{+})\).\\
+\begin{align*}
+  \omega
+  &=\omega_{i}dx^{1}\wedge\cdots\wedge\widehat{dx^{i}}\wedge\cdots\wedge dx^{n} \\
+  d\omega
+  &=\frac{\partial \omega_{i}}{\partial x^{i}}dx^{i}\wedge\cdots\wedge\widehat{dx^{i}}\wedge\cdots\wedge dx^{n}
+  =\sum_{i}(-1)^{i-1}\frac{\partial\omega_{i}}{\partial x^{i}}dx^{1}\wedge\cdots\wedge dx^{n}
+\end{align*}
+Pick \(R>0\) large such that \(\supp\omega\subseteq[0,R]^{n}\), then\\
+\begin{align*}
+  \int_{\overline{\R}^{n_{+}}}d\omega
+  &=\sum_{i=1}^{n}(-1)^{i-1}\int_{[0,R]^{n}}\frac{\partial\omega_{i}}{\partial x^{i}}dx^{1}\wedge\cdots\wedge dx^{n} \\
+  &=\sum_{i=1}^{n}(-1)^{i-1}\int_{0}^{R}\cdots\left( \int_{0}^{R}\frac{\partial\omega_{i}}{\partial x^{i}}dx^{i} \right)dx^{1}\wedge\cdots\wedge\widehat{dx^{i}}\wedge\cdots\wedge dx^{n} \\
+  &=\sum_{i=1}^{n}(-1)^{i}\int_{0}^{R}\cdots\int_{0}^{R}\omega_{i}(x^{1},\ldots,0,\ldots,x^{n})dx^{1}\wedge\cdots\wedge\widehat{dx^{i}}\wedge\cdots\wedge dx^{n} \\
+  &=\sum_{i=1}^{n}(-1)^{i}\int_{H_{i}}\omega_{i}dx^{1}\wedge\cdots\wedge\widehat{dx^{i}}\wedge\cdots\wedge dx^{n}\quad\text{(with standard orientation)} \\
+  &=\sum_{i=1}^{n}\int_{H_{i}}\omega_{i}dx^{1}\wedge\cdots\wedge\widehat{dx^{i}}\wedge\cdots\wedge dx^{n}
+  =\int_{\partial\R^{n}_{+}}\omega
+\end{align*}
+\subsection*{Example}
+\label{sec:org995871b}
+Let \(M=I^{2}\) and \(\omega\in\Omega^{1}(M)\) closed (i.e. \(\int_{\partial _{M}}\omega=\int_{M}d\omega=0\))\\
+\begin{center}
+IMAGE 3\\
+\end{center}
+\begin{align*}
+  \int_{\partial M}\omega
+  =\sum_{i=1}^{4}\int_{F_{i}}\omega
+\end{align*}
+\begin{align*}
+  N\inprod(dx\wedge dy)=(dx\wedge dy)(N,\_{})
+\end{align*}
+\section*{Definition: Homotopy}
+\label{sec:orgdee9821}
+We say that \(F,G:M\to N\) are (smoothly) homotopic if there is a smooth homotopy \(H:M\times I\to N\) such that\\
+\begin{align*}
+  H(\cdot,0) =F(\cdot) \quad\text{and}\quad H(\cdot, 1)=G(\cdot).
+\end{align*}
+Write \(F\simeq G\).\\
+\subsection*{Example: Problem 16-5}
+\label{sec:orge84604c}
+Let \(M^{n},N^{n}\) be oriented, compact, connected without boundary. Take \(F,G:M\to N\) local diffeomorphisms and suppose \(F\simeq G\). Then \(F\) is orientation preserving if and only if \(G\) is orientation preserving.\\
+\subsubsection*{Proof}
+\label{sec:org08bb350}
+Let \(\omega_{N}\) be the orientation form on \(N^{n}\) with \(d\omega_{N}=0\). The homotopy \(H:M\times I\to N\)\\
+\begin{align*}
+  0
+  =\int_{M\times I}H^{*}(d\omega_{N})
+  =\int_{M\times I}d(H^{*}\omega)
+  =\int_{\partial (M\times I)}H^{*}\omega
+  =\int_{M\times\{0\}}F^{*}\omega+\int_{M\times\{1\}}G^{*}\omega
+\end{align*}
+\begin{center}
+IMAGE 4\\
+\end{center}
+Let \(\omega_{M\times I}\) be the orientation form on \(M\times I\) (\(\omega_{M\times I}=\omega_{M}\wedge dt\)).\\
+On \(M\times\{0\}\) orientable, \(-\frac{\partial}{\partial t}\inprod\omega_{M\times I}\) and on \(M\times\{1\}\) \(\frac{\partial}{\partial t}\inprod\omega_{M\times I}\). Therefore \(\int_{M}F^{*}\omega=\int_{M}G^{*}\omega\).\\
+\subsection*{Example: Problem 16-6}
+\label{sec:orgada56b4}
+\(S^{n}\) admits a nonvanishing vector field if and only if \(n\) is odd.\\
+\subsubsection*{Proof}
+\label{sec:orgef1f8d0}
+\((\Longleftarrow)\) suppose \(n\) odd. In the \(n=1\) case\\
+\begin{center}
+IMAGE 5\\
+\end{center}
+Write \(V(x^{1},x^{2})=(-x^{2},x^{1})\). In general, when \(S^{n}\subseteq\R^{n+1}\) for \(n\) odd\\
+\begin{align*}
+  \vec{z}=(x^{1},y^{1},x^{2},y^{2},\ldots,x^{2k},y^{2k})
+\end{align*}
+gives\\
+\begin{align*}
+  V(\vec{z})=-y^{1},x^{1},-y^{2},x^{2},\ldots,-y^{2k},x^{2k})
+\end{align*}
+with \(V\in\mathfrak{X}(S^{n})\) nonvanishing.\\
+\((\Longrightarrow)\) Suppose \(V\in\mathfrak{X}(S^{n})\) nonvanishing. Then for any \(v\), rewrite as \(\frac{v}{||v||}\) such that without loss of generality \(||1||=1\).\\
+\begin{center}
+IMAGE 6\\
+\end{center}
+Next, we use \(V(x)\) to construct a homotopy between \(\operatorname{id}_{S^{n}}\) and (the antipodal map) \(-\operatorname{id}_{S^{n}}\).\\
+Construct a homotopy \(H:S^{n}\times I\to S^{n}\) by \(H(x,t)=(\cos t)x+(\sin t)V(x)\) with \(||H(x,t)||=1\), \(H(x,0)=x\), \(H(x,\pi)=-x\).\\
+Hence \(H\) is a smooth homotpy between \(\operatorname{id}_{S^{n}}\) and \(-\operatorname{id}_{S^{n}}\). Hence the antipodal map on \(S^{n}\) is orientation preserving and \(n\) is odd.\\
+\section*{March 3, 2025}
+\label{sec:org211c6c7}
+\section*{Chapter 7: De Rahm Cohomology}
+\label{sec:org2bc26d6}
+Let \(M^{n}\) be smooth and write \(Z^{k}(M)=\{\omega\in\Omega^{k}(M)\st d\omega=0\}\), the set of closed \(k\)-forms, with \(B^{k}(M)=\{\omega\in\Omega^{k}(M)\st\omega=d\eta,\;\eta\in\Omega^{k-1}(M)\}\), the set of exact \(k\)-forms. Note that \(B^{k}(M)\subseteq Z^{k}(M)\), since \(d(d\eta)=0\). We may also write \(\Omega^{*}(M)=\bigoplus_{k=0}^{n}\Omega^{k}(M)\) and\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    0 \ar[r,"d"] & \Omega^{0}(M) \ar[r,"d"] & \Omega^{1}(M) \ar[r,"d"] & \cdots \ar[r,"d"] & \Omega^{n}(M) \ar[r,"d"] & 0
+  \end{tikzcd}};
+\end{tikzpicture}
+with \(d^{2}=0\). Finally, we have the \(k\)-th de Rahm cohomology group \(H^{k}_{\text{dR}}(M)=Z^{k}(M)/B^{k}(M)\) as a \(\R\)-vector space.\\
+Fact: If \(M^{n}\) is closed, then \(H^{k}_{\text{dR}}(M)\) is finite dimensional for all \(k\).\\
+\subsection*{Example}
+\label{sec:org91af072}
+If \(M^{n}\) is connected and has \(\pi_{1}(M)=\{e\}\) (i.e. every smooth loop is contractible to a point), then \(\omega\in\Omega^{1}(M)\) is closed if and only if \(\omega\) is exact. That is to say that \(Z^{1}(M)=B^{1}(M)\) and \(H^{1}_{\text{dR}}(M)=0\).\\
+\subsection*{Example}
+\label{sec:org1ee1c99}
+If \(M=S^{1}\subseteq\R^{2}\) and \(\omega=\frac{x\;dy-y\;dx}{x^{2}+y^{2}}\in\Omega^{1}(\R^{2}-\{0\})\), then \(\omega\) is closed but not exact (\(\int_{S^{1}}\omega\neq0\)).\\
+Hence, \(\omega\) gives a non-trivial element in \(H^{1}(S^{1})\) (i.e. \(H^{1}(S^{1})\neq\{0\}\).\\
+Similarly, on \(S^{n-1}\subseteq\R^{n}\) with \(\omega=|x|^{-n}\sum_{i=1}^{n}(-1)^{i-1}x^{i}dx^{i}\wedge\cdots\wedge\widehat{dx^{i}}\wedge\cdots\wedge dx^{n}\in\Omega^{n-1}(\R^{n}-\{0\})\), we have that \(d\omega=0\), \(\omega\) is not exact (\(\int_{S^{n}}\omega\neq0\)) and that \(H^{n-1}(S^{n-1})\neq\{0\}\).\\
+\subsection*{Notation}
+\label{sec:org1fe143d}
+Given \(\omega\in Z^{k}(M)\), we write the de Rahm cohomology class \([\omega]\). The corresponding element in \(H^{k}_{\text{dR}}(M)\), \([\omega_{1}]=[\omega_{2}]\) in \(H^{k}_{\text{dR}}(M)\) means \(\omega_{1}\) and \(\omega_{2}\) differ by an exact form (i.e. \(\omega_{2}=\omega_{1}+d\eta\) for some \(\eta\in\Omega^{k-1}(M)\).\\
+\section*{Proposition}
+\label{sec:orgadc4314}
+If \(F:M\to N\) is a diffeomorphism, it induces \(F^{*}:\Omega^{*}(N)\to\Omega^{*}(M)\) which maps \(Z^{*}(N)\to Z^{*}(M)\) and \(B^{*}(N)\to B^{*}(M)\).\\
+\begin{itemize}
+\item Proof\\
+\begin{itemize}
+\item For \(\omega\in Z^{*}(N)\) with \(d\omega=0\), \(d(F^{*}\omega)=F^{*}(d\omega)=0\). So \(F^{*}\omega\) is closed.\\
+\item For \(\omega\in B^{*}(N)\) with \(\omega=d\eta\), \(F^{*}\omega=F^{*}(d\eta)=d(F^{*}\eta)\). So \(F^{*}\omega\) is exact.\\
+\end{itemize}
+\end{itemize}
+
+Therefore, \(F^{*}:H^{k}_{\text{dR}}(N)\to H^{k}_{\text{dR}}(M)\).\\
+For \(F\circ G=\operatorname{id}\) and \(G\circ F=\operatorname{id}\), the descend to \(F^{*}\circ G^{*}=\operatorname{id}\) and \(G^{*}\circ F^{*}=\operatorname{id}\) on \(H^{k}_{\text{dR}}\). Hence \(F^{*}:H^{*}_{\text{dR}}(N)\to H^{*}_{\text{dR}}(M)\) is an isomorphism.\\
+\section*{Proposition 17.5}
+\label{sec:orgad7181b}
+Let \(M^{n}=\coprod_{j}M_{j}\) be a disjoint union of at most countably many connected manifolds, (the inclusion map) \(\iota_{j}:M_{j}\to M\) induces \(\iota_{j}^{*}:\Omega^{k}(M)\to\Omega^{k}(M_{j})\) by \(\omega\mapsto\omega|_{M_{j}}\). Define \(\Phi:\Omega^{k}(M)\to\prod_{j}\Omega^{k}(M_{j})\) by \(\omega\mapsto(\iota_{1}^{*}\omega,\ldots,\iota^{*}_{j}\omega,\ldots)=(\omega|_{M_{1}},\ldots,\omega|_{M_{j}},\ldots)\). \(\Phi\) induces an isomorphism \(\Phi:H^{k}_{\text{dR}}(M)\to\prod_{j}H^{k}_{\text{dR}}(M_{j})\).\\
+\begin{itemize}
+\item Proof\\
+\begin{itemize}
+\item \(\Phi\) is injective. If \(\Phi[\omega]=0\), then \(\left[ \omega|_{M_{j}} \right]=0\). So \(\omega\) is exact on \(M_{j}\) for each \(j\), exact on \(M\) and \([\omega]=0\).\\
+\item \(\Phi\) is surjective. Given any \(([\omega_{1}],\ldots,[\omega_{j}],\ldots)\), define \(\omega\in\Omega^{k}(M)\) by \(\omega|_{M_{j}}=\omega_{j}\). Then \(\Phi[\omega]=([\omega_{1}],\ldots,[\omega_{j}],\ldots)\).\\
+\end{itemize}
+\end{itemize}
+\section*{Proposition 17.6}
+\label{sec:org4a23d35}
+If \(M^{n}\) is connected, then \(H^{0}_{\text{dR}}(M)\cong\R\).\\
+\subsection*{Proof}
+\label{sec:orgcdc526d}
+\(H^{0}_{\text{dR}}(M)=Z^{0}(M)/B^{0}(M)\) where \(Z^{0}(M)=\{f\in C^{\infty}(M)\st df=0\}=\{f\in c^{\infty}(M)\st f\equiv c\}\) and \(B^{0}(M)=\{0\}\).\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    0 \ar[r,"d"] & \Omega^{0}(M) \ar[r,"d"] & \Omega^{1}(M)
+  \end{tikzcd}};
+\end{tikzpicture}
+Hence \(H^{0}_{\text{dR}}(M)\cong\R\).\\
+\section*{Homotopy Invariance}
+\label{sec:org9cdd305}
+Given \(F,G:M\to N\), we say \(F\) and \(G\) are smoothly homotopic to eachother if there exists a smooth map \(H:M\times [0,1]\to N\) such that \(H(\cdot,0)=F(\cdot)\) and \(H(\cdot,1)=G(\cdot)\).\\
+They induce \(F^{*},G^{*}:H^{*}_{\text{dR}}(N)\to H^{*}_{\text{dR}}(M)\).\\
+\section*{Proposition 17.10}
+\label{sec:orgb4e02c0}
+For \(F,G:M\to N\), if \(F\simeq G\), then \(F^{*}=G^{*}:H^{*}_{\text{dR}}(N)\to H^{*}_{\text{dR}}(M)\).\\
+\subsection*{Goal}
+\label{sec:org7acb1ed}
+\([F^{*}\omega]=F^{*}[\omega]=G^{*}[\omega]=[G^{*}\omega]\) with \(\omega\) closed in \(N\). That is, \(F^{*}\omega\) and \(G^{*}\omega\) differ by an exact form, \(G^{*}\omega-F^{*}\omega=d\eta\) with \(\eta\in\Omega^{k-1}(M)\).\\
+This gives a map \(h:Z^{k}(N)\to\Omega^{k-1}(M)\) by \(\omega\mapsto\eta\).\\
+In fact, we will construct a map \(h:\Omega^{k}(N)\to\Omega^{k-1}(M)\) such that \(G^{*}\omega-F^{*}\omega=d(h(\omega))+h(d\omega)\). Then for any closed \(k\)-form \(\omega\), \(G^{*}\omega-F^{*}\omega=d(h(\omega))+0\), \([G^{*}\omega]=[F^{*}\omega]\) in \(H^{k}_{\text{dR}}(M)\) and \(G^{*}=F^{*}\).\\
+\subsection*{Lemma 17.9}
+\label{sec:orge344893}
+Given \(\iota_{0},\iota_{1}:M\injectsto M\times[0,1]\) (where clearly \(\iota_{0}\simeq \iota_{1}\)), then there exists \(h:\Omega^{k}(M\times[0,1])\to\Omega^{k-1}(M)\) such that \(\iota_{1}^{*}\omega-\iota_{0}^{*}\omega=d(h(\omega))+h(d\omega)\) for all \(\omega\in\Omega^{k}(M\times[0,1])\).\\
+Assuming that 17.9 holds, 17.10 follows.\\
+\begin{center}
+IMAGE 1\\
+\end{center}
+\(F=h\circ\iota_{0}\), \(G=H\circ\iota_{1}\). At the \(H^{*}_{\text{dR}}\) level,\\
+\begin{align*}
+  F^{*}
+  =(h\circ\iota_{0})^{*}
+  =\iota^{*}_{0}\circ h^{*}
+  =\iota_{1}^{*}\circ h^{*}
+  =(h\circ\iota_{1})^{*}
+  =G^{*}.
+\end{align*}
+\subsubsection*{Proof of 17.9}
+\label{sec:org6267518}
+Consider \(V=\frac{\partial}{\partial t}\in\mathfrak{X}(M\times[0,1]\) with flow \(\theta_{t}(x,s)=(x,s+t)\), so \(\theta_{t}\circ\iota_{0}=\iota_{t}\) and \(\iota^{*}_{0}\circ\theta^{*}_{t}=\iota^{*}_{t}\) at the \(\Omega^{*}\)-level. Compute\\
+\begin{align*}
+  \iota^{*}_{1}\omega-\iota^{*}_{0}\omega
+  &=\int_{0}^{1}\frac{d}{dt}(\iota_{t}^{*}\omega)\;dt \\
+  &=\int_{0}^{1}\frac{d}{dt}\left( i^{*}_{0}\circ\theta^{*}_{t}(\omega) \right)\;dt \\
+  &=\int_{0}^{1}\iota_{0}^{*}\left( \frac{d}{dt}\theta^{*}_{t}(\omega) \right)\;dt & & \frac{d}{dt}\Big|_{t=t_{0}}\theta^{*}_{t}\omega=\theta_{t_{0}}^{*}(\mathcal{L}_{V}\omega) \\
+  &=\int_{0}^{1}\iota_{0}^{*}\left( \theta^{*}_{t}(\mathcal{L}_{V}\omega) \right)\;dt \\
+  &=\int_{0}^{1}\iota_{t}^{*}(\mathcal{L}_{V}\omega)\;dt & & \mathcal{L}_{V}\omega=d\circ i_{V}(\omega)+i_{V}\circ d(\omega) \\
+  &=\int_{0}^{1}\iota_{t}^{*}(d(V\inprod\omega)+V\inprod(d\omega))\;dt \\
+  &=\int_{0}^{1}d(\iota_{t}^{*}(V\inprod\omega))\;dt+\int_{0}^{1}\iota_{t}^{*}(V\inprod d\omega)\;dt \\
+  &=d\left( \int_{0}^{1}\iota_{t}^{*}(V\inprod\omega)\;dt \right)+\int_{0}^{1}\iota_{t}^{*}(V\inprod d\omega)\;dt
+\end{align*}
+Then we may define \(h:\Omega^{k}(M\times[0,1])\to\Omega^{k-1}(M)\) by \(h(\omega)=\int_{0}^{1}\iota_{t}^{*}(V\inprod\omega)\;dt\). Then\\
+\begin{align*}
+  \iota_{1}^{*}\omega-\iota_{0}^{*}\omega
+  =d(h(\omega))+h(d\omega).
+\end{align*}
+More precisely, for \(q\in M\),\\
+\begin{align*}
+  h(\omega)_{q}
+  =\int_{0}^{1}\underbrace{\iota_{t}^{*}\overbrace{(V\inprod\omega_{(q,t)})}^{\in\Lambda^{k-1}T_{(q,t)}(M\times[0,1])}}_{\in\Lambda^{k-1}T_{q}M}\;dt
+\end{align*}
+\subsubsection*{Corollary}
+\label{sec:org10a5f4c}
+If \(M\) and \(N\) are homotopic to each other, then \(H^{k}_{\text{dR}}(M)\cong H^{k}_{\text{dR}}(N)\). That is, there exist maps \(F:M\to N\), \(G:N\to M\) such that \(G\circ F\simeq\operatorname{id}_{M}\) and \(F\circ G\simeq\operatorname{id}_{N}\). Therefore,\\
+\begin{align*}
+  F^{*}\circ G^{*}
+  &=(G\circ F)^{*}=(\operatorname{id}_{M})^{*}=\operatorname{id}_{H^{*}_{\text{dR}}(M)} \\
+  G^{*}\circ F^{*}
+  &=(F\circ G)^{*}=(\operatorname{id}_{N})^{*}=\operatorname{id}_{H^{*}_{\text{dR}}(N)}
+\end{align*}
+and both \(F^{*}\) and \(G^{*}\) are isomorphisms.\\
+\subsubsection*{Example}
+\label{sec:org4429656}
+\(\R^{n}\) is homotopic to \(\{0\}\)\\
+\begin{align*}
+  F:\R^{n}&\to0 & G:0&\to\R^{n} \\
+  x&\mapsto 0 & 0&\mapsto 0
+\end{align*}
+so \(F\circ G:0\to 0\) (\(\operatorname{id}_{0}\)), \(G\circ F:\R^{n}\to\R^{n}\) by \(x\mapsto 0\) (\(\simeq\operatorname{id}_{\R^{n}}\)).\\
+Consider \(H:\R^{n}\times[0,1]\to\R^{n}\) by \((x,t)\mapsto tx\) with \(H(\cdot,0)=0\) and \(H(\cdot,1)=\operatorname{id}_{\R^{n}}\). More generally, if \(U\subseteq\R^{n}\) is star shaped then \(U\) is homotopic to \(\{p\}\).\\
+\section*{Definition: Contractible}
+\label{sec:org6dfc502}
+We say that \(M\) is contractible if \(M\) is homotopic to a point\\
+\begin{align*}
+  H_{\text{dR}}^{k}(p)=
+  \begin{cases}
+    0 & k\neq0 \\
+    \R & k=0
+  \end{cases}.
+\end{align*}
+\subsection*{Corollary}
+\label{sec:org5a50b01}
+\(M\) is contractible (e.g. \(M=\R^{n}\) or \(M=\mathbb{H}^{n}\)), then\\
+\begin{align*}
+  H^{k}_{\text{dR}}(M)=
+  \begin{cases}
+    0 & k\neq0 \\
+    \R & k=0
+  \end{cases}.
+\end{align*}
+In particular, on such an \(M\), \(\omega\in\Omega^{k}(M)\) (\(k\geq 1\)) is closed if and only if \(\omega\) is exact.\\
+In fact, \(H^{k}_{\text{dR}}(M)=0\) (\(k\geq 1\)) means \(B^{k}(M)=Z^{k}(M)\).\\
+\section*{Mayer-Vietoris Sequence}
+\label{sec:org8044fa1}
+\subsection*{Setup}
+\label{sec:orga741a8d}
+Take \(M\) covered by two open sets \(U,V\).\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    & U \ar[dr,"k"] \\
+    U\cap V \ar[ur,"i"] \ar[dr,"j"] & & M \\
+    & V \ar[ur,"l"] \\
+  \end{tikzcd}};
+\end{tikzpicture}
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    & \Omega^{k}(U) \ar[dr,"i^{*}"] \\
+    \Omega^{k}(M) \ar[ur,"k^{*}"] \ar[dr,"l^{*}"] & & \Omega^{k}(U\cap V) \\
+    & \Omega^{k}(V) \ar[ur,"j^{*}"] \\
+  \end{tikzcd}};
+\end{tikzpicture}
+Consider a short exact sequence\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    0 \ar[r] & \Omega^{k}(M) \ar[r,"k^{*}\oplus l^{*}"] & \Omega^{k}(U)\oplus\Omega^{k}(V) \ar[r,"i^{*}-j^{*}"] & \Omega^{k}(U\cap V) \ar[r] & 0 \\
+    & \omega \ar[r,mapsto] & (\omega|_{U},\omega|_{V}) \ar[r] & 0 \\
+    & & (\omega,\eta) \ar[r,mapsto] & (\omega|_{U\cap V}-\eta|_{U\cap V})
+  \end{tikzcd}};
+\end{tikzpicture}
+To show \(0\mapsto\Omega^{k}(M)\mapsto\Omega^{k}(U)\oplus\Omega^{k}(V)\) is exact, we need to show that \(k^{*}\oplus l^{*}\) is injective.\\
+Suppose \((\omega|_{U},\omega|_{V})=(0,0)\). Since \(U\cap V=M\), \(\omega\equiv 0\) on \(M\). Therefore \(k^{*}\oplus l^{*}\) is injective.\\
+To show \(\Omega^{k}(M)\mapsto\Omega^{k}(U)\oplus\Omega^{k}(V)\mapsto\Omega^{K}(U\cap V)\), \(\ker(i^{*}-j^{*})\supseteq\operatorname{im}(k^{*}\oplus l^{*})\). In fact, if \((\omega|_{U},\omega|_{V})\in\operatorname{im}(k^{*}\oplus l^{*})\), then \(\omega|_{U\cap V}=\omega|_{U\cap V}\) and \((i^{*}-j^{*})(\omega|_{U},\omega|_{V})=0\).\\
+For \(\operatorname{im}(k^{*}\oplus l^{*})\supseteq\ker(i^{*}-j^{*})\), let \((\omega,\eta)\in\ker(i^{*}-j^{*})\). Then \(\omega|_{U\cap V}-\eta|_{U\cap V}=0\). Define \(\sigma\in\Omega^{k}(M)\) by\\
+\begin{align*}
+  \sigma=
+  \begin{cases}
+    \omega & \text{on } U \\
+    \eta & \text{on } V
+  \end{cases}
+\end{align*}
+Then \((\omega,\eta)=(k^{*}\oplus l^{*})(\sigma)\).\\
+Finally, to show \(\Omega^{k}(U)\oplus\Omega^{k}(V)\to\Omega^{k}(U\cap V)\to 0\), we need to show that \(i^{*}-j^{*}\) is surjective.\\
+Let \(\omega\in \Omega^{k}(U\cap V)\), and let \(\{\varphi_{U},\varphi_{V}\}\) be a partiation of unity with respect to \(\{U,V\}\).\\
+\begin{center}
+IMAGE 2\\
+\end{center}
+Define \(\eta_{U}=\varphi_{U}\omega\in\Omega^{k}(U)\) on \(U\) and \(\eta_{V}=-\phi_{V}\omega\in\Omega^{k}(V)\) on \(V\). Then on \(U\cap V\),\\
+\begin{align*}
+  \eta_{U}-\eta_{V}=(\varphi_{U}+\varphi_{V})\omega=\omega
+\end{align*}
+That is, \((i^{*}-j^{*})(\eta_{u},\eta_{v})=\omega\).\\
+\section*{March 5, 2025}
+\label{sec:org0893afc}
+\section*{Recall}
+\label{sec:orgfbfc9ee}
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    0 \ar[r]
+    & \Omega^{0}(M) \ar[r,"d"]
+    & \Omega^{1}(M) \ar[r,"d"]
+    & \cdots \ar[r,"d"]
+    & \Omega^{n}(M) \ar[r,"d"]
+    & 0
+  \end{tikzcd}};
+\end{tikzpicture}
+With \(d\circ d=0\), \(Z^{k}(M)\) the set of closed \(k\)-forms, \(B^{k}(M)\) the set of exact \(k\)-forms, and the de Rahm cohomology \(H^{k}_{\text{dR}}(M)=Z^{k}(M)/B^{k}(M)\).\\
+\begin{enumerate}
+\item \(M\) is connected, then \(H_{\text{dR}}^{0}(M)=\R\).\\
+\item If \(M\) is contractible, then \(H^{k}_{\text{dR}}(M)=H_{\text{dR}}^{k}(p)\) for \(p\)  a point in \(M\).\\
+\end{enumerate}
+
+Recall also the Mayer-Vietoris setup (see above).\\
+\section*{Mayer-Vietoris}
+\label{sec:org78608a9}
+The short exact sequence\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    0 \ar[r] & \Omega^{k}(M) \ar[r,"k^{*}\oplus l^{*}"] & \Omega^{k}(U)\oplus\Omega^{k}(V) \ar[r,"i^{*}-j^{*}"] & \Omega^{k}(U\cap V) \ar[r] & 0
+  \end{tikzcd}};
+\end{tikzpicture}
+induces a long exact sequence\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    \cdots \ar[r,"\delta"]
+    & H^{k}_{\text{dR}}(M) \ar[r]
+    & H^{k}_{\text{dR}}(U)\oplus H^{k}_{\text{dR}}(V) \ar[r]
+    & H^{k}_{\text{dR}}(U\cap V) \\
+    {} \ar[r, "\delta"]
+    & H^{k+1}_{\text{dR}}(M) \ar[r]
+    & H^{k+1}_{\text{dR}}(U)\oplus H^{k+1}_{\text{dR}}(V) \ar[r]
+    & H^{k+1}_{\text{dR}}(U\cap V) \\
+    {} \ar[r]
+    & \cdots
+  \end{tikzcd}};
+\end{tikzpicture}
+\section*{Definition: Chain COmplex}
+\label{sec:orgcd0ec90}
+A chain complex \(A^{i}\) is a \(\R\)-vector group\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    0 \ar[r]
+    & A^{n} \ar[r,"\partial"]
+    & A^{n-1} \ar[r,"\partial"]
+    & \cdots \ar[r,"\partial"]
+    & A^{1} \ar[r,"\partial"]
+    & A^{0} \ar[r,"\partial"]
+    & 0
+  \end{tikzcd}};
+\end{tikzpicture}
+with \(\partial\circ\partial=0\).\\
+A cochain complex is\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    0 \ar[r]
+    & A^{0} \ar[r,"d"]
+    & A^{1} \ar[r,"d"]
+    & \cdots \ar[r,"d"]
+    & A^{n-1} \ar[r,"d"]
+    & A^{n} \ar[r,"d"]
+    & 0
+  \end{tikzcd}};
+\end{tikzpicture}
+with \(d\circ d=0\) and the \(k\)-th cohomology is \(\ker/\operatorname{im}\) in \(A^{i}\).\\
+We write the cochain complex as \(A^{*}\). A short exact sequence of cochain complexes\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    0 \ar[r]
+    & \Omega^{*}(M) \ar[r]
+    & \Omega^{*}(U)\oplus\Omega^{*}(V) \ar[r]
+    & \Omega^{*}(U\cap V) \ar[r]
+    & 0 \\
+    0 \ar[r]
+    & A^{*} \ar[r]
+    & B^{*} \ar[r]
+    & C^{*} \ar[r]
+    & 0
+  \end{tikzcd}};
+\end{tikzpicture}
+\section*{Theorem}
+\label{sec:org71753c5}
+A short exact sequence of cochain complexes\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+        0 \ar[r]
+    & A^{*} \ar[r]
+    & B^{*} \ar[r]
+    & C^{*} \ar[r]
+    & 0
+  \end{tikzcd}};
+\end{tikzpicture}
+induces a long exact sequence of cohomoology groups\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    \cdots\ar[r]
+    & H^{k}(A) \ar[r]
+    & H^{k}(B) \ar[r]
+    & H^{k}(C) \\
+    {}\ar[r]
+    & H^{k+1}(A) \ar[r]
+    & H^{k+1}(B) \ar[r]
+    & H^{k+1}(C) \\
+    {}\ar[r]
+    & \cdots
+  \end{tikzcd}};
+\end{tikzpicture}
+\subsection*{Proof}
+\label{sec:org7c263f7}
+We want \(\delta:H^{k}(C)\to H^{k+1}(A)\)\\
+Given \(a\in C^{k}\) with \(dc=0\), we need to come up with some \(a\in A^{k+1}\) with \(da=0\).\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    & b \ar[r,mapsto] \ar[d,mapsto]
+    & c \ar[r,mapsto] \ar[d, "d", mapsto]
+    & 0 \\
+    a' \ar[r,mapsto]
+    & b' \ar[r,mapsto]
+    & 0
+  \end{tikzcd}};
+\end{tikzpicture}
+So define \(\delta(c)=a'\).\\
+\section*{Cochain Complexes}
+\label{sec:org1917ab2}
+The full picture is given by\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    & \vdots \ar[d]
+    & \vdots \ar[d]
+    & \vdots \ar[d] \\
+    0 \ar[r]
+    & \Omega^{k-1}(M) \ar[r] \ar[d,"d"]
+    & \Omega^{k-1}(U)\oplus\Omega^{k}(V) \ar[r] \ar[d,"d"]
+    & \Omega^{k-1}(U\cap V) \ar[r] \ar[d,"d"]
+    & 0 \\
+    0 \ar[r]
+    & \Omega^{k}(M) \ar[r,"k^{*}\oplus l^{*}"] \ar[d,"d"]
+    & \Omega^{k}(U)\oplus\Omega^{k}(V) \ar[r,"i^{*}-j^{*}"] \ar[d,"d"]
+    & \Omega^{k}(U\cap V) \ar[r] \ar[d,"d"]
+    & 0 \\
+    0 \ar[r]
+    & \Omega^{k+1}(M) \ar[r] \ar[d]
+    & \Omega^{k+1}(U)\oplus\Omega^{k}(V) \ar[r] \ar[d]
+    & \Omega^{k+1}(U\cap V) \ar[r] \ar[d]
+    & 0 \\
+    & \vdots
+    & \vdots
+    & \vdots
+  \end{tikzcd}};
+\end{tikzpicture}
+Then we have for \(\omega=\eta_{U}-\eta_{V}\) on \(U\cap V\).\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    & (\eta_{u},\eta_{v}) \ar[r,mapsto] \ar[d,mapsto]
+    & \omega\in Z^{k}(U\cap V) \\
+    \sigma \ar[r,mapsto]
+    & (d\eta_{U},d\eta_{V})
+  \end{tikzcd}};
+\end{tikzpicture}
+Since \(\sigma|_{U}=d\eta_{U}\) and \(\sigma|_{V}=d\eta_{V}\).\\
+\subsection*{Example}
+\label{sec:orgbde934b}
+Let \(M=S^{n}\). Then \(U=S^{n}-\{\text{north pole}\}\), \(V=S^{n}-\{\text{south pole}\}\) and \(U,V\) are diffeomorphic to \(\R^{n}\). It follows that \(U\cap V=S^{n}-\{\text{two poles}\}\cong\R^{n}-\{0\}\simeq S^{n-1}\) and\\
+\begin{align*}
+  H_{\text{dR}}^{k}(U)=H_{\text{dR}}^{k}(V)=
+  \begin{cases}
+    0 & k\neq 0 \\
+    \R & k=0
+  \end{cases}.
+\end{align*}
+Then for \(k\geq 1\),\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    \cdots \ar[r]
+    & H^{k}_{\text{dR}}(S^{n}) \ar[r]
+    & \overbrace{H^{k}_{\text{dR}}(U)}^{=0}\oplus\overbrace{H^{k}_{\text{dR}}(V)}^{=0} \ar[r]
+    & H^{k}_{\text{dR}}(U\cap V) \\
+    {} \ar[r]
+    & H^{k+1}_{\text{dR}}(S^{n}) \ar[r]
+    & \overbrace{H^{k+1}_{\text{dR}}\oplus H^{k+1}_{\text{dR}}(V)}^{=0} \ar[r]
+    & \cdots
+  \end{tikzcd}};
+\end{tikzpicture}
+and we have a short exact sequence \(0\rightarrow A\rightarrow B\rightarrow 0\) such that \(A\cong B\).\\
+It follows that \(H^{k+1}_{\text{dR}}(S^{n})\cong H^{k}_{\text{dR}}(U\cap V)\cong H^{k}_{\text{dR}}(S^{n-1})\).\\
+\begin{center}
+IMAGE 1\\
+\end{center}
+Then\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    0 \ar[r]
+    & H^{0}_{\text{dR}}(S^{1}) \ar[r]
+    & H^{0}_{\text{dR}}(U)\oplus H^{0}_{\text{dR}}(V) \ar[r]
+    & H^{0}_{\text{dR}}(U\cap V) \\
+    {} \ar[r]
+    & H^{1}_{\text{dR}}(S^{1}) \ar[r]
+    & \overbrace{H^{1}_{\text{dR}}(U)\oplus H^{1}_{\text{dR}}(V)}^{=0}
+  \end{tikzcd}};
+\end{tikzpicture}
+Which gives\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    0 \ar[r]
+    & \R \ar[r, "\operatorname{im}\cong\R"]
+    & \R^{2} \ar[r, "\substack{\ker\cong\R \\ \operatorname{im}\cong\R}"]
+    & \R^{2} \ar[r, "\operatorname{ker}\simeq\R"]
+    & \overbrace{H^{1}_{\text{dR}}(S^{1})}^{\cong\R} \ar[r]
+    & 0
+  \end{tikzcd}};
+\end{tikzpicture}
+and therefore that\\
+\begin{align*}
+  H^{k}_{\text{dR}}(S^{1})=
+  \begin{cases}
+    \R & k\in\{0,1\} \\
+    0 & k\notin\{0,1\}
+  \end{cases}.
+\end{align*}
+For \(n\geq Z\), \(U\cap V\) continuous\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    0 \ar[r]
+    & H^{0}_{\text{dR}}(S^{n}) \ar[r]
+    & H^{0}_{\text{dR}}(U)\oplus H^{0}_{\text{dR}}(V) \ar[r]
+    & H^{0}_{\text{dR}}(U\cap V) \\
+    {} \ar[r]
+    & H^{1}_{\text{dR}}(S^{n}) \ar[r]
+    & \overbrace{H^{1}_{\text{dR}}(U)\oplus H^{1}_{\text{dR}}(V)}^{=0}
+  \end{tikzcd}};
+\end{tikzpicture}
+and\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    0 \ar[r]
+    & \R \ar[r, "\operatorname{im}\cong\R"]
+    & \R^{2} \ar[r, "\substack{\ker\cong\R \\ \operatorname{im}\cong\R}"]
+    & \R \ar[r, "\operatorname{ker}\simeq\R"]
+    & \overbrace{H^{1}_{\text{dR}}(S^{n})}^{=0} \ar[r]
+    & 0
+  \end{tikzcd}};
+\end{tikzpicture}
+Therefore, \(H^{0}_{\text{dR}}(S^{3})=\R\), \(H^{1}_{\text{dR}}(S^{3})=0\), \(H^{2}_{\text{dR}}(S^{3})\cong H^{1}_{\text{dR}}(S^{2})=0\) and \(H^{3}_{\text{dR}}(S^{3})\cong H^{2}_{\text{dR}}(S^{2})\cong\R\). By induction, we conclude that\\
+\begin{align*}
+  H^{k}_{\text{dR}}(S^{n})=
+  \begin{cases}
+    \R & k\in\{0,n\} \\
+    0 & k\notin\{0,n\}
+  \end{cases}.
+\end{align*}
+\subsection*{Corollary}
+\label{sec:org5823d17}
+Take \(\omega\in\Omega^{n}(S^{n})\) closed where \(\omega=|x|^{-n}\sum_{i}(-1)x^{i}dx^{i}\wedge\cdots\wedge\widehat{dx^{i}}\wedge\cdots\wedge dx^{n}\). Then \(\omega|_{S^{n}}\) is closed but not exact.\\
+Hence \([\omega]\in H^{n}_{\text{dR}}(S^{0})=\R\) is a non-trivial element.\\
+Since \(H^{n}_{\text{dR}}S^{n}=\R\), and element in \(H^{n}_{\text{dR}}(S^{n})\) is of the form \([c\omega]\) for \(c\in\R\).\\
+\subsection*{Corollary}
+\label{sec:org20f65c7}
+\(\omega\in\Omega^{n}(S^{n})\) is exact if and only if \(\int_{S^{n}}\omega=0\).\\
+\subsubsection*{Proof}
+\label{sec:org1645d5d}
+\(\Longrightarrow\) if \(\omega=d\eta\), then \(\int_{S^{n}}d\eta=\int_{\partial S^{n}}\eta=0\) by Stokes' theorem.\\
+\(\Longleftarrow\) If \(I:\Omega^{n}(S^{n})\to\R\) by \(\omega\mapsto\int_{S^{n}}\omega\) then, since \(\Omega^{n}(S^{n})=Z^{n}(S^{n})\) and \(I(B^{n}(S^{n}))=0\) by Stokes', it induces\\
+\begin{align*}
+  I:\overbrace{H^{n}_{\text{dR}}(S^{n})}^{=\R} &\to \R \\
+  [\omega] &\to\int_{S^{n}}\omega
+\end{align*}
+
+\(I\) is surjective, hence \(I\) is an isomorphism. In particular \(\ker I=\{0\}\). That is, \(\int_{S^{n}\omega=0}\) implies \(\omega\) is exact.\\
+\subsection*{Corollary}
+\label{sec:org9170fae}
+Let \(U\subseteq \R^{n}\) be an open subset and \(x\in U\). Then \(H^{n-1}_{\text{dR}}(U-\{x\}\neq 0\).\\
+\subsubsection*{Proof}
+\label{sec:orga59eb4a}
+Let \(S^{n-1}\) be a sphere in \(U-\{x\}\) which encloses \(x\). Then we have inlcusion \(\iota:S\to(U-\{x\})\) and radial projection \(r:(U-\{x\})\to S\).\\
+\begin{center}
+IMAGE 2\\
+\end{center}
+So \(r\circ\iota=\operatorname{id}_{S}\) and\\
+\begin{align*}
+  \iota^{*}\circ r^{*}
+  =(r\circ\iota)^{*}
+  =\operatorname{id}:H^{n-1}_{\text{dR}}(S)\to H^{n-1}_{\text{dR}}(S^{n-1})
+\end{align*}
+which implies that\\
+\begin{align*}
+  r^{*}
+  =\overbrace{H^{n-1}_{\text{dR}}(S)}^{\cong\R}
+  \to H^{n-1}_{\text{dR}}(U-\{x\})
+\end{align*}
+is injective.\\
+\section*{Theorem 17.26: Topological Invariance of Dimension}
+\label{sec:orgd578e91}
+Let \(U\subseteq\R^{n}\) and \(V\in\R^{m}\) be open (\(n<m\)). Then \(U\) is nothomeomorphic to \(V\).\\
+\subsection*{Proof}
+\label{sec:orgd8b4de3}
+Suppose \(U\) is homeomoprhic to \(V\) by \(\varphi\). Then \(U-\{x\}\) is homeomorphic to \(V-\{\varphi(x)\}\).\\
+We have that if \(W=B_{r}^{n}(0)\subseteq U\), then \(\varphi(W)\) is open in \(\R^{m}\) and, therefore, \(W=B_{r}^{n}(0)\) is homeomorphic to both \(\R^{n}\) and \(\varphi(W)\subseteq\R^{m}\).\\
+Therefore \(H^{m-1}_{\text{dR}}(\R^{n}-\{x\})=H^{m-1}_{\text{dR}}(S^{n-1})=0\) but \(H^{m-1}_{\text{dR}}(V-\{\varphi(x)\})\neq0\).\\
+\section*{Compactly Supported de Rahm Cohomology}
+\label{sec:org13574bf}
+Let \(\Omega^{k}_{C}(M)=\{\omega\in\Omega^{k}(M)\st\omega\text{ is compactly supported}\}\).\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    0 \ar[r,"d"]
+    & \Omega^{0}_{C}(M) \ar[r]
+    & \cdots \ar[r]
+    & \Omega^{n}_{C}(M) \ar[r]
+    & 0
+  \end{tikzcd}};
+\end{tikzpicture}
+If \(\omega=d\eta\), can we choose \(\eta\in\Omega^{k-1}_{C}(M)\)?\\
+\section*{Lemma 17.27: Poincaré Lemma}
+\label{sec:org592b231}
+Let \(\omega\in\Omega^{k}_{C}(\R^{n})\) be a closed \(k\)-form and, for \(k=n\), further assume that \(\int_{\R^{n}}\omega=0\).\\
+Then there exists \(\eta\in\Omega^{k-1}_{C}(M)\) such that \(d\eta=\omega\).\\
+\subsection*{Proof}
+\label{sec:orgd5a9671}
+If \(n=k=1\) and \(\omega\in\Omega^{1}_{C}(\R)\), \(\omega=f(t)\;dt\) for \(f\in C^{\infty}_{C}(M)\) and \(\int_{\R}f=0\).\\
+We need to show \(F\in C^{\infty}_{C}(M)\) such that \(dF=\omega\) (i.e. \(F'(t)\;dt=f(t)\;dt\) or \(F'(t)=f(t)\)). Set\\
+\begin{align*}
+  F(t)
+  =\int_{-\infty}^{t}f(t)\;dt
+  \left( =\int_{-R}^{t}f(t)\;dt \right).
+\end{align*}
+where \(\supp f\subseteq(-R,R)\). \(F'(t)=f(t)-f(-R)=f(t)\). So \(\supp F\subseteq(-R,R)\).\\
+For \(n\geq 2\), \(\omega\in\Omega^{k}_{C}(M)\) closed and \(\supp\omega\subseteq B_{R}(0)\), by the usual Poncaré lemma, there is \(\eta_{0}\in\Omega^{k-1}(M)\) such that \(d\eta_{0}=\omega\).\\
+Our goal is to find \(\eta\in\Omega^{k-1}_{C}(M)\) such that \(d\eta=d\eta_{0}(=\omega)\).\\
+If \(k=1\), \(\omega\in\Omega^{1}_{C}(M)\), \(\eta_{0}\in C^{\infty}_{C}(M)\) such that \(d\eta_{0}=\omega\), and \(\supp\omega\subseteq B_{R}(0)\). Hence outside \(B_{R}(0)\), \(d\eta_{0}=\omega=0\) and \(\eta_{0}=c\) on \(\R^{n}-B_{R}(0)\).\\
+Consider \(\eta=\eta_{0}-c\in C^{\infty}_{C}(\R^{n})\). Then \(d\eta=d\eta_{0}=\omega\).\\
+If \(1\leq k\leq n-1\), \(\omega\in\Omega^{k}_{C}(\R^{n})\) closed, and \(\eta_{0}\in\Omega^{k-1}(\R^{n})\) such that \(d\eta_{0}=\omega\), on \(\R^{n}-B_{R}(0)\) where \(\supp\omega\subseteq B_{R}(0)\) we have that \(d\eta_{0}=\omega=0\). That is, \(\eta_{0}\in Z^{k-1}(\R^{n}-B_{R}(0))\). We know that \(\R^{n}-B_{R}(0)\simeq S^{n-1}\) and \(H^{k-1}_{\text{dR}}(\R^{n}-B_{r}(0))=H^{k-1}_{\text{dR}}(S^{n-1})=0\).\\
+Therefore, every closed \((k-1)\)-form on \(\R^{n}-B_{R}(0)\) is exact. Then there exists \(\sigma\in\Omega^{k-2}(\R^{n}-B_{R}(0))\) such that \(d\sigma=\eta_{0}\).\\
+PROOF TO BE CONTINUED\\
+\section*{March 10, 2025}
+\label{sec:org966e868}
+\section*{Recall}
+\label{sec:org78b947a}
+Poincaré lemma with compact support, \(\omega\in\Omega^{k}_{C}(\R^{n})\) closed.\\
+If \(k=n\), we also assume that \(\int_{\R^{n}}\omega=0\). Then \(\eta\in\Omega^{k-1}_{C}(M)\) such that \(d\eta=\omega\).\\
+By Poincaré lemma, there is \(\eta\in\Omega^{k-1}(M)\) such that \(d\eta=\omega\). We need to modify this \(\eta\).\\
+Cases (1) \(k=n=1\); and (2) \(n\geq 2\), \(k=1\) are above.\\
+If \(\omega=0\) on \(\R^{n}-B_{R}(0)\), then \(dF=\omega\0\) on \(\R^{n}-B_{R}(0)\) with \(F\) constant on \(\R^{n}-B_{R}(0)\). Then also \(F-c\in\Omega^{0}_{C}(\R^{n})\) such that \(d(F-c)=dF=\omega\) on \(\R^{n}\).\\
+\section*{Poincaré Lemma (Continued)}
+\label{sec:org69ece6f}
+\subsection*{Proof (Continued)}
+\label{sec:orgc5d7814}
+For \(n\geq 2\) and \(2\leq k\leq n-1\), \(\omega\in\Omega^{k}_{C}(\R^{n})\) and \(\supp\omega\subseteq B_{r}(0)\subseteq B_{R}(0)\).\\
+By Poincaré lemma, there exists \(\eta\in\Omega^{k-1}(\R^{n})\) such that \(d\eta=\omega\), \(d\eta=\omega=0\) on \(\R^{n}-B_{r}(0)\) with \(\eta\in\Omega^{k-1}(\R^{n}-B_{r}(0))\) closed.\\
+We know that \((\R^{n}-B_{r}(0))\simeq S^{n-1}\) and \(H^{k-1}_{\text{dR}}(S^{n-1})=0\). Hence, \(\eta\in\Omega^{k-1}(\R^{n}-B_{r}(0))\) is exact (i.e. \(\eta=d\sigma\) for \(\sigma\in\Omega^{k-2}(\R^{n}-B_{r}(0))\).\\
+Let \(\psi\) be a bump function where \(\psi\equiv 1\) on \(\R^{n}-B_{R}(0)\). Define \(\eta_{0}=\eta-d(\psi\sigma)\). Then \(d\eta_{0}=d\eta-d^{2}(\psi\sigma)=\omega\).\\
+On \(\R^{n}-B_{R}(0)\), \(\eta_{0}=\eta-d(\psi\sigma)=\eta-d\sigma=0\). Hence \(\eta_{0}\in\Omega^{k-1}_{C}(\R^{n})\).\\
+In the final case, \(n\geq 2\), \(k=n\), \(\omega\in\Omega_{C}^{n}(\R^{n})\) and \(\int_{\R^{n}}\omega=0\). Here the previous proof does not work because \(H^{k-1}_{\text{dR}}(S^{n-1})=\R\neq0\).\\
+Let \(R>r>0\) such that \(\supp\omega\susbeteq B_{r}(0)\subseteq B_{R}(0)\).\\
+\begin{align*}
+  0
+  \int_{B_{r}(0)}\omega
+  =\int_{B_{r}(0)}d\eta
+  =\int_{\partial B_{r}(0)}\eta.
+\end{align*}
+That is, we have \(\eta\in\Omega^{n-1}(\R^{n})\) such that \(d\eta=\omega\) and \(\int_{\partial B_{r}(0)}\eta=0\). Recall that\\
+\begin{align*}
+  H^{n-1}(S^{n-1}) &\to\R \\
+  [\eta] &\mapsto\int_{S^{n-1}}\eta
+\end{align*}
+Hence \([\eta]=0\in H^{n-1}_{\text{dR}}(\R^{n}-B_{r}(0))\). Hence \(\eta=d\sigma\) for some \(\sigma\in\Omega^{n-2}(\R^{n}-B_{r}(0))\) and the proof proceeds as in the previous case.\\
+\section*{Definition: Compactly Supported de Rahm Cohomology Group}
+\label{sec:orgf8526de}
+For \(M^{n}\),\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    0 \ar[r] &
+    \Omega^{0}_{C}(M) \ar[r,"d"] &
+    \Omega^{1}_{C}(M) \ar[r,"d"] &
+    \cdots \ar[r,"d"] &
+    \Omega^{n}_{C}(M) \ar[r,"d"] &
+    0
+  \end{tikzcd}};
+\end{tikzpicture}
+where\\
+\begin{align*}
+  H^{k}_{C}(M)=
+  \frac{\text{closed }k\text{-forms with compact support}}{\text{exact }k\text{-forms with compact support}}.
+\end{align*}
+\section*{Theorem 17.28}
+\label{sec:orgb10c07d}
+\begin{align*}
+  H^{k}_{C}(\R^{n})=
+  \begin{cases}
+    0 & 0\leq k\leq n-1 \\
+    \R & k=n
+  \end{cases}.
+\end{align*}
+\subsection*{Remark}
+\label{sec:org394007e}
+For \(k=n\),\\
+\begin{align*}
+  I:H^{n}_{C}&\to\R\\
+  [\omega]&\mapsto\int_{\R^{n}}\omega
+\end{align*}
+is an isomorphism.\\
+\subsection*{Remark}
+\label{sec:org0c81a4a}
+\(H^{k}_{\text{dR}}\) is a homotopic invariance, but \(H^{k}_{C}\) is not.\\
+\section*{Theorem 17.30}
+\label{sec:orgda746d7}
+Let \(M^{n}\) be connected, oriented and without boundary. Then \(H_{C}^{n}(M)=\R\). In particular, if \(M\) is closed (i.e. compact and without boundary), then \(H_{\text{dR}}^{n}(M)=H^{n}_{C}(M)=\R\).\\
+\subsection*{Proof}
+\label{sec:org65cc8bc}
+Write\\
+\begin{align*}
+  I:\Omega_{C}^{n}(M)&\to\R\\
+  \omega&\mapsto\int_{M}\omega
+\end{align*}
+If \(\omega=d\eta\) is exact, then\\
+\begin{align*}
+  \int_{M}\omega=\int_{M}d\eta=\int_{\partial M}\eta=0.
+\end{align*}
+\(I\) induces\\
+\begin{align*}
+  I:H^{n}_{C}&\to\R\\
+  [\omega]&\mapsto\int_{M}\omega
+\end{align*}
+We want to show that \(I\) is an isomorphism. In the trivial case, \(n=0\), \(M=\{\text{point}\}\) so \(I(f)=f(\text{point})\).\\
+\begin{align*}
+  H_{C}^{0}(\text{point})
+  =\Omega^{0}_{C}(\text{point})
+  =\{f\st\text{point}\to\R\}
+  \cong\R.
+\end{align*}
+If \(n\geq 1\), let \((U,(x^{i}))\) be a chart in \(M\), \(\theta\in\Omega^{n}_{C}(U)\) by \(\theta=f\;dx^{1}\wedge\cdots\wedge dx^{n}\) and \(f\geq 0\) but not constantly zero on \(U\). So \(\int_{U}\theta=c>0\) and \(\theta\in\Omega^{n}_{C}(M)\) by extending as \(0\) outside of \(U\). So \(I\) is surjective.\\
+For injectivity, we need to show that if \(\int_{M}\omega=0\) then \(\omega=d\eta\) for some \(\eta\in\Omega^{n-1}_{C}(M)\).\\
+Cover \(M\) by open sets \(\{U_{i}\}\) such that\\
+\begin{enumerate}
+\item each \(U_{i}\) is diffeomorphic to \(\R^{n}\),\\
+\item \(\supp\omega\subseteq \bigcup_{i=1}^{k}U_{i}\), and\\
+\item relable \(\{U_{i}\}_{i=1}^{k}\) if necessary.\\
+\end{enumerate}
+
+Then write \(M_{j}=\bigcup_{i=1}^{j}U_{i}\) which satisfies \(M_{j}\cap U_{j+1}\neq\0\). We will prove by induction that for each \(j=1,\ldots,k\) such that if \(\omega\in\Omega_{C}^{n}(M_{j})\) and \(\int_{M_{j}}\omega=0\), there is \(\eta\in\Omega_{C}^{n-1}(M_{j})\) such that \(d\eta=\omega\).\\
+When \(j=1\), \(M_{1}\cong\R^{n}\) and this follows from the Poincaré lemma with compact support.\\
+Consider the \(j+1\) case with \(\omega\in\Omega_{C}^{n}(M_{j+1})\) and \(\int_{M_{j}}\omega=0\). Let \(\{\varphi,\psi\}\) be a partition of unity with respect to \(\{M_{j},U_{j+1}\}\) (\(\supp\varphi\subseteq M_{j}\) and \(\supp\psi\subseteq U_{j+1}\)). Then \(\varphi\omega\in\Omega_{C}^{n}(M_{j})\). If \(\int_{M_{j}}\varphi\omega=0\), then by induction there exists \(\alpha\in\Omega^{n-1}_{C}(M_{j})\) such that \(d\alpha=\varphi\omega\). By assumption\\
+\begin{align*}
+  \int_{U_{j+1}}\psi\omega
+  =\int_{M_{j+1}}\psi\omega
+  =\int_{M_{j+1}}(1-\varphi)\omega
+  =\int_{M_{j+1}}\omega-\int_{M_{j}}\varphi\omega
+  =0.
+\end{align*}
+Then there exists \(\beta\in\Omega_{C}^{n}(U_{j+1})\) such that \(d\beta=\psi\omega\), and \(\alpha+\beta\in\Omega_{C}^{n}(M_{j+1})\) has \(d(\alpha+\beta)=(\varphi+\psi)\omega=\omega\).\\
+In general, \(\int_{M_{j}}\varphi\omega=c\). Construct \(\theta\in\Omega_{C}^{n}(M_{j}\cap U_{j+1})\) such that \(\int_{M_{j}\cap U_{j+1}}\theta=1\). Then \(\int_{M_{j}}\varphi\omega-c\theta=0\). By induction, there exists \(\alpha\in\Omega_{C}^{n-1}(M_{j})\) such that \(d\alpha=\varphi\omega-c\theta\). Then for \(\psi\omega+c\theta\in\Omega_{C}^{n}(U_{j+1)}\),\\
+\begin{align*}
+  \int_{U_{j+1}}\psi\omega+c\theta
+  =\int_{M_{j+1}}\omega-\int_{M_{j}}\varphi\omega+\int_{U_{j+1}}c\theta
+  =0-c+c
+  =0
+\end{align*}
+Then there exists \(\beta\in\Omega_{C}^{n}(U_{j+1})\) such that \(d\beta=\psi\omega+c\theta\) and \(\alpha+\beta\in\Omega_{C}^{n}(M_{j}+1)\) has \(d(\alpha+\beta)=(\varphi+\psi)\omega=\omega\).\\
+\subsection*{Remark}
+\label{sec:org97f1a9d}
+For \(M^{n}\) oriented, connected and without boundary,\\
+\begin{enumerate}
+\item \(H_{C}^{n}(M)\cong\R\) (in particular, if \(M\) is closed then \(H^{n}_{\text{dR}}(M)\cong\R\)).\\
+\item If \(M\) is non-compact, then \(H^{n}_{\text{dR}}(M)=0\).\\
+\end{enumerate}
+\subsubsection*{Proof of 2}
+\label{sec:org189454b}
+The proof requires an ``exhaustion function''. That is, a smooth function \(f:M\to\R\) such that\\
+\begin{enumerate}
+\item \(\inf f>-\infty\) and\\
+\item \(f^{-1}(-\infty,c]\) is compact for every \(c\).\\
+\end{enumerate}
+
+This means \(M=\bigcup_{k=0}^{\infty}f^{-1}(-\infty,k]\). As an example, consider \(M=\R^{n}\) and \(f(x)=x_{1}^{2}+\cdots+x_{n}^{2}\). Then \(f^{-}(\infty,c]=\overline{B_{C}}(0)\) is compact.\\
+Without loss of generality, let \(\inf_{M}f=0\). Then \(M=f^{-1}([0,+\infty))\). Let \(V_{i}=f^{-1}((i-2,i))\) for \(i\in\N\). Then \(V_{i}\) only intersects \(V_{i-1}\) and \(V_{i+1}\).\\
+Let \(\omega\in\Omega^{n}(M)\). Our goal is to find \(\eta\) such that \(d\eta=\omega\). Let \(\{\varphi_{i}\}\) be a partition of unity with respect to \(\{V_{i}\}\). Then let \(\omega_{i}=\varphi_{i}\omega\in\Omega_{C}^{n}(V_{i})\). On \(V_{1}\), if \(\int_{V_{1}}\omega_{1}=0\), then since \(H_{C}^{n}(V_{1})\cong\R\) we have that \(\omega_{1}=d\eta_{1}\) for some \(\eta_{1}\in\Omega_{C}^{n-1}(V_{1})\).\\
+If \(\int_{V_{1}}\omega_{1}=c_{1}\neq0\), we construct \(\theta_{1}\in\Omega_{C}^{n}(V_{1}\cap V_{2})\) such that \(\int_{V_{1}\cap V_{2}}\theta_{1}=1\). Then \(\int_{V_{1}}\omega_{1}-c_{1}\theta_{1}=0\). Hence there exists \(\eta_{1}\in\Omega_{C}^{n-1}(V_{1})\) such that \(d\eta_{1}=\omega_{1}-c\theta_{1}\).\\
+In general, on each \(V_{i}\cap V_{i+1}\), we may construct \(\theta_{i}\in\Omega_{C}^{n}(V_{i}\cap V_{i+1})\) such that \(\int_{V_{i}\cap V_{i+1}}\theta_{i}=1\). For \(i=2\), we choose \(c_{2}\) suc that \(\int_{V_{2}}\omega_{2}+c_{1}\theta_{1}-c_{2}\theta_{2}=0\). Then there exists \(\eta_{2}\in\Omega_{c}^{n-1}(V_{2})\) such that \(d\eta_{2}=\omega_{2}+c_{1}\theta_{1}-c_{2}\theta_{2}\).\\
+Inductively, we have \(\omega_{i}=\varphi_{i}\omega\) with \(\theta_{i}\in\Omega_{C}^{n}(V_{i}\cap V_{i+1})\) and \(\eta_{i}\in\Omega_{C}^{n-1}(V_{i})\) such that \(d\eta_{i}=\omega_{i}+c_{i}\theta_{i}-c_{i+1}\theta_{i+1}\).\\
+Consider \(\eta=\sum_{i=1}^{\infty}\eta_{i}\) which is a finite sum at any given point. This \(\eta\in\Omega^{n-1}(M)\) satisfies \(d\eta=d\left( \sum\eta_{i} \right)=d\left( \sum\varphi_{i}\omega \right)=\omega\).\\
+\section*{Recall}
+\label{sec:org682397c}
+If \(M\) is nonorientable, then there is a double cover \(\pi:\hat{M}\to M\) such that \(\hat{M}\) is connected and orientable.\\
+\section*{Lemma: 17.33}
+\label{sec:org5f90bb6}
+\(\pi^{*}:H^{k}_{\text{dR}}(M)\to H^{k}_{\text{dR}}(\hat{M})\) is injective. The same is true of \(\pi^{*}:H^{k}_{C}(M)\to H^{k}_{C}(\hat{M})\).\\
+\section*{Theorem: 17.34}
+\label{sec:org8d12ef1}
+If \(M^{n}\) is connected, non-oriented and without boundary, then \(H_{\text{dR}}^{n}(M)=0=H_{C}^{n}(M)\).\\
+\subsection*{Proof of First Equality}
+\label{sec:org1186c68}
+From above, if \(\hat{M}\) is non-compact, \(H^{n}_{\text{dR}}(\hat{M})=0\). Because \(\pi^{*}:H^{n}_{\text{dR}}(M)\to H^{n}_{\text{dR}}(\hat{M})\) is injective and \(H^{n}_{\text{dR}}(M)=0\).\\
+\section*{March 12, 2025}
+\label{sec:org80dc207}
+\section*{Lemma}
+\label{sec:org1119e24}
+If \(\pi:\hat{M}\to M\) is a double cover, then \(\pi^{*}:H^{k}_{\text{dR}}(M)\to H^{k}_{\text{dR}}(\hat{M})\) is injective (holds equally for \(H^{*}_{C}\)).\\
+\subsection*{Proof}
+\label{sec:org681feac}
+Goal: If \([\omega]\in H^{k}_{C}(M)\) has \(\pi^{*}[\omega]=0\in H^{k}_{C}(\hat{M})\), then \([\omega]=0\). In other words, if \(\omega\in\Omega^{k}_{C}(M)\) is closed and \(\pi^{*}\omega=d\eta\) for some \(\eta\in\Omega_{C}^{k-1}(\hat{M})\) then \(\omega\) is exact.\\
+Let \(\Gamma=\{\operatorname{id}_{\hat{M}},\alpha\}\) be the group of covering transformations where \(\alpha^{2}=\operatorname{id}_{\hat{M}}\) and\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    \hat{M} \ar[dr,"\pi"] \ar[rr,"\alpha"]
+    && \hat{M} \ar[dl,"\pi"] \\
+    & M
+  \end{tikzcd}};
+\end{tikzpicture}
+commutes. Then \(\pi\circ\alpha=\pi\). Consider \(\tilde{\eta}=\frac{1}{2}(\eta+\alpha^{*}\eta)\) which satisfies \(\alpha^{*}\tilde{\eta}=\frac{1}{2}(\alpha^{*}\eta+\alpha^{2}\eta)=\tilde{\eta}\). Compute\\
+\begin{align*}
+  d\tilde{\eta}
+  =\frac{1}{2}(d\eta+\alpha^{*}d\eta)
+  =\frac{1}{2}(\pi^{*}\omega+\alpha^{*}\pi^{*}\omega)
+  =\frac{1}{2}(\pi^{*}\omega+(\pi\circ\alpha)^{*})\omega
+  =\pi^{*}\omega.
+\end{align*}
+Excercise: since \(\tilde{\eta}\) satisfies \(\alpha^{*}\tilde{\eta}=\tilde{\eta}\), it descends to some well-defile \(\sigma\in\Omega_{C}^{k-1}(M)\) such that \(\pi^{*}\sigma=\tilde{\eta}\).\\
+For \(U\in M\) open and \(V_{1},V_{2}\in\hat{M}\) in the covers over \(U\), write diffeomorphisms \(\tau:U\to V_{1}\) and \(\alpha\circ\tau:U\to V_{2}\).\\
+Then on \(V_{1}\) we have \(\tau^{*}\left( \tilde{\eta}|_{V_{1}} \right)=\sigma\) and\\
+\begin{align*}
+  d\sigma
+  =d(\tau^{*}\tilde{\eta})
+  =\tau^{*}(d\tilde{\eta})
+  =\tau^{*}\pi^{*}\omega
+  =(\overbrace{\pi\circ\tau}^{\operatorname{id}})^{*}\omega
+  =\omega.
+\end{align*}
+\subsection*{Remark}
+\label{sec:org2f533af}
+This lemma also holds for \(\pi:\hat{M}\to M\) with finite sheets.\\
+\subsection*{Example}
+\label{sec:orga09c7ed}
+\(S^{n}\overset{\pi}{\to}\R\PP^{n}\), \(\pi^{*}:H^{k}_{\text{dR}}(\R\PP^{n})\to H^{k}_{\text{dR}}(S^{n})\) is injective when \(k\neq 0\) or \(k\neq n\).\\
+Hence \(H^{k}_{\text{dR}}(\R\PP^{n})=0\). What about \(H^{n}_{\text{dR}}(\R\PP^{n})\)?\\
+When \(n\) is odd, \(\R\PP^{n}\) is orientable, then \(H^{n}_{\text{dR}}(\R\PP^{n})\cong\R\).\\
+When \(n\) is even, \(\R\PP^{n}\) is non-orientable, then \(H^{n}_{\text{dR}}(\R\PP^{n})=0\).\\
+\section*{Hint for Exam Problem 4}
+\label{sec:orga50c3ec}
+if \(F:M\to N\) is a diffeomorphism, then\\
+\begin{align*}
+  \int_{M}F^{*}\omega
+  =\pm\int_{F(M)}\omega.
+\end{align*}
+\section*{Theorem}
+\label{sec:orgbc8beee}
+Let \(M^{n}\) be a connected, non-orientable manifold without boundary, then \(H^{n}_{C}(M^{n})=0=H^{n}_{\text{dR}}(M^{n})\).\\
+\subsection*{Proof}
+\label{sec:orgde538f0}
+Let \(\pi:\hat{M}\to M\) be the orientation double cover where \(\hat{M}\) is connected and orientable.\\
+\(\pi^{*}:H^{n}_{C}(M)\to H^{n}_{C}(\hat{M})\cong\R\) is injective, so we want to show that \(\pi^{*}\) is the zero map. Therefore, we need to show that \(\pi^{*}[\omega]=0\) or equivalently that \(\int_{\hat{M}}\pi^{*}\omega=0\).\\
+Let \(\omega\in\Omega^{n}_{C}(M)\) and write \(\pi^{*}\omega=\hat{\omega}\). Write \(\alpha:\hat{M}\to\hat{M}\) a non-trivial covering transformation which reverses orientation. Then \(\alpha^{*}\hat{\omega}=\alpha^{*}\pi^{*}\omega=\pi^{*}\omega=\hat{\omega}\) and we compute\\
+\begin{align*}
+  \int_{\hat{M}}\pi^{*}\omega
+  =\int_{\hat{M}}\hat{\omega}
+  =\int_{\hat{M}}\alpha^{*}\hat{\omega}
+  =-\int_{\hat{M}}\hat{\omega}
+  =-\int_{\hat{M}}\pi^{*}\omega.
+\end{align*}
+So it must be the case that \(\int_{\hat{M}}\pi^{*}\omega=0\).\\
+If \(M\) is compact, then \(H^{n}_{\text{dR}}(M)=H^{n}_{C}(M)=0\).\\
+If \(M\) is non-compact, then \(\pi^{*}:H^{n}_{\text{dR}}(M)\to H^{n}_{\text{dR}}(\hat{M})=0\) is injective.\\
+\section*{Degree Theory}
+\label{sec:orgf7d2874}
+Suppose \(F:M\to N\) for \(M^{n}, N^{n}\) closed and orientable.\\
+Then \(F\) induces \(F^{*}:\R\cong H^{n}_{\text{dR}}(N)\to H^{n}_{\text{dR}}(M)\cong\R\), so \(F^{*}\) is the multiplication by a number \(k\in\R\).\\
+\begin{tikzpicture}
+  \node{\begin{tikzcd}
+    \omega \ar[d,mapsto,"I"] \ar[r,"F^{*}"]
+    & F^{*}\omega \ar[d,"I"] \\
+    \int_{N}\omega \ar[r,mapsto,"k\cdot"]
+    & k\cdot\int_{N}\omega=\int_{M}F^{*}\omega
+  \end{tikzcd}};
+\end{tikzpicture}
+To show that \(k\in\Z\), we prove that if \(q\in N\) is a regular value (i.e. \(\forall p\in F^{-1}(q)\), \(DF_{p}\) is surjective). Then \(k=\sum_{p\in F^{-1}(q)}\operatorname{sgn}(p)\) where\\
+\begin{align*}
+  \operatorname{sgn}(p)=
+  \begin{cases}
+    1 & \text{if }DF_{p}\text{ preserves orientation},\\
+    -1 & \text{if }DF_{p}\text{ reverses orientation}
+  \end{cases}.
+\end{align*}
+Remark: \(F^{-1}(q)\) is an embedded \(0\) dimensional submanifold (i.e. \(F^{-1}(q)\) is a disjoint union of points).\\
+\subsection*{Proof}
+\label{sec:org7234093}
+Let \(q\in N\) be a regular value. For each \(p\in F^{-1}(p)\), \(DF_{p}:T_{p}M\to T_{q}N\) is a linear isomorphism.\\
+Then there is \(p\in U\) and \(q\in W\) such that \(F:U\to W\) is a diffeomorphism.\\
+Without loss of generality, for each \(p_{i}\in F^{-1}(q)\) there is \(U_{i}\) such that \(F:U_{i}\to W\) is a diffeomorphism.\\
+Let \(\omega\in\Omega^{n}(N)\) such that \(\supp\omega\subseteq W\) and \(\int_{N}\omega=1\). Then \(\supp F^{*}\omega\subseteq \bigcup_{i} U_{i}\), and\\
+\begin{align*}
+  \int_{M}F^{*}\omega
+  =\sum_{i}\int_{U_{i}}F^{*}\omega
+  =\sum_{i}\operatorname{sgn}(p_{i})\int_{F(U_{i})}\omega
+  =\sum_{i}\operatorname{sgn}(p_{i})\overbrace{\int_{W}\omega}^{=1}.
+\end{align*}
+On the other hand, \(\int_{M}F^{*}\omega=k\cdot\int_{N}\omega=k\), so \(k=\sum_{i}\operatorname{sgn}(p_{i})\).\\
+\subsection*{Remarks}
+\label{sec:org0a177e5}
+\subsubsection*{(1)}
+\label{sec:orgecdb6ad}
+If \(F:M\to N\) is not surjective (e.g. \(F:S^{n}\to S^{n}\) by sending everything to the north pole), then let \(W\subseteq N\) open such that \(F(M)\cap W=\0\).\\
+Let \(\omega\in\Omega^{n}(N)\) such that \(\supp\omega\subseteq W\) and \(\int_{N}\omega=1\). Then\\
+\begin{align*}
+  (F^{*}\omega)_{p}(X_{1},\ldots,X_{n})
+  =\omega_{F}(p)(F_{*}X_{1},\ldots,F_{*}X_{n})
+  =0.
+\end{align*}
+Hence \(F^{*}\omega=0\) and\\
+\begin{align*}
+  0=\int_{M}F^{*}\omega=\operatorname{deg}(F)\cdot\int_{N}\omega=\operatorname{deg}(F).
+\end{align*}
+\subsubsection*{(2)}
+\label{sec:org0cd7d7b}
+For \(M\overset{F}{\to}N\overset{G}{\to}P\), \(\operatorname{deg}(G\circ F)=(\operatorname{deg}G)(\operatorname{deg}F)\).\\
+\subsubsection*{(3)}
+\label{sec:orgd7bf13b}
+If \(F\) is a diffeomorphism, then \(\operatorname{deg}F=\pm 1\).\\
+\subsubsection*{(4)}
+\label{sec:org2adecdc}
+If \(F,G:M\to N\) and \(F\simeq G\), then \(\operatorname{deg}F=\operatorname{deg}G\) (because \(F^{*}=G^{*}\) on \(H^{n}_{\text{dR}}\)).\\
+\section*{Theorem (Hopf)}
+\label{sec:orgcedfc1e}
+If \(F,G:S^{n}\to S^{n}\) such that \(\operatorname{deg}F=\operatorname{deg}G\), then \(F\simeq G\).\\
+\section*{Remarks: Whitney Approximation}
+\label{sec:org59faa79}
+If \(F:M\to N\) is continuous, then by Whitney approximation there exists \(F\simeq F':M\to N\). Then define \(\operatorname{deg}F=\operatorname{deg}F'\) such that \(F''\simeq F\simeq F'\) is well-defined.\\
+\section*{Theorem}
+\label{sec:org2d31568}
+Let \(N^{n}\) be closed and orientable and \(X^{n+1}\) compact, oriented and with boundary \(\partial X\).\\
+If \(f:\partial X\to N\) has an extension \(\tilde{f}:X\to N\), then \(\operatorname{deg}f=0\).\\
+\subsection*{Proof}
+\label{sec:org9792c0d}
+Let \(\omega\in\Omega^{n}(N)\), \(d\omega=0\) and \(\int_{N}\omega=1\). Then\\
+\begin{align*}
+  \operatorname{deg}f
+  =\operatorname{deg}f\cdot\int_{N}\omega
+  =\int_{\partial X}f^{*}\omega
+  =\int_{X}d(f^{*}\omega)
+  =\int_{X}f^{*}(d\omega)
+  =0.
+\end{align*}
+This can be first proved in the smooth case and then approximated to the continuous case by Whiteny approximation.\\
+\section*{Theorem}
+\label{sec:org5cd9e0c}
+Any continuous map \(F:\overline{B^{n}}\to\overline{B^{n}}\) has a fixed point.\\
+\subsection*{Proof}
+\label{sec:orgf64e73a}
+Suppose \(F\) has no fixed points (i.e. \(F(x)\neq x,\;\forall x\in\overline{B^{n}}\)).\\
+Define \(G:B^{n}\to S^{n-1}\) by \(x\mapsto\frac{x-F(x)}{||x-F(X)||}\). Let \(g=G|_{S^{n-1}}:S^{n-1}\to S^{n-1}\), and note that \(g\simeq\operatorname{id}_{S^{n-1}}\). In fact, we have \(H:S^{n-1}\times [0,1]\to S^{n-1}\) by \(H(x,t)=\frac{x-tF(x)}{||x-tF(x)||}\) well defined since \(|x|=1\) and by assumption \(||tF(x)||\leq t<1\). Then \(H(\cdot,0)=\operatorname{id}_{S^{n-1}}\) and \(H(\cdot,1)=g\).\\
+Therefore \(\operatorname{deg}g=\operatorname{deg}(\operatorname{id}_{S^{n-1}})=1\). On the other hand, \(g:S^{n-1}\to S^{n-1}\) has an extension \(G:\overline{B^{n}}\to S^{n-1}\). Hence \(\operatorname{deg}g=0\), a contradiction.\\
+\section*{Laplacian on Forms}
+\label{sec:org0a802bb}
+For \(H^{k}_{\text{dR}}(M)\) with \(M\) closed and orientable, if \(M\) has additional structure then we can pick a unique representative in each class.\\
+For \((M,g)\) with a Riemannian metric and \(\Delta f=-\operatorname{div}(\operatorname{grad}f)\), we can take \(\omega\in\Omega^{k}(M)\).\\
+Locally for \(\{E_{1},\ldots,E_{n}\}\) and \(\{\epsilon^{1},\ldots,\epsilon^{n}\}\) orthonormal frames, we can declare \(\{\epsilon^{I}\st I=(i_{1},\ldots,i_{k})\text{ strictly increasing}\}\) to be an orthonorma frame.\\
+With this, we can calculate \(g(\omega,\eta)\) for \(\omega,\eta\in\Omega^{k}(M)\).\\
+Define \(\left\langle \omega,\eta \right\rangle=\int_{M}g_{p}(\omega,\eta)\;d\operatorname{Vol}_{g}\); define also \(d^{*}:\Omega^{k+1}\to\Omega^{k}\) the adjoint to \(d:\Omega^{k}\to\Omega^{k+1}\) (i.e. \(\left\langle d\omega,\eta \right\rangle=\left\langle \omega,d^{*}\eta \right\rangle\).\\
+Then define the Lapalcian on forms \(\Delta:\Omega^{k}\to\Omega^{k}\) by \(\Delta=dd^{*}+d^{*}d\).\\
+\begin{enumerate}
+\item \(\Delta\) is self-adjoint (i.e. \(\Delta^{*}=\delta\)).\\
+\item \(\Omega^{k}=\ker\Delta\oplus\operatorname{im}\Delta\).\\
+\item We say \(\omega\) is harmonic if \(\Delta\omega=0\), if and only if \(d\omega=0\) or \(d^{*}\omega=0\).\\
+\end{enumerate}
+
+So \(H^{k}_{\text{dR}}\) is the set of harmonic \(k\)-forms (Hodge).\\
+\section*{Lie Group Invariance}
+\label{sec:org0b73e5e}
+If \(M=G\) is a Lie group, \(\omega\in\Omega^{k}(M)\) may be left-invariant, right-invariant or bi-invariant (\(L^{*}_{g}\omega=R^{*}_{h}\omega=\omega\).\\
+We have that \(H^{k}_{\text{dR}}(G)\) is the set of bi-invariant \(k\)-forms (Cartan).\\
+If \(G\) is a compact Lie group with a bi-invariant Riemannian metric, \(\omega\in\Omega^{k}(M)\) is harmonic if and only if \(\omega\) is bi-invariant.\\
+\end{document}

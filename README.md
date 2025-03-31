@@ -5,7 +5,7 @@
 ### Analysis 
 [Analysis I (MATH 204)](/notes/analysis_i.pdf) | [Analysis II (MATH 205)](/notes/analysis_ii.pdf) | [Analysis III (MATH 206)](/notes/analysis_iii.pdf)
 ### Manifolds
-[Manifolds I (MATH 208)](/notes/manifolds_i.pdf) | [Manifolds II (MATH 209)](/notes/manifolds_ii.pdf)
+[Manifolds I (MATH 208)](/notes/manifolds_i.pdf) | [Manifolds II (MATH 209)](/notes/manifolds_ii.pdf) | [Manifolds III (MATH 210)](/notes/manifolds_iii.pdf)
 ### Partial Differential Equations
 [Partial Differential Equations I (MATH 213A)](/notes/partial_differential_equations_i.pdf)
 ### Topics in Analysis
