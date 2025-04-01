@@ -1,4 +1,4 @@
-% Created 2025-04-01 Tue 11:28
+% Created 2025-04-01 Tue 13:40
 % Intended LaTeX compiler: lualatex
 \documentclass[11pt]{article}
 \usepackage{amsmath}
@@ -27,9 +27,9 @@
 {\centering
 {\LARGE Random Matrix Theory \par }}
 \section*{April 1, 2025}
-\label{sec:org0bcd32d}
+\label{sec:orgea80da7}
 \subsection*{Preliminaries}
-\label{sec:orgafec138}
+\label{sec:org664fafc}
 Let \(\xi_{ij}\), \(\eta_{ij}\) be normal random variables (i.e. Gaussian, mean 0, variance 1).\\
 e.g. \(\PP(\xi_{11}<s)=\int_{-\infty}^{s}\frac{1}{\sqrt{2\pi}}e^{-x^{2}/2}\;dx\).\\
 \(\int_{-\infty}^{\infty}x^{2}\cdot\frac{1}{\sqrt{2\pi}}e^{-x^{2}/2}\;dx\) is the variance.\\
@@ -44,19 +44,110 @@ We build matrices\\
     \vdots & & & \ddots
   \end{bmatrix}
 \end{align*}
+\subsubsection*{Computing Random Matrices in Matlab}
+\label{sec:org0749065}
+Gassuain, real valued 1x1 matrix.\\
+\begin{minted}{octave} :result latex
+randn
+\end{minted}
+
+\phantomsection
+\label{}
+\begin{verbatim}
+1.472038790162054
+\end{verbatim}
+
+
+
+Gaussian, real valued 2x2 matrix.\\
+\begin{minted}{octave} :result output
+randn(2)
+\end{minted}
+
+\begin{table}[htbp]
+\label{}
+\centering
+\begin{tabular}{rr}
+-0.7151347737777703 & 2.554608872047015\\
+1.061153666892094 & -0.4894993627612058\\
+\end{tabular}
+\end{table}
+
+Gaussian, complex valued 2x2 matrix.\\
+\begin{minted}{octave} :result output
+randn(2)+sqrt(-1)*randn(2)
+\end{minted}
+
+\begin{table}[htbp]
+\label{}
+\centering
+\begin{tabular}{ll}
+0.9289825830129438-0.4813485333930206i & 0.9662134522578358-0.4294592473872408i\\
+0.5408810406545974+0.03634893478821161i & -1.712789776568709-0.6297486061153271i\\
+\end{tabular}
+\end{table}
+
+
+Gaussian, complex valued, self-adjoint 2x2 matrix.\\
+Note that appending ' to a matrix takes the conjugate transpose, and matlab reserves i for the imaginary unit.\\
+\begin{minted}{octave} :result output
+m = randn(2)+i*randn(2)
+(m+m')/2
+\end{minted}
+
+\begin{table}[htbp]
+\label{}
+\centering
+\begin{tabular}{ll}
+-0.01880611454872252+0i & -0.2653045793341844+2.032048899446623i\\
+-0.2653045793341844-2.032048899446623i & 0.4961821165653084+0i\\
+\end{tabular}
+\end{table}
+
+
+Producing eigenvalues.\\
+\begin{minted}{octave} :results output
+m = randn(2)+i*randn(2);
+l=(m+m')/2;
+eig(l)
+\end{minted}
+
+\phantomsection
+\label{}
+\begin{verbatim}
+ans =
+
+  -1.8312
+   0.2405
+\end{verbatim}
+
+
+
+Running tests to see how many hits we get within the interval \([0,2]\). Note that matlab uses histcounts rather than histc.\\
+\begin{minted}{octave} :results output
+edges=[0,2];
+H=zeros(1,length(edges)-1);
+trials=10;
+for j=1:trials
+m = randn(2)+i*randn(2);
+l=(m+m')/2;
+ev=eig(l);
+H=H+histc(ev,edges)
+end
+\end{minted}
 \subsubsection*{Homework}
-\label{sec:org9e734df}
+\label{sec:org2460f8c}
 Is the PDF of \(\frac{a+b}{2}\) the same as \(\frac{\xi_{12}}{\sqrt{2}}\) for normal RVs \(a,b,\xi_{12}\)?\\
 i.e. \(\PP\left( \frac{a+b}{2}<s) \right)\overset{?}{=}\left( \PP\frac{\xi_{12}}{\sqrt{2}} \right)\)\\
 \subsection*{2x2 Random Matrix}
-\label{sec:orgc31868d}
+\label{sec:org0e2dfe8}
 Our matrix \(L\) corresponds to eigvenvalues \(\lambda_{1},\lambda_{2}\) which are random variables determined by \(\{\xi_{ij},\eta_{ij}\}\).\\
 Then the number of evaulations in the interval \(B\) is given by \(\sum_{j=1}^{2}\chi_{B}(\lambda_{j})\). We may take the average by\\
 \begin{align*}
   \int_{-\infty}^{\infty}\cdots\int_{-\infty}^{\infty}\sum_{j=1}^{2}\chi_{B}(\lambda_{j})\frac{1}{\sqrt{2\pi}}e^{-\xi^{2}_{11}}\cdot\frac{1}{\sqrt{2\pi}}e^{-\xi^{2}_{22}}\cdot\frac{1}{\sqrt{2\pi}}e^{-\xi^{2}_{12}}\cdot\frac{1}{\sqrt{2\pi}}e^{-\eta^{2}_{12}}\;d\xi_{11}d\xi_{22}d\xi_{12}d\eta_{12}.
 \end{align*}
 \subsection*{Expected Evaluations}
-\label{sec:org92bcc73}
+\label{sec:org9c7bb42}
 We have that the expecation of the number of evaluations in the interval \((a,b)\) is given by \(\int_{a}^{b}G(s)\;ds\) where\\
 \begin{align*}
   G(s)

@@ -1,0 +1,9 @@
+edges=[0,2];
+H=zeros(1,length(edges)-1);
+trials=10;
+for j=1:trials
+m = randn(2)+i*randn(2);
+l=(m+m')/2;
+ev=eig(l);
+H=H+histc(ev,edges)
+end
