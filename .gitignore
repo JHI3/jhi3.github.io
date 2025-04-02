@@ -1,4 +1,6 @@
+# Ignore Everything
 *.*
+# Permit Specifically
 !.gitignore
 !README.md
 !*.pdf
