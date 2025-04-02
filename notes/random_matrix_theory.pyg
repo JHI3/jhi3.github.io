@@ -5,5 +5,5 @@ for j=1:trials
 m = randn(2)+i*randn(2);
 l=(m+m')/2;
 ev=eig(l);
-H=H+histc(ev,edges)
+H=H+histcount(ev,edges)
 end
