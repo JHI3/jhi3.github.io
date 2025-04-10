@@ -36,3 +36,7 @@
 [Section 3](/slides/21/section3.pdf) |
 [Midterm Review](/slides/21/midterm.pdf) |
 [Section 5](/slides/21/section5.pdf)
+### Chaos Theory (MATH 145)
+[Section 1](/slides/145/section1.pdf)
+
+[Attendance](https://forms.gle/y4omyhshPXdwPnDn9)
