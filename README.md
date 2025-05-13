@@ -40,6 +40,8 @@
 [Section 1](/slides/145/section1.pdf) |
 [Section 2](/slides/145/section2.pdf) |
 [Section 3](/slides/145/section3.pdf) |
-[Section 4](/slides/145/section4.pdf) 
+[Section 4](/slides/145/section4.pdf) |
+[Section 5](/slides/145/section5.pdf) |
+[Section 6](/slides/145/section6.pdf) 
 
 [Attendance](https://forms.gle/y4omyhshPXdwPnDn9)
