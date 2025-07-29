@@ -36,7 +36,7 @@
 [Section 3](/slides/21/section3.pdf) |
 [Midterm Review](/slides/21/midterm.pdf) |
 [Section 5](/slides/21/section5.pdf)
-### Multivariable Calculus (MATH 122)
+### Multivariable Calculus (MATH 22)
 [Section 1]()
 
 [Attendance](https://forms.gle/ZLmwiwM7kchnSFGZ9)
