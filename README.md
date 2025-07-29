@@ -36,6 +36,10 @@
 [Section 3](/slides/21/section3.pdf) |
 [Midterm Review](/slides/21/midterm.pdf) |
 [Section 5](/slides/21/section5.pdf)
+### Multivariable Calculus (MATH 122)
+[Section 1]()
+
+[Attendance](https://forms.gle/ZLmwiwM7kchnSFGZ9)
 ### Chaos Theory (MATH 145)
 [Section 1](/slides/145/section1.pdf) |
 [Section 2](/slides/145/section2.pdf) |
@@ -43,6 +47,5 @@
 [Section 4](/slides/145/section4.pdf) |
 [Section 5](/slides/145/section5.pdf) |
 [Section 6](/slides/145/section6.pdf) |
-[Section 7](/slides/145/section7.pdf) 
-
-[Attendance](https://forms.gle/y4omyhshPXdwPnDn9)
+[Section 7](/slides/145/section7.pdf) |
+[Section 8](/slides/145/section8.pdf) 
