@@ -37,7 +37,8 @@
 [Midterm Review](/slides/21/midterm.pdf) |
 [Section 5](/slides/21/section5.pdf)
 ### Multivariable Calculus (MATH 22)
-[Section 1](/slides/22/section1.pdf)
+[Section 1](/slides/22/section1.pdf) |
+[Section 2](/slides/22/section2.pdf)
 
 [Attendance](https://forms.gle/ZLmwiwM7kchnSFGZ9)
 ### Chaos Theory (MATH 145)
