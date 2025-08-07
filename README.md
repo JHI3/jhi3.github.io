@@ -39,7 +39,8 @@
 ### Multivariable Calculus (MATH 22)
 [Section 1](/slides/22/section1.pdf) |
 [Section 2](/slides/22/section2.pdf) |
-[Section 3](/slides/22/section3.pdf) 
+[Section 3](/slides/22/section3.pdf) |
+[Section 4](/slides/22/section4.pdf) 
 
 [Attendance](https://forms.gle/ZLmwiwM7kchnSFGZ9)
 ### Chaos Theory (MATH 145)
