@@ -42,7 +42,8 @@
 [Section 3](/slides/22/section3.pdf) |
 [Section 4](/slides/22/section4.pdf) |
 [Section 5](/slides/22/section5.pdf) |
-[Section 6](/slides/22/section6.pdf) 
+[Section 6](/slides/22/section6.pdf) |
+[Section 7](/slides/22/section7.pdf) 
 
 [Attendance](https://forms.gle/ZLmwiwM7kchnSFGZ9)
 ### Chaos Theory (MATH 145)
