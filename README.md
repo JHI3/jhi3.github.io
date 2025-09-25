@@ -9,7 +9,7 @@
 ### Partial Differential Equations
 [Partial Differential Equations I (MATH 213A)](/notes/partial_differential_equations_i.pdf)
 ### Assorted Courses
-[Topics in Analysis (F24) (MATH 280)](/notes/analysis_topics_f24.pdf) | [Random Matrix Theory (S25) (MATH 296)](/notes/random_matrix_theory.pdf)
+[Topics in Analysis (F24) (MATH 280)](/notes/analysis_topics_f24.pdf) | [Random Matrix Theory (S25) (MATH 296)](/notes/random_matrix_theory.pdf) | [Advanced Analysis (MATH 216)](/notes/advanced_analysis.pdf)
 ## Slides
 ### Precalculus (MATH 3)
 [Section 1](/slides/3/section1.pdf) | 
