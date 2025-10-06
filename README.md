@@ -10,6 +10,8 @@
 [Partial Differential Equations I (MATH 213A)](/notes/partial_differential_equations_i.pdf)
 ### Assorted Courses
 [Topics in Analysis (F24) (MATH 280)](/notes/analysis_topics_f24.pdf) | [Random Matrix Theory (S25) (MATH 296)](/notes/random_matrix_theory.pdf) | [Advanced Analysis (MATH 216)](/notes/advanced_analysis.pdf)
+## Section Worksheets
+[Attendance](https://forms.gle/ShaDokgPHk5v5MYYA)
 ## Slides
 ### Precalculus (MATH 3)
 [Section 1](/slides/3/section1.pdf) | 
@@ -44,8 +46,6 @@
 [Section 5](/slides/22/section5.pdf) |
 [Section 6](/slides/22/section6.pdf) |
 [Section 7](/slides/22/section7.pdf) 
-
-[Attendance](https://forms.gle/ZLmwiwM7kchnSFGZ9)
 ### Chaos Theory (MATH 145)
 [Section 1](/slides/145/section1.pdf) |
 [Section 2](/slides/145/section2.pdf) |
