@@ -11,6 +11,7 @@
 ### Assorted Courses
 [Topics in Analysis (F24) (MATH 280)](/notes/analysis_topics_f24.pdf) | [Random Matrix Theory (S25) (MATH 296)](/notes/random_matrix_theory.pdf) | [Advanced Analysis (MATH 216)](/notes/advanced_analysis.pdf)
 ## Section Worksheets
+### Calculus with Applications (MATH 11B)
 [Attendance](https://forms.gle/ShaDokgPHk5v5MYYA)
 
 [Section 1](/slides/11B/section1.pdf)
