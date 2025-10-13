@@ -15,7 +15,7 @@
 [Attendance](https://forms.gle/ShaDokgPHk5v5MYYA)
 
 [Section 1](/slides/11B/section1.pdf) |
-[Section 1](/slides/11B/section2.pdf)
+[Section 2](/slides/11B/section2.pdf)
 ## Slides
 ### Precalculus (MATH 3)
 [Section 1](/slides/3/section1.pdf) | 
