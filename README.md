@@ -17,7 +17,8 @@
 [Section 1](/slides/11B/section1.pdf) |
 [Section 2](/slides/11B/section2.pdf) |
 [Section 3](/slides/11B/section3.pdf) |
-[Midterm Review](/slides/11B/midterm.pdf) 
+[Midterm Review](/slides/11B/midterm.pdf) |
+[Midterm Review Solutions](/slides/11B/midterm_solutions.pdf) 
 ## Slides
 ### Precalculus (MATH 3)
 [Section 1](/slides/3/section1.pdf) | 
