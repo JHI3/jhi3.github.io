@@ -20,7 +20,8 @@
 [Midterm Review](/slides/11B/midterm.pdf) |
 [Midterm Review Solutions](/slides/11B/midterm_solutions.pdf) |
 [Section 4](/slides/11B/section4.pdf) |
-[Section 5](/slides/11B/section5.pdf) 
+[Section 5](/slides/11B/section5.pdf) |
+[Section 6](/slides/11B/section6.pdf) 
 ## Slides
 ### Precalculus (MATH 3)
 [Section 1](/slides/3/section1.pdf) | 
