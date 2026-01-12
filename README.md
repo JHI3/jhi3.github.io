@@ -12,8 +12,6 @@
 [Topics in Analysis (F24) (MATH 280)](/notes/analysis_topics_f24.pdf) | [Random Matrix Theory (S25) (MATH 296)](/notes/random_matrix_theory.pdf) | [Advanced Analysis (MATH 216)](/notes/advanced_analysis.pdf)
 ## Section Worksheets
 ### Calculus with Applications (MATH 11B)
-[Attendance](https://forms.gle/ShaDokgPHk5v5MYYA)
-
 [Section 1](/slides/11B/section1.pdf) |
 [Section 2](/slides/11B/section2.pdf) |
 [Section 3](/slides/11B/section3.pdf) |
@@ -23,6 +21,8 @@
 [Section 5](/slides/11B/section5.pdf) |
 [Section 6](/slides/11B/section6.pdf) |
 [Final Review](/slides/11B/final.pdf)
+### Ordinary Differential Equations (MATH 24)
+[Section 0](/slides/24/section0.pdf)
 ## Slides
 ### Precalculus (MATH 3)
 [Section 1](/slides/3/section1.pdf) | 
