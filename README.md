@@ -23,7 +23,8 @@
 [Final Review](/slides/11B/final.pdf)
 ### Ordinary Differential Equations (MATH 24)
 [Section 0](/slides/24/section0.pdf) |
-[Section 1](/slides/24/section1.pdf)
+[Section 1](/slides/24/section1.pdf) |
+[Section 1 (Extra Wamrup)](/slides/24/extrawarmup.pdf) 
 ## Slides
 ### Precalculus (MATH 3)
 [Section 1](/slides/3/section1.pdf) | 
