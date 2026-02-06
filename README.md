@@ -25,7 +25,8 @@
 [Section 0](/slides/24/section0.pdf) |
 [Section 1](/slides/24/section1.pdf) |
 [Section 2](/slides/24/section2.pdf) |
-[Section 3](/slides/24/section3.pdf)
+[Section 3](/slides/24/section3.pdf) |
+[Midterm Review](/slides/24/midtermreview.pdf)
 ## Slides
 ### Precalculus (MATH 3)
 [Section 1](/slides/3/section1.pdf) | 
