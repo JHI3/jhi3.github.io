@@ -29,7 +29,8 @@
 [Midterm Review](/slides/24/midtermreview.pdf) |
 [Section 5](/slides/24/section5.pdf) |
 [Section 6](/slides/24/section6.pdf) |
-[Section 7](/slides/24/section7.pdf)
+[Section 7](/slides/24/section7.pdf) |
+[Final Review](/slides/24/finalreview.pdf) |
 ## Slides
 ### Precalculus (MATH 3)
 [Section 1](/slides/3/section1.pdf) | 
