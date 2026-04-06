@@ -7,5 +7,11 @@ pages:
       url: /classes/3/
     - title: "11: Calculus with Applications"
       url: /classes/11/
+    - title: "21: Linear Algebra"
+      url: /classes/21/
+    - title: "22: Calculus of Several Variables"
+      url: /classes/22/
     - title: "24: Ordinary Differential Equations"
       url: /classes/24/
+    - title: "145: Chaos Theory"
+      url: /classes/145/
