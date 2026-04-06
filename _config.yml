@@ -1,5 +1,7 @@
 title: "Notes, Slides, and Other Things"
 description: ""
-remote_theme: chrisrhymes/bulma-clean-theme@v0.14.0
+remote_theme: "mmistakes/minimal-mistakes@4.28.0"
+minimal_mistakes_skin: "catppuccin_mocha"
 plugins:
   - jekyll-remote-theme
+  - jekyll-include-cache
