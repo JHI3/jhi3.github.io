@@ -1,7 +1,3 @@
----
-layout: single
-classes: wide
----
 [Test](/pages/test.html)
 ## Notes
 ### Algebra 

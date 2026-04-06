@@ -1,14 +1,17 @@
 title: "Notes, Slides, and Other Things"
 description: ""
+
 remote_theme: "mmistakes/minimal-mistakes@4.28.0"
 minimal_mistakes_skin: "catppuccin_mocha"
+
 plugins:
   - jekyll-remote-theme
   - jekyll-include-cache
+
 defaults:
-  # _pages
   - scope:
       path: ""
-      type: pages
     values:
-      layout: single
+      layout: "single"
+      classes: "wide"
+      toc: true
