@@ -2,7 +2,7 @@
 title: Calculus with Applications (MATH 11A / 11B)
 ---
 # Fall Quarter 2025
-## Section 11B-F25
+## Section Worksheets
 [Section 1](./11B-F25/section1.pdf) |
 [Section 2](./11B-F25/section2.pdf) |
 [Section 3](./11B-F25/section3.pdf) |
