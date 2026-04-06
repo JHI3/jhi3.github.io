@@ -2,7 +2,7 @@ title: "Notes, Slides, and Other Things"
 description: ""
 
 remote_theme: "mmistakes/minimal-mistakes@4.28.0"
-minimal_mistakes_skin: "catppuccin_mocha"
+minimal_mistakes_skin: "catppuccin_latte"
 
 plugins:
   - jekyll-remote-theme
