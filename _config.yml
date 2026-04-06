@@ -16,3 +16,4 @@ defaults:
       classes: "wide"
       sidebar:
         nav: "pages"
+      hide_title: true
