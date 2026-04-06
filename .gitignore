@@ -4,6 +4,7 @@
 !.gitignore
 !README.md
 !index.md
+!Gemfile
 !*.pdf
 !/pages/*
 !_config.yml
