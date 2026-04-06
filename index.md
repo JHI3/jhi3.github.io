@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Home"
 ---
 ### Math 145 - Spring Quarter 2026
 #### Section Slides
