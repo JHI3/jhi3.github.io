@@ -1,12 +1,8 @@
 pages:
-  - title: Archive
+  - title: "Class Notes"
+    url: /notes/
+  - title: "Discussion Sections"
     children:
-    - title: Notes
-      url: /notes/
-    - title: Section Slides
-      url: /slides/
-    - title: Section Worksheets
-      url: /worksheets/
     - title: "11: Calculus with Applications"
       url: /classes/11/
     - title: "24: Ordinary Differential Equations"
