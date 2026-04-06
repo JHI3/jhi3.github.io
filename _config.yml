@@ -10,7 +10,9 @@ plugins:
 
 footer:
   links: []
-  show_subscribe: false
+
+atom_feed:
+  hide: true
 
 defaults:
   - scope:
