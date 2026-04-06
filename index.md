@@ -1,4 +1,6 @@
-# Notes, Slides, and Other Things
+---
+layout: single
+---
 [Test](/pages/test.html)
 ## Notes
 ### Algebra 
