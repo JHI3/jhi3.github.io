@@ -1,4 +1,4 @@
-# Slides
+# Section Slides
 ## Precalculus (MATH 3)
 [Section 1](/3/section1.pdf) | 
 [Section 2](/3/section2.pdf) |
@@ -22,7 +22,6 @@
 [Section 1](/21/section1.pdf) |
 [Section 2](/21/section2.pdf) |
 [Section 3](/21/section3.pdf) |
-[Midterm Review](/21/midterm.pdf) |
 [Section 5](/21/section5.pdf)
 ## Multivariable Calculus (MATH 22)
 [Section 1](/22/section1.pdf) |
