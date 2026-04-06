@@ -1,4 +1,6 @@
-# Notes
+---
+title: Class Notes
+---
 ## Algebra 
 [Algebra I (MATH 200)](/algebra_i.pdf) | [Algebra II (MATH 201)](/algebra_ii.pdf) | [Algebra III (MATH 202)](/algebra_iii.pdf)
 ## Analysis 
