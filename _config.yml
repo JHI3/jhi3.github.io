@@ -13,6 +13,6 @@ defaults:
       path: ""
     values:
       layout: "single"
-      author_profile: true
+      classes: "wide"
       sidebar:
         nav: "pages"

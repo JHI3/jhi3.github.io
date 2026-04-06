@@ -1,0 +1,9 @@
+pages:
+  - title: Archive
+    children:
+    - title: Notes
+      url: /notes/
+    - title: Section Slides
+      url: /slides/
+    - title: Section Worksheets
+      url: /worksheets/
