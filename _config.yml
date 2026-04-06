@@ -10,6 +10,7 @@ plugins:
 
 footer:
   links: []
+  show_subscribe: false
 
 defaults:
   - scope:
