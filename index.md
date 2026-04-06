@@ -1,6 +1,6 @@
 # TESTING
 ---
-title: Home
+title:
 ---
 ### Math 145 - Spring Quarter 2026
 #### Section Slides
