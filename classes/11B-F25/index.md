@@ -1,5 +1,5 @@
 ---
-title: Calculus with Applications (11B) [Fall 2025]
+title: Calculus with Applications (MATH 11B) [Fall 2025]
 ---
 ## Section Worksheets
 [Section 1](./worksheets/section1.pdf) |
