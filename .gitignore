@@ -5,3 +5,4 @@
 !README.md
 !*.pdf
 !/pages/*
+!_config.yml
