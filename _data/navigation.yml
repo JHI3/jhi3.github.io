@@ -1,6 +1,4 @@
 pages:
-  - title: "Home"
-    url: /
   - title: "Class Notes"
     url: /notes/
   - title: "Discussion Sections"
