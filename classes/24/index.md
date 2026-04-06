@@ -1,6 +1,7 @@
 ---
 title: Ordinary Differential Equations (MATH 24)
 ---
+# Archived
 ## Math 24 - Winter Quarter 2025
 ### Section Worksheets
 [Section 0](./24-W25/section0.pdf) |
