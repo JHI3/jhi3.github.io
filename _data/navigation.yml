@@ -3,6 +3,8 @@ pages:
     url: /notes/
   - title: "Discussion Sections"
     children:
+    - title: "3: Precalculus"
+      url: /classes/3/
     - title: "11: Calculus with Applications"
       url: /classes/11/
     - title: "24: Ordinary Differential Equations"
