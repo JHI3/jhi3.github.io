@@ -2,7 +2,7 @@
 title: Ordinary Differential Equations (MATH 24)
 ---
 # Winter Quarter 2025
-## Section 24-W25
+## Section Worksheets
 [Section 0](./24-W25/section0.pdf) |
 [Section 1](./24-W25/section1.pdf) |
 [Section 2](./24-W25/section2.pdf) |
