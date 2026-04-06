@@ -3,7 +3,7 @@
 # Permit Specifically
 !.gitignore
 !README.md
-!index.md
+!*index.md
 !Gemfile
 !*.pdf
 !/pages/*

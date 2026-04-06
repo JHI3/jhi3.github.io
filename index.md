@@ -1,4 +1,4 @@
-[Test](/pages/test.html)
+# TESTING
 ## Notes
 ### Algebra 
 [Algebra I (MATH 200)](/notes/algebra_i.pdf) | [Algebra II (MATH 201)](/notes/algebra_ii.pdf) | [Algebra III (MATH 202)](/notes/algebra_iii.pdf)
