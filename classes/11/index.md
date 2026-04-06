@@ -3,6 +3,7 @@ title: Calculus with Applications (MATH 11A / 11B)
 ---
 ## Archived
 ### Math 11A - Fall Quarter 2023
+#### Section Slides
 [Section 1](./11A-F23/section1.pdf) |
 [Section 2](./11A-F23/section2.pdf) |
 [Section 3](./11A-F23/section3.pdf) |
