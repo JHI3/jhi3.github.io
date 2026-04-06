@@ -1,9 +1,9 @@
 ---
 title: Precalculus (MATH 3)
 ---
-# Archived
-## Math 3 - Winter Quarter 2024
-### Section Slides
+## Archived
+### Math 3 - Winter Quarter 2024
+#### Section Slides
 [Section 1](./3-W24/section1.pdf) | 
 [Section 2](./3-W24/section2.pdf) |
 [Section 3](./3-W24/section3.pdf) |
