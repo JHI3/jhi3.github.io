@@ -3,6 +3,8 @@
 # Permit Specifically
 !.gitignore
 !README.md
+!index.md
 !*.pdf
 !/pages/*
 !_config.yml
+!/_layouts/*
