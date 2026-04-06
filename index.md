@@ -1,4 +1,3 @@
-# TESTING
 ---
 title:
 ---
