@@ -14,4 +14,3 @@ defaults:
     values:
       layout: "single"
       classes: "wide"
-      toc: true
