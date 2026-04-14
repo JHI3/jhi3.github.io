@@ -12,4 +12,5 @@ title: ""
 #### [Attendance Form](https://forms.gle/VEg7BScxMS6uAMzE8)
 
 #### Section Worksheets
-[Section 1](/classes/145/145-S26/section1.pdf)
+[Section 1](/classes/145/145-S26/section1.pdf) |
+[Section 2](/classes/145/145-S26/section2.pdf)
