@@ -13,4 +13,5 @@ title: ""
 
 #### Section Worksheets
 [Section 1](/classes/145/145-S26/section1.pdf) |
-[Section 2](/classes/145/145-S26/section2.pdf)
+[Section 2](/classes/145/145-S26/section2.pdf) |
+[Section 3](/classes/145/145-S26/section3.pdf)
